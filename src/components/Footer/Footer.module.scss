@@ -1,0 +1,46 @@
+@import './src/assets/vars/vars.module.scss';
+
+
+.footer {
+  background-color: $background;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  .container {
+    max-width: 1624px;
+    margin: 0 auto;
+
+    .footer-container {
+      display: flex;
+      flex-direction: row;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        color: $white-color;
+        font-family: 'Calibri';
+      }
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 16px;
+        width: 232px;
+        justify-content: space-between;
+
+        li {
+          font-size: $first-fz;
+        }
+      }
+
+      .copyright {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,19 @@
+@import "./src/assets/vars/vars.module.scss";
+
+.button-subscribe {
+  background-color: $background;
+  padding: 14px 45px;
+  color: $white-color;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+
+  .icon {
+    margin-right: 10px;
+  }
+}
+
+

@@ -1,0 +1,64 @@
+@import './src/assets/vars/vars.module.scss';
+@import './src/assets/font-family/base.module.scss';
+
+.container {
+  max-width: 1624px;
+  margin: 0 auto;
+
+  .jumbotron {
+    margin-top: 47px;
+    font-family: 'Calibri';
+
+    .subtitle {
+      margin-top: 52px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      width: 314px;
+
+      .logo {
+        z-index: 1;
+      }
+
+      .description {
+        color: $black-color;
+        font-weight: $regular-weight;
+        font-size: $secondary-fz;
+      }
+    }
+  }
+
+
+  .strawberry {
+    position: absolute;
+    left: -190px;
+    top: 212px;
+  }
+
+
+  .background-zephir {
+    background: url('../../assets/img/banner/Main-zephir.png');
+    position: absolute;
+    background-position: top;
+    top: 64px;
+    right: 425px;
+    width: 442px;
+    height: 437px;
+  }
+
+  .background {
+    background: url('../../assets/img/banner/cloud-2.png');
+    position: absolute;
+    right: 0px;
+    background-repeat: no-repeat;
+    background-position: top;
+    top: 100px;
+    height: 843px;
+    width: 1170px;
+    background-size: cover;
+  }
+
+
+}
+
+

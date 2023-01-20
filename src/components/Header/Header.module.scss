@@ -1,0 +1,64 @@
+@import "./src/assets/reset/reset.module.scss";
+@import "./src/assets/vars/vars.module.scss";
+@import "./src/assets/font-family/base.module.scss";
+
+.container {
+  max-width: 1624px;
+  margin: 0 auto;
+
+  .background {
+    background: url('../../assets/img/banner/cloud-1.png');
+    position: absolute;
+    left: 0;
+    height: 658px;
+    background-repeat: no-repeat;
+    width: 600px;
+  }
+
+  .header {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    font-family: 'Calibri';
+
+    .navigation {
+      margin: 0 auto;
+      width: 100px;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 300px;
+
+        li {
+          color: $link-color;
+          font-size: $first-fz;
+          font-weight: $bold-weight;
+          letter-spacing: 1.5px;
+        }
+      }
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        font-size: $first-fz;
+        color: $link-color;
+      }
+
+      .location {
+        font-weight: $regular-weight;
+      }
+
+      .phone {
+        font-weight: $bold-weight;
+        text-align: end;
+      }
+    }
+  }
+}
+
