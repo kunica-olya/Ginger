@@ -1,23 +1,14 @@
 @import './src/assets/vars/vars.module.scss';
 @import './src/assets/font-family/base.module.scss';
 
+
 .container {
   max-width: 1160px;
   margin: 0 auto;
 
   .jumbotron {
     font-family: 'Calibri';
-
-    .background-logo {
-      background: url('../../assets/img/banner/cloud-1.png');
-      position: absolute;
-      left: 1px;
-      height: 380px;
-      top: -61px;
-      width: 872px;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
+    margin-bottom: 112px;
 
     .subtitle {
       margin-top: 19px;
@@ -25,10 +16,6 @@
       display: flex;
       flex-direction: column;
       width: 314px;
-
-      .logo {
-        z-index: 1;
-      }
 
       .description {
         color: $black-color;

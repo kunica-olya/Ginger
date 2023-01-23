@@ -3,31 +3,30 @@
 .button-subscribe {
   cursor: pointer;
   background-color: $background;
-  padding: 9px 12px;
+  padding: 7px 12px;
   color: $white-color;
   border-radius: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 282px;
   font-size: 24px;
   font-weight: $bold-weight;
-  margin-bottom: 62px;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: $hover-color;
-  }
-
-  .icon {
-    margin-right: -10px;
   }
 
   .button-text {
     font-family: 'Calibri';
     font-size: 24px;
     letter-spacing: 0.5px;
-    padding: 0 19px;
+
+    .icon {
+      margin-right: 9px;
+      padding-top: 5px;
+    }
   }
 }
 

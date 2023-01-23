@@ -43,21 +43,17 @@
                 padding: 0 23px;
 
                 &:hover {
-                  color: #EA7879;
+                  color: $hover-color;
                 }
               }
 
             }
           }
         }
-
         .copyright {
-          letter-spacing: 0.5px;
           text-align: center;
-          font-size: 13px;
+          font-size: 14px;
         }
-
-
       }
     }
   }

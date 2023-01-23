@@ -4,8 +4,10 @@ import Icon from '../../assets/svg/Vector.svg';
 const Button = () => {
     return (
         <button className={styles['button-subscribe']}>
-            <img className={styles.icon} src={Icon} alt="icon"/>
-            <div className={styles['button-text']}>Subscribe</div>
+            <span className={styles['button-text']}>
+                     <img className={styles.icon} src={Icon} alt="icon"/>
+                Subscribe
+            </span>
         </button>
     )
 }
