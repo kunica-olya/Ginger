@@ -3,24 +3,21 @@ import styles from '../Footer/Footer.module.scss';
 
 const Footer = () => {
     return (
-
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles['footer-container']}>
-                    <a href="#">
+                    <a className={styles.logo} href="#">
                         <img src={Logo} alt="logo"/>
                     </a>
                     <div className={styles['footer-info']}>
-                        <nav className={styles.navigation}>
+                        <nav>
                             <ul>
-                                <li>Menu</li>
-                                <li>Gallery</li>
-                                <li>About us</li>
+                                <li><a href="#">Menu</a></li>
+                                <li><a href="#">Gallery</a></li>
+                                <li><a href="#">About us</a></li>
                             </ul>
                         </nav>
-                        <div className="copyright">
-                            All rights reserved © 2022. Ginger konditori
-                        </div>
+                        <div className={styles.copyright}>All rights reserved © 2022. Ginger konditori</div>
                     </div>
                 </div>
             </div>

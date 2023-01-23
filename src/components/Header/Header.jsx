@@ -3,8 +3,10 @@ import styles from './Header.module.scss';
 const Header = () => {
     return (
         <div className={styles.container}>
-            <div className={styles.background}></div>
             <header className={styles.header}>
+                <div className={styles['bright-background']}></div>
+                <div className={styles['blurred-background']}></div>
+                <div className={styles['additional-background']}></div>
                 <nav className={styles.navigation}>
                     <ul>
                         <li><a href="#">Menu</a></li>

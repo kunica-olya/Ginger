@@ -1,18 +1,33 @@
 @import "./src/assets/vars/vars.module.scss";
 
 .button-subscribe {
+  cursor: pointer;
   background-color: $background;
-  padding: 14px 45px;
+  padding: 9px 12px;
   color: $white-color;
   border-radius: 32px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
-  width: 280px;
+  align-items: center;
+  width: 282px;
+  font-size: 24px;
+  font-weight: $bold-weight;
+  margin-bottom: 62px;
+  z-index: 1;
+
+  &:hover {
+    background-color: $hover-color;
+  }
 
   .icon {
-    margin-right: 10px;
+    margin-right: -10px;
+  }
+
+  .button-text {
+    font-family: 'Calibri';
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    padding: 0 19px;
   }
 }
 

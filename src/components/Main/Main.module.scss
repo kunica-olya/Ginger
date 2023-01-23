@@ -2,15 +2,25 @@
 @import './src/assets/font-family/base.module.scss';
 
 .container {
-  max-width: 1624px;
+  max-width: 1160px;
   margin: 0 auto;
 
   .jumbotron {
-    margin-top: 47px;
     font-family: 'Calibri';
 
+    .background-logo {
+      background: url('../../assets/img/banner/cloud-1.png');
+      position: absolute;
+      left: 1px;
+      height: 380px;
+      top: -61px;
+      width: 872px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
     .subtitle {
-      margin-top: 52px;
+      margin-top: 19px;
       margin-bottom: 32px;
       display: flex;
       flex-direction: column;
@@ -24,15 +34,33 @@
         color: $black-color;
         font-weight: $regular-weight;
         font-size: $secondary-fz;
+        margin-top: 42px;
+        margin-bottom: 32px;
       }
     }
   }
 
 
   .strawberry {
+    background: url('../../assets/img/banner/strawberry-1.png');
     position: absolute;
-    left: -190px;
-    top: 212px;
+    background-position: top;
+    top: 261px;
+    width: 442px;
+    height: 437px;
+    background-repeat: no-repeat;
+    left: 665px;
+  }
+
+  .second-strawberry {
+    background: url('../../assets/img/banner/strawberry-2.png');
+    position: absolute;
+    background-position: top;
+    background-repeat: no-repeat;
+    right: 87px;
+    width: 194px;
+    height: 157px;
+    top: 132px;
   }
 
 
@@ -52,13 +80,29 @@
     right: 0px;
     background-repeat: no-repeat;
     background-position: top;
-    top: 100px;
+    top: 45px;
     height: 843px;
-    width: 1170px;
+    background-size: cover;
+    width: 65%;
     background-size: cover;
   }
 
+  section#cards {
+    font-family: 'Calibri';
+    margin-top: 52px;
 
+    .cards-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
 }
 
 

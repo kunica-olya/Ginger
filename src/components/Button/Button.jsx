@@ -5,7 +5,7 @@ const Button = () => {
     return (
         <button className={styles['button-subscribe']}>
             <img className={styles.icon} src={Icon} alt="icon"/>
-            Subscribe
+            <div className={styles['button-text']}>Subscribe</div>
         </button>
     )
 }

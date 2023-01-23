@@ -1,15 +1,13 @@
 import Header from './components/Header/Header' ;
 import Main from './components/Main/Main'
 import Footer from './components/Footer/Footer';
-// import './assets/fonts/calibri.ttf';
-// import './assets/fonts/calibri_bold.ttf';
 
 const App = () => {
     return (
         <>
             <Header/>
             <Main/>
-            {/*<Footer/>*/}
+            <Footer/>
         </>
     )
 }

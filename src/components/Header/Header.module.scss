@@ -3,40 +3,77 @@
 @import "./src/assets/font-family/base.module.scss";
 
 .container {
-  max-width: 1624px;
+  max-width: 1160px;
   margin: 0 auto;
 
   .background {
     background: url('../../assets/img/banner/cloud-1.png');
     position: absolute;
     left: 0;
-    height: 658px;
-    background-repeat: no-repeat;
-    width: 600px;
+    height: 380px;
+    width: 731px;
+    top: 14px;
   }
 
   .header {
-    padding-top: 40px;
+    padding-top: 39px;
     display: flex;
     flex-direction: row;
     align-items: baseline;
     font-family: 'Calibri';
 
+    .bright-background {
+      background: url('../../assets/img/banner/cloud.png');
+      position: absolute;
+      background-repeat: no-repeat;
+      width: 745px;
+      background-position: top;
+      height: 300px;
+      top: 0;
+      background-size: cover;
+    }
+
+    .blurred-background {
+      background: url('../../assets/img/banner/cloud.png');
+      position: absolute;
+      height: 658px;
+      background-repeat: no-repeat;
+      width: 979px;
+      background-position: top;
+      left: 717px;
+      height: 300px;
+      top: 2px;
+      opacity: 50%;
+    }
+
+    .additional-background {
+      background: url('../../assets/img/banner/stars.png');
+      position: absolute;
+      height: 658px;
+      background-repeat: no-repeat;
+      width: 818px;
+      background-position: top;
+      left: 892px;
+      top: 2px;
+      height: 483px;
+    }
+
     .navigation {
       margin: 0 auto;
-      width: 100px;
+      width: 56px;
+      z-index: 1;
 
       ul {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 300px;
+        width: 230px;
 
-        li {
+        a {
           color: $link-color;
-          font-size: $first-fz;
+          font-size: 17px;
           font-weight: $bold-weight;
-          letter-spacing: 1.5px;
+          letter-spacing: 0.5px;
         }
       }
     }
@@ -48,15 +85,22 @@
       a {
         font-size: $first-fz;
         color: $link-color;
+        z-index: 1;
       }
 
       .location {
         font-weight: $regular-weight;
+        margin-top: 4px;
+        letter-spacing: 0.5px;
+        font-size: 17px;
+        margin-bottom: 3px;
       }
 
       .phone {
         font-weight: $bold-weight;
         text-align: end;
+        font-size: $first-fz;
+        letter-spacing: 0.5px;
       }
     }
   }
