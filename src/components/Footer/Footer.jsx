@@ -19,6 +19,19 @@ const Footer = () => {
                         </nav>
                         <div className={styles.copyright}>All rights reserved © 2022. Ginger konditori</div>
                     </div>
+                    <div className={styles.creator}>
+                        <ul>
+                            <li>Author: Olga Kunitsa</li>
+                            <li>
+                                <a className={styles['creator-link']} href="https://github.com/kunica-olya">Github</a>
+                            </li>
+                            <li><a className={styles['creator-link']} href="https://www.figma.com/file/
+                            zuJ5mkIzi9xYzQPcnak1GI/confectionery-landing-page?node-id=902%3A895&t=K79SA0qCGuv2JeAB-0">
+                                Original design
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>

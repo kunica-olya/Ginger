@@ -1,34 +1,31 @@
 @import "./src/assets/vars/vars.module.scss";
 
 .button-subscribe {
-  cursor: pointer;
-  background-color: $background;
-  padding: 7px 12px;
+  background: #8A5082;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px;
   border-radius: 32px;
   width: 282px;
-  font-size: 24px;
-  font-weight: $bold-weight;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
+  cursor: pointer;
 
-
-  &:hover {
-    background-color: $dark-hover-color;
+  .button-icon {
+    margin-right: 10px;
   }
 
   .button-text {
-    font-family: 'Calibri';
-    font-size: $font-size-md-3;
     color: $primary-text-color;
-
-    .icon {
-      margin-right: 9px;
-      padding-top: 5px;
-    }
+    font-size: $font-size-md-3;
+    font-family: 'Calibri';
+    font-weight: $bold-weight;
+    padding-top: 3px;
   }
 }
+
+
+
 
 
 

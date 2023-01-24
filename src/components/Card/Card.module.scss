@@ -10,28 +10,34 @@
   z-index: 1;
   margin-bottom: 63px;
 
-  &:after {
-    background: url('../../assets/svg/card-bg.svg');
-    background-repeat: no-repeat;
-    content: '';
-    width: 330px;
-    height: 524px;
-    position: absolute;
+  .custom-card {
     z-index: -1;
-    background-size: contain;
-    top: -13px;
-  }
 
+    &:before {
+      background: url('../../assets/svg/card-border.svg');
+      content: "";
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      width: 332px;
+      height: 520px;
+      top: -11px;
+      right: 0;
+    }
 
-  &:before {
-    background: url('../../assets/svg/card-border.svg');
-    content: "";
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    width: 332px;
-    height: 520px;
-    top: -11px;
+    &:after {
+      background: url('../../assets/svg/card-bg.svg');
+      background-repeat: no-repeat;
+      content: '';
+      width: 330px;
+      height: 524px;
+      position: absolute;
+      z-index: -1;
+      background-size: contain;
+      top: -13px;
+      left: 0;
+    }
+
   }
 
 
