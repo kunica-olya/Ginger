@@ -17,6 +17,10 @@
       flex-direction: column;
       width: 314px;
 
+      .logo {
+        z-index: 0;
+      }
+
       .description {
         color: $black-color;
         font-weight: $regular-weight;
