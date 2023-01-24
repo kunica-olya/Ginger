@@ -23,7 +23,7 @@
       .footer-info {
         display: flex;
         flex-direction: column;
-        color: $white-color;
+        color: $primary-text-color;
         font-family: 'Calibri';
 
         nav {
@@ -37,7 +37,7 @@
             li {
               a {
                 font-weight: $bold-weight;
-                color: $white-color;
+                color: $primary-text-color;
                 font-size: $font-size-md;
                 letter-spacing: 0.5px;
                 padding: 0 21px;

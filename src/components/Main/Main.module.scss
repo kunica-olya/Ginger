@@ -1,7 +1,6 @@
 @import './src/assets/vars/vars.module.scss';
 @import './src/assets/font-family/base.module.scss';
 
-
 .container {
   max-width: 1160px;
   margin: 0 auto;
@@ -22,7 +21,7 @@
       }
 
       .description {
-        color: $black-color;
+        color: $secondary-text-color;
         font-weight: $regular-weight;
         font-size: $font-size-lg;
         margin-top: 42px;
@@ -65,7 +64,7 @@
   .background {
     background: url('../../assets/img/banner/cloud-2.png');
     position: absolute;
-    right: 0px;
+    right: 0;
     background-repeat: no-repeat;
     top: 45px;
     height: 843px;
