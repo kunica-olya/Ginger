@@ -30,7 +30,7 @@
           ul {
             display: flex;
             flex-direction: row;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             justify-content: space-between;
             font-family: 'Calibri';
 
@@ -38,9 +38,9 @@
               a {
                 font-weight: $bold-weight;
                 color: $white-color;
-                font-size: 17px;
+                font-size: $font-size-md;
                 letter-spacing: 0.5px;
-                padding: 0 23px;
+                padding: 0 21px;
 
                 &:hover {
                   color: $hover-color;
@@ -50,6 +50,7 @@
             }
           }
         }
+
         .copyright {
           text-align: center;
           font-size: 14px;

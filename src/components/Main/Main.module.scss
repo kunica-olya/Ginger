@@ -20,9 +20,9 @@
       .description {
         color: $black-color;
         font-weight: $regular-weight;
-        font-size: $secondary-fz;
+        font-size: $font-size-lg;
         margin-top: 42px;
-        margin-bottom: 32px;
+        margin-bottom: 30px;
       }
     }
   }
@@ -31,30 +31,27 @@
   .strawberry {
     background: url('../../assets/img/banner/strawberry-1.png');
     position: absolute;
-    background-position: top;
-    top: 261px;
-    width: 442px;
-    height: 437px;
+    top: 254px;
+    left: 804px;
+    width: 150px;
+    height: 168px;
     background-repeat: no-repeat;
-    left: 665px;
   }
 
   .second-strawberry {
     background: url('../../assets/img/banner/strawberry-2.png');
     position: absolute;
-    background-position: top;
     background-repeat: no-repeat;
-    right: 87px;
-    width: 194px;
-    height: 157px;
-    top: 132px;
+    right: 104px;
+    width: 150px;
+    height: 168px;
+    top: 119px;
   }
 
 
   .background-zephir {
     background: url('../../assets/img/banner/Main-zephir.png');
     position: absolute;
-    background-position: top;
     top: 64px;
     right: 425px;
     width: 442px;
@@ -66,12 +63,10 @@
     position: absolute;
     right: 0px;
     background-repeat: no-repeat;
-    background-position: top;
     top: 45px;
     height: 843px;
     background-size: cover;
     width: 65%;
-    background-size: cover;
   }
 
   section#cards {

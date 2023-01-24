@@ -62,18 +62,18 @@
 
     .navigation {
       margin: 0 auto;
-      width: 56px;
+      width: 144px;
       z-index: 1;
 
       ul {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 230px;
+        width: 249px;
 
         a {
           color: $link-color;
-          font-size: 20px;
+          font-size: $font-size-md-2;
           font-weight: $bold-weight;
 
           &:hover {
@@ -88,7 +88,7 @@
       flex-direction: column;
 
       a {
-        font-size: $first-fz;
+        font-size: $font-size-md;
         color: $link-color;
         z-index: 1;
       }
@@ -97,14 +97,12 @@
         font-weight: $regular-weight;
         margin-top: 4px;
         letter-spacing: 0.5px;
-        font-size: 17px;
         margin-bottom: 3px;
       }
 
       .phone {
         font-weight: $bold-weight;
         text-align: end;
-        font-size: $first-fz;
         letter-spacing: 0.5px;
       }
     }

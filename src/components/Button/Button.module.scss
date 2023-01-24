@@ -9,10 +9,11 @@
   width: 282px;
   font-size: 24px;
   font-weight: $bold-weight;
-  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
+
 
   &:hover {
     background-color: $hover-color;
@@ -20,8 +21,7 @@
 
   .button-text {
     font-family: 'Calibri';
-    font-size: 24px;
-    letter-spacing: 0.5px;
+    font-size: $font-size-md-3;
 
     .icon {
       margin-right: 9px;
@@ -29,5 +29,10 @@
     }
   }
 }
+
+
+
+
+
 
 

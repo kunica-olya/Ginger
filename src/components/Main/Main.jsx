@@ -4,7 +4,6 @@ import Button from "../Button/Button";
 import Card from "../Card/Card";
 import cardsData from "./../../cardsData"
 
-
 const Main = () => {
     return (
         <div className={styles.container}>

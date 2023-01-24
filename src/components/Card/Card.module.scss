@@ -69,14 +69,14 @@
 
       .title {
         font-weight: $bold-weight;
-        font-size: $secondary-fz;
+        font-size: $font-size-lg;
         color: $black-color;
       }
     }
 
 
     .description {
-      font-size: $first-fz;
+      font-size: $font-size-md;
       color: $text-color;
       font-weight: $regular-weight;
       line-height: 34px;
@@ -91,14 +91,14 @@
 
       .price {
         font-weight: $bold-weight;
-        font-size: $secondary-fz;
+        font-size: $font-size-lg;
         color: $black-color;
       }
 
       .weight {
         font-weight: 300;
         font-size: 20px;
-        color: $black-color;
+        color: $font-size-md-2;
       }
     }
   }
