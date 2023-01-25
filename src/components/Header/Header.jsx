@@ -8,19 +8,20 @@ const Header = () => {
                 <div className={styles['bright-background']}></div>
                 <div className={styles['repeat-background']}></div>
                 <div className={styles['additional-background']}></div>
-                <nav className={styles.navigation}>
+                <nav className={styles['nav-wrapper']}>
+                    <div className={styles.block}></div>
                     <ul>
                         <li><a href="#">Menu</a></li>
                         <li><a href="#">Gallery</a></li>
                         <li><a href="#">About us</a></li>
                     </ul>
+                    <div className={styles.contacts}>
+                        <a className={styles.location} href="#">
+                            Kyiv, st. Shevchenko, 24
+                        </a>
+                        <a className={styles.phone} href="tel:066-05-10-749">066 05 10 749</a>
+                    </div>
                 </nav>
-                <div className={styles.contacts}>
-                    <a className={styles.location} href="#">
-                        Kyiv, st. Shevchenko, 24
-                    </a>
-                    <a className={styles.phone} href="tel:066-05-10-749">066 05 10 749</a>
-                </div>
             </header>
         </div>
     )

@@ -11,6 +11,10 @@
   width: 282px;
   cursor: pointer;
 
+  &:hover {
+    background: $dark-hover-color;
+  }
+
   .button-icon {
     margin-right: 10px;
   }

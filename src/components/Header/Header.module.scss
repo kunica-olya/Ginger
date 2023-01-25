@@ -20,10 +20,6 @@
 
   .header {
     padding-top: 39px;
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    font-family: 'Calibri';
 
     .bright-background {
       background: url('../../assets/img/banner/cloud.png');
@@ -60,50 +56,61 @@
       height: 483px;
     }
 
-    .navigation {
-      margin: 0 auto;
-      width: 144px;
-      z-index: 1;
+    .nav-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+
+      .block {
+        width: 100px;
+      }
+
 
       ul {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        width: 249px;
+        font-family: 'Calibri';
+        z-index: 1;
+
 
         a {
           color: $link-color;
           font-size: $font-size-md-2;
           font-weight: $bold-weight;
+          padding: 0 17px;
 
           &:hover {
             color: $dark-hover-color;
           }
         }
       }
-    }
 
-    .contacts {
-      display: flex;
-      flex-direction: column;
+      .contacts {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Calibri';
+        align-items: flex-end;
 
-      a {
-        font-size: $font-size-md;
-        color: $link-color;
-        z-index: 1;
-      }
+        a {
+          color: $link-color;
+          z-index: 1;
+        }
 
-      .location {
-        font-weight: $regular-weight;
-        margin-top: 4px;
-        letter-spacing: 0.5px;
-        margin-bottom: 3px;
-      }
+        .location {
+          font-weight: $regular-weight;
+          margin-top: 4px;
+          letter-spacing: 0.5px;
+          margin-bottom: 3px;
+          font-size: 17px;
+        }
 
-      .phone {
-        font-weight: $bold-weight;
-        text-align: end;
-        letter-spacing: 0.5px;
+        .phone {
+          font-size: $font-size-md;
+          font-weight: $bold-weight;
+          text-align: end;
+          letter-spacing: 0.5px;
+        }
       }
     }
   }
