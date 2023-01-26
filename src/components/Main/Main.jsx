@@ -23,7 +23,7 @@ const Main = () => {
             <div className={styles.background}></div>
 
             <section id={styles.cards}>
-                <div className={styles.wrapper}>
+                <div id={'menu'} className={styles.wrapper}>
                     {cardsData.map(product => (
                         <Card
                             key={product.id}
