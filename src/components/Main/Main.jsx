@@ -17,10 +17,10 @@ const Main = () => {
                     <Button/>
                 </div>
                 <div className={styles.strawberry}></div>
-                <div className={styles['second-strawberry']}></div>
                 <div className={styles['background-zephir']}></div>
-                <div className={styles.background}></div>
             </section>
+            <div className={styles['second-strawberry']}></div>
+            <div className={styles.background}></div>
 
             <section id={styles.cards}>
                 <div className={styles.wrapper}>

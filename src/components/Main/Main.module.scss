@@ -8,6 +8,7 @@
   .jumbotron {
     font-family: 'Calibri';
     margin-bottom: 112px;
+    position: relative;
 
     .subtitle {
       margin-top: 19px;
@@ -25,44 +26,45 @@
         font-weight: $regular-weight;
         font-size: $font-size-lg;
         margin-top: 42px;
-        margin-bottom: 30px;
+        margin-bottom: 32px;
       }
     }
   }
 
 
   .strawberry {
-    background: url('../../assets/img/banner/strawberry-1.png');
-    position: absolute;
-    top: 254px;
-    left: 804px;
+    background-image: url('../../assets/img/banner/strawberry-1.png');
     width: 150px;
     height: 168px;
     background-repeat: no-repeat;
+    top: 127px;
+    left: 425px;
+    position: absolute;
   }
 
   .second-strawberry {
-    background: url('../../assets/img/banner/strawberry-2.png');
+    background-image: url('../../assets/img/banner/strawberry-2.png');
     position: absolute;
     background-repeat: no-repeat;
-    right: 104px;
     width: 150px;
     height: 168px;
-    top: 119px;
+    top: 110px;
+    right: 80px;
+    z-index: -1;
   }
 
 
   .background-zephir {
-    background: url('../../assets/img/banner/Main-zephir.png');
+    background-image: url('../../assets/img/banner/Main-zephir.png');
     position: absolute;
-    top: 64px;
-    right: 425px;
+    right: 50px;
+    top: 0px;
     width: 442px;
     height: 437px;
   }
 
   .background {
-    background: url('../../assets/img/banner/cloud-2.png');
+    background-image: url('../../assets/img/banner/cloud-2.png');
     position: absolute;
     right: 0;
     background-repeat: no-repeat;

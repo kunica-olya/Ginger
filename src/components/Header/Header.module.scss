@@ -7,50 +7,48 @@
   margin: 0 auto;
 
   .background-logo {
-    background: url('../../assets/img/banner/cloud-1.png');
+    background-image: url('../../assets/img/banner/cloud-1.png');
     position: absolute;
-    left: 1px;
     height: 380px;
-    top: -61px;
     width: 872px;
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
+    top: -55px;
+    left: 0;
   }
 
   .header {
-    padding-top: 40px;
+    padding-top: 45px;
 
     .bright-background {
-      background: url('../../assets/img/banner/cloud.png');
-      position: absolute;
-      background-repeat: no-repeat;
-      width: 745px;
+      background-image: url('../../assets/img/banner/cloud.png');
       background-position: top;
-      height: 300px;
-      top: 0;
+      background-repeat: no-repeat;
       background-size: cover;
+      height: 300px;
+      position: absolute;
+      top: 0;
+      width: 745px;
+      z-index: 1;
     }
 
     .repeat-background {
-      background: url('../../assets/img/banner/cloud.png');
-      position: absolute;
-      height: 658px;
-      background-repeat: no-repeat;
-      width: 979px;
+      background-image: url('../../assets/img/banner/cloud.png');
       background-position: top;
-      left: 717px;
+      background-repeat: no-repeat;
       height: 300px;
-      top: 2px;
+      left: 765px;
+      position: absolute;
+      top: 0;
+      width: 927px;
     }
 
     .additional-background {
-      background: url('../../assets/img/banner/stars.png');
+      background-image: url('../../assets/img/banner/stars.png');
       position: absolute;
-      height: 658px;
       background-repeat: no-repeat;
       width: 818px;
-      background-position: top;
       left: 892px;
       top: 2px;
       height: 483px;
@@ -61,9 +59,10 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: baseline;
+      position: relative;
 
       .block {
-        width: 100px;
+        width: 190px;
       }
 
 
