@@ -3,10 +3,10 @@ import Icon from '../../assets/svg/Vector.svg';
 
 const Button = () => {
     return (
-        <button className={styles['button-subscribe']}>
+        <a href='https://instagram.com/ginger.konditori' className={styles['button-subscribe']}>
             <img className={styles['button-icon']} src={Icon} alt="icon"/>
             <span className={styles['button-text']}>Subscribe</span>
-        </button>
+        </a>
     )
 }
 export default Button;
