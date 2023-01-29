@@ -1,6 +1,7 @@
 @import "./src/assets/reset/reset.module.scss";
 @import "./src/assets/vars/vars.module.scss";
 @import "./src/assets/font-family/base.module.scss";
+@import './src/assets/media-querry/media-querry.scss';
 
 .container {
   max-width: 1160px;
