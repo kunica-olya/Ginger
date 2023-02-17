@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import App from './App';
+import App from './ClassApp';
 import './assets/fonts/calibri.ttf';
 import './assets/fonts/calibri_bold.ttf';
 
@@ -10,8 +10,5 @@ root.render(
     <React.StrictMode>
         <App/>
     </React.StrictMode>
-);
-reportWebVitals();
-
-
+)
 
