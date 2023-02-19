@@ -3,9 +3,6 @@ import styles from "./Card.module.scss";
 import Button from '../../function_components/Button/Button';
 
 export default class Card extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
