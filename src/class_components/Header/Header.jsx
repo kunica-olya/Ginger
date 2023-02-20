@@ -36,7 +36,7 @@ export default class Header extends Component {
                         <div className={styles.block}></div>
                         <ul>
                             <li><a href='#menu'>Menu</a></li>
-                            <li><a href='#'>Gallery</a></li>
+                            <li><a href='#gallery'>Gallery</a></li>
                             <li><a href='#'>Contacts</a></li>
                         </ul>
                         <div className={styles.contacts}>
