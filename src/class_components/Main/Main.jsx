@@ -1,8 +1,9 @@
-import {Component} from 'react';
-import {ReactComponent as Logo} from '../../assets/svg/Logo-dark.svg';
+import {Component} from "react";
+import {ReactComponent as Logo} from "../../assets/svg/Logo-dark.svg";
 import styles from "./Main.module.scss";
 import Card from "../Card/Card";
-import Button from '../../function_components/Button/Button';
+import Button from "../../function_components/Button/Button";
+import Gallery from "../../class_components/Gallery/Gallery";
 
 export default class Main extends Component {
     constructor(props) {
@@ -46,7 +47,7 @@ export default class Main extends Component {
             <div className={styles.container}>
                 <section className={styles.jumbotron}>
                     <div className={styles.subtitle}>
-                        <a className={styles.logo} href="#">
+                        <a className={styles.logo} href='#'>
                             <Logo/>
                         </a>
                         <p className={styles.description}>Try and choose your flavor of delicate zephyr on
@@ -61,6 +62,12 @@ export default class Main extends Component {
 
                 <section id={styles.cards}>
                     {data}
+                </section>
+
+                <section id={styles['gallery']}>
+                    <div id='gallery'>
+                        <Gallery/>
+                    </div>
                 </section>
             </div>
         )
