@@ -64,6 +64,7 @@ export default class Main extends Component {
                     {data}
                 </section>
 
+
                 <section id={styles['gallery']}>
                     <div id='gallery'>
                         <Gallery/>
