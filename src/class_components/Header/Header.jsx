@@ -21,6 +21,7 @@ export default class Header extends Component {
                     dataIsLoaded: true
                 });
             })
+            .catch(error => console.error('Error fetching app_config', error));
     }
 
     render() {

@@ -22,11 +22,12 @@ export default class Main extends Component {
                     dataIsLoaded: true
                 });
             })
+            .catch(error => console.error('Error fetching data_json', error));
     }
 
     render() {
         const {dataIsLoaded, cards} = this.state;
-        let data = <p>Data is loading</p>
+        let data = <p>Data is not loading</p>
 
         if (dataIsLoaded) {
             data = <div id={'menu'} className={styles.wrapper}>
@@ -40,6 +41,7 @@ export default class Main extends Component {
                 }
             </div>
         }
+
         return (
             <div className={styles.container}>
                 <section className={styles.jumbotron}>
