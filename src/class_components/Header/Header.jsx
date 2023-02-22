@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 
 export default class Header extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             address: null,
             phone: null,
@@ -25,6 +25,18 @@ export default class Header extends Component {
     }
 
     render() {
+        const {address, phone} = this.state;
+        let data = <p>No data</p>;
+
+        if (address && phone !== null) {
+            data = <div className={styles.contacts}>
+                <a className={styles.location}>
+                    {address}
+                </a>
+                <a className={styles.phone} href={'tel:' + phone}>{phone}</a>
+            </div>
+        }
+
         return (
             <div className={styles.container}>
                 <div className={styles['background-logo']}></div>
@@ -39,12 +51,7 @@ export default class Header extends Component {
                             <li><a href='#gallery'>Gallery</a></li>
                             <li><a href='#'>Contacts</a></li>
                         </ul>
-                        <div className={styles.contacts}>
-                            <a className={styles.location}>
-                                {this.state.address}
-                            </a>
-                            <a className={styles.phone} href={'tel:' + this.state.phone}>{this.state.phone}</a>
-                        </div>
+                        {data}
                     </nav>
                 </header>
             </div>
