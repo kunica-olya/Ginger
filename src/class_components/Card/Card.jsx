@@ -29,7 +29,7 @@ export default class Card extends Component {
                         <div className={styles.weight}>{weight}</div>
                     </div>
                 </div>
-                <Button/>
+                <Button text={'Buy'}/>
             </div>
         )
     }
