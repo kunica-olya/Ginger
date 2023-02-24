@@ -1,6 +1,5 @@
 import {Component} from 'react';
 import styles from "./Card.module.scss";
-// import Button from '../../function_components/Button/Button';
 
 import Button from '../../class_components/Button/Button';
 
