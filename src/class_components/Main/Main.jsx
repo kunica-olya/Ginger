@@ -5,6 +5,7 @@ import Card from "../Card/Card";
 import Button from "../../function_components/Button/Button";
 import Gallery from "../../class_components/Gallery/Gallery";
 
+
 export default class Main extends Component {
     constructor(props) {
         super(props);
@@ -25,6 +26,9 @@ export default class Main extends Component {
             })
             .catch(error => console.error('Error fetching data_json', error));
     }
+
+
+
 
     render() {
         const {dataIsLoaded, cards} = this.state;
@@ -52,7 +56,7 @@ export default class Main extends Component {
                         </a>
                         <p className={styles.description}>Try and choose your flavor of delicate zephyr on
                             Instagram </p>
-                        <Button/>
+                        <Button text={'Subscribe'}/>
                     </div>
                     <div className={styles.strawberry}></div>
                     <div className={styles['background-zephir']}></div>
@@ -63,7 +67,6 @@ export default class Main extends Component {
                 <section id={styles.cards}>
                     {data}
                 </section>
-
 
                 <section id={styles['gallery']}>
                     <div id='gallery'>
