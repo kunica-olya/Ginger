@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import {ReactComponent as Icon} from "../../assets/svg/basket-shopping.svg";
+import {ReactComponent as Icon} from "../../assets/svg/bag.svg";
 import styles from './Button.module.scss';
 
 
