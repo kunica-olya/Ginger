@@ -3,39 +3,21 @@ import {ReactComponent as Logo} from '../../assets/svg/Logo-white.svg';
 import styles from './Footer.module.scss';
 
 export default class Footer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            author: null,
-            github: null,
-            design: null,
-            dataIsLoaded: false
-        }
-    }
-
-    componentDidMount() {
-        fetch('/app_config.json')
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    author: data.author,
-                    github: {
-                        label: data.github_label,
-                        link: data.github_link,
-                    },
-                    design: {
-                        label: data.design_label,
-                        link: data.design_link,
-                    },
-                    dataIsLoaded: true
-                });
-            })
-            .catch(error => console.error('Error fetching app_config', error));
-    }
 
     render() {
-        const {author, github, design} = this.state;
+        const {author} = this.props.config;
+        const github = {
+            label: this.props.config.github_label,
+            link: this.props.config.github_link,
+        };
+
+        const design = {
+            label: this.props.config.design_label,
+            link: this.props.config.design_link,
+        };
+
         let data = <p>No data</p>;
+
         if (github && author && design !== null) {
             data = <ul>
                 <li>Author: {author}</li>

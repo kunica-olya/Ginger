@@ -2,30 +2,9 @@ import {Component} from 'react';
 import styles from './Header.module.scss';
 
 export default class Header extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            address: null,
-            phone: null,
-            dataIsLoaded: false
-        }
-    }
-
-    componentDidMount() {
-        fetch('/app_config.json')
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    address: data.address,
-                    phone: data.phone,
-                    dataIsLoaded: true
-                });
-            })
-            .catch(error => console.error('Error fetching app_config', error));
-    }
 
     render() {
-        const {address, phone} = this.state;
+        const {address, phone} = this.props.config;
         let data = <p>No data</p>;
 
         if (address && phone !== null) {
