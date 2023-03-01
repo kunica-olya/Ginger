@@ -1,5 +1,7 @@
 import {Component} from "react";
-import styles from './OrderTable.module.scss'
+import styles from './OrderTable.module.scss';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 export default class TableOrder extends Component {
 
@@ -79,6 +81,9 @@ export default class TableOrder extends Component {
                             })}
                         </tr>
                     })}
+                    <button className={styles.button}>
+                        <FontAwesomeIcon icon={faAngleDown}/>
+                    </button>
                     </tbody>
                 </table>
             </section>
