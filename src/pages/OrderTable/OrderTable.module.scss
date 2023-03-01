@@ -1,0 +1,25 @@
+.table-section {
+  margin: 300px 0;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 50%;
+  margin-bottom: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+
+  caption {
+    font-size: 25px;
+  }
+
+  thead {
+    border: 1px solid black;
+    font-size: 20px;
+  }
+
+  tbody {
+    text-align: center;
+  }
+
+}
