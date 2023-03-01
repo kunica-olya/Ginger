@@ -1,0 +1,98 @@
+[
+  {
+    "orderId": 100000,
+    "customer": {
+      "id": 1,
+      "name": {
+        "firstName": "John",
+        "lastName": "Smith"
+      },
+      "phone": "0994905678",
+      "address": {
+        "street": "Murakami",
+        "home": "7",
+        "flat": "10"
+      }
+    },
+    "products": [
+      {
+        "id": 1,
+        "name": "Currant zephyr",
+        "price": "₴25",
+        "amount": 6
+      }
+    ]
+  },
+  {
+    "orderId": 300000,
+    "customer": {
+      "id": 2,
+      "name": {
+        "firstName": "Bob",
+        "lastName": "Hover"
+      },
+      "phone": "0996028592",
+      "address": {
+        "street": "Shevchenko",
+        "home": "4",
+        "flat": "2"
+      }
+    },
+    "products": [
+      {
+        "id": 3,
+        "name": "Blueberry zephyr",
+        "price": "₴50",
+        "amount": 10
+      }
+    ]
+  },
+  {
+    "orderId": 6009567,
+    "customer": {
+      "id": 3,
+      "name": {
+        "firstName": "Kate",
+        "lastName": "Hamsword"
+      },
+      "phone": "0995432036",
+      "address": {
+        "street": "Yourk",
+        "home": "8",
+        "flat": "16"
+      }
+    },
+    "products": [
+      {
+        "id": 4,
+        "name": "Mango zephyr",
+        "price": "₴50",
+        "amount": 20
+      }
+    ]
+  },
+  {
+    "orderId": 5000002,
+    "customer": {
+      "id": 4,
+      "name": {
+        "firstName": "Mike",
+        "lastName": "Wasovski"
+      },
+      "phone": "0997954394",
+      "address": {
+        "street": "Saley",
+        "home": "17",
+        "flat": "12"
+      }
+    },
+    "products": [
+      {
+        "id": 6,
+        "name": "Apple zephyr",
+        "price": "₴43",
+        "amount": 15
+      }
+    ]
+  }
+]
