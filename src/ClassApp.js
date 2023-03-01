@@ -2,6 +2,8 @@ import {Component} from 'react';
 import Header from './class_components/Header/Header';
 import Main from './class_components/Main/Main';
 import Footer from './class_components/Footer/Footer';
+import { Route, Routes } from "react-router-dom";
+import OrderTable from "./pages/OrderTable/OrderTable";
 
 export default class App extends Component {
     constructor(props) {
@@ -18,8 +20,6 @@ export default class App extends Component {
                 this.setState({
                     config: data
                 });
-                console.log('data', data)
-                console.log('this.state', this.state)
             })
             .catch(error => console.error('Error fetching app_config_json', error));
     }
@@ -30,7 +30,12 @@ export default class App extends Component {
         return (
             <>
                 <Header config={config}/>
-                <Main config={config}/>
+                <Routes>
+                    <Route>
+                        <Route path="/" element={<Main config={config}/>} />
+                        <Route path="/orders" element={<OrderTable config={config}/>} />
+                    </Route>
+                </Routes>
                 <Footer config={config}/>
             </>
         )

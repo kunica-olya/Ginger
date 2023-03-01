@@ -1,5 +1,6 @@
 import {Component} from 'react';
 import styles from './Header.module.scss';
+import {Link} from "react-router-dom";
 
 export default class Header extends Component {
 
@@ -26,9 +27,15 @@ export default class Header extends Component {
                     <nav className={styles['nav-wrapper']}>
                         <div className={styles.block}></div>
                         <ul>
-                            <li><a href='#menu'>Menu</a></li>
+                            <li>
+                                <Link to="/#menu">Menu</Link>
+                            </li>
+                            {/*<li><a href='#menu'>Menu</a></li>*/}
                             <li><a href='#gallery'>Gallery</a></li>
-                            <li><a href='#'>Contacts</a></li>
+                            <li><a href='#contacts'>Contacts</a></li>
+                            <li>
+                                <Link to="/orders">Orders</Link>
+                            </li>
                         </ul>
                         {data}
                     </nav>
