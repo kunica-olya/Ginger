@@ -1,7 +1,7 @@
 import {Component} from "react";
 import styles from './OrderTable.module.scss';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 export default class TableOrder extends Component {
 
@@ -62,33 +62,41 @@ export default class TableOrder extends Component {
         const settings = this.getTableSettings();
         const tableData = this.formatResponse(settings);
 
+
         return (
             <section className={styles['table-section']}>
-                <table className={styles.table}>
-                    <caption>Orders</caption>
-                    <thead>
-                    <tr>
+                <h2>Orders</h2>
+                <div className={styles.table}>
+                    <div className={styles.thead}>
                         {settings && settings.map((column, key) => {
-                            return <th key={key}>{column.label}</th>
+                            return <div key={key}>{column.label}</div>
                         })}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {tableData && tableData.map((column, key1) => {
-                        return <tr key={key1}>
-                            {settings.map((col, key2) => {
-                                return <td key={key1 + key2}>{column[col.label]}</td>
+                    </div>
+                    <div className={styles.tbody}>
+                        <div className={styles.column}>
+                            {tableData && tableData.map((customer, id) => {
+                                const cols = settings.map((col, id2) => {
+                                    if (id2 === 0) {
+                                        return <div className={styles.cell} key={id2}>{customer[col.label]}</div>
+                                    } else {
+                                        return <div key={id2}>{customer[col.label]}</div>
+                                    }
+                                })
+
+                                return <div className={styles.row} key={id}>
+                                    {cols}
+                                </div>
                             })}
-                        </tr>
-                    })}
-                    <button className={styles.button}>
-                        <FontAwesomeIcon icon={faAngleDown}/>
-                    </button>
-                    </tbody>
-                </table>
+                        </div>
+                    </div>
+                </div>
             </section>
         )
     }
 }
+
+
+
+
 
 

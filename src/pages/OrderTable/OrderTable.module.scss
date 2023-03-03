@@ -1,25 +1,44 @@
 .table-section {
-  margin: 300px 0;
-}
+  margin: 345px 0;
 
-.table {
-  border-collapse: collapse;
-  width: 50%;
-  margin-bottom: 200px;
-  border: 1px solid black;
-  margin: 0 auto;
-
-  caption {
-    font-size: 25px;
-  }
-
-  thead {
-    border: 1px solid black;
-    font-size: 20px;
-  }
-
-  tbody {
+  h2 {
     text-align: center;
   }
 
+  .table {
+    width: 525px;
+    border: 1px solid #666666;
+    margin: 0 auto;
+
+    .thead {
+      display: flex;
+      flex-direction: row;
+      border: 1px solid #666;
+      width: 100%;
+      padding: 0 20px;
+
+      div {
+        text-align: left;
+        width: 100px;
+      }
+    }
+
+    .tbody {
+      padding-left: 20px;
+
+      .column {
+        display: flex;
+        flex-direction: column;
+
+        .row {
+          display: flex;
+          flex-direction: row;
+
+          .cell {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
 }
