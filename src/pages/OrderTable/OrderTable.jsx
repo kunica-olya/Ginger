@@ -9,7 +9,8 @@ export default class TableOrder extends Component {
         super(props)
         this.state = {
             orders: [],
-            dataIsLoaded: false
+            dataIsLoaded: false,
+            isOpen: false,
         }
     }
 
@@ -26,67 +27,78 @@ export default class TableOrder extends Component {
 
     }
 
-    getTableSettings() {
-        return this.props?.config?.orders_table;
-    }
 
-
-    formatResponse(settings) {
+    formatResponse() {
         let data = [];
-        const tableSettings = settings;
-        if (tableSettings && this.state.orders) {
+        if (this.state.orders) {
             data = this.state.orders.map(order => {
                 const tableColumns = {};
                 tableColumns.id = order.customer.id;
                 tableColumns.customer = `${order.customer.name.firstName} ${order.customer.name.lastName}`;
+                console.log('tableColumns', tableColumns)
                 return tableColumns;
             })
         }
-        data = this.formatTableColumns(tableSettings, data);
+
+        console.log('data', data)
         return data
     }
 
-    formatTableColumns(tableSettings, data) {
-        return data.map(order => {
-            const tableColumns = {};
-            tableSettings.forEach(col => {
-                tableColumns[col.label] = order[col.field];
-            })
-            return tableColumns;
-        })
+
+    toggleTable = () => {
+        this.setState((prevState) => ({
+            isOpen: !prevState.isOpen,
+        }));
+        // console.log('click event.target table',event.target)
     }
 
 
     render() {
 
-        const settings = this.getTableSettings();
-        const tableData = this.formatResponse(settings);
+        const data = this.formatResponse();
+        const {isOpen} = this.state;
 
+        const userList = data.map((user, id) => (
+            <div>
+                <div key={id} onClick={this.toggleTable} className={styles.row}>
+                    <div className={styles.cell}>{user.id}</div>
+                    <div>{user.customer}</div>
+                </div>
+                <div className={`${styles['inner-table']} ${isOpen ? "" : styles.hidden}`}>
+                    <div className={styles.thead}>
+                        <div>Date</div>
+                        <div>Product</div>
+                        <div>Amount</div>
+                        <div>Total price</div>
+                    </div>
+                    <div className={styles.tbody}>
+                        <div className={styles.row}>
+                            <div className={styles.cell}>2023-01-05</div>
+                            <div className={styles.cell}>Currant zephyr</div>
+                            <div className={styles.cell}>3</div>
+                            <div className={styles.cell}>11.97</div>
+                        </div>
+                        <div className={styles.row}>
+                            <div className={styles.cell}>2023-01-05</div>
+                            <div className={styles.cell}>Currant zephyr</div>
+                            <div className={styles.cell}>3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ))
 
         return (
             <section className={styles['table-section']}>
                 <h2>Orders</h2>
                 <div className={styles.table}>
                     <div className={styles.thead}>
-                        {settings && settings.map((column, key) => {
-                            return <div key={key}>{column.label}</div>
-                        })}
+                        <div>ID</div>
+                        <div>Customer</div>
                     </div>
                     <div className={styles.tbody}>
-                        <div className={styles.column}>
-                            {tableData && tableData.map((customer, id) => {
-                                const cols = settings.map((col, id2) => {
-                                    if (id2 === 0) {
-                                        return <div className={styles.cell} key={id2}>{customer[col.label]}</div>
-                                    } else {
-                                        return <div key={id2}>{customer[col.label]}</div>
-                                    }
-                                })
-
-                                return <div className={styles.row} key={id}>
-                                    {cols}
-                                </div>
-                            })}
+                        <div>
+                            {userList}
                         </div>
                     </div>
                 </div>
@@ -94,6 +106,7 @@ export default class TableOrder extends Component {
         )
     }
 }
+
 
 
 

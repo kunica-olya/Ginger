@@ -3,6 +3,7 @@
 
   h2 {
     text-align: center;
+    margin-bottom: 15px;
   }
 
   .table {
@@ -13,32 +14,70 @@
     .thead {
       display: flex;
       flex-direction: row;
-      border: 1px solid #666;
+      border-bottom: 1px solid #666;
       width: 100%;
       padding: 0 20px;
 
       div {
         text-align: left;
         width: 100px;
+        font-size: 20px;
       }
     }
 
     .tbody {
-      padding-left: 20px;
 
-      .column {
+      .row {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
 
-        .row {
-          display: flex;
-          flex-direction: row;
-
-          .cell {
-            width: 100px;
-          }
+        .cell {
+          width: 123px;
         }
+      }
+
+    }
+  }
+}
+
+
+.inner-table {
+  width: 525px;
+  margin: 0 auto;
+
+  .thead {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #666;
+    width: 100%;
+    padding: 0 20px;
+
+    div {
+      text-align: left;
+      width: 100px;
+      font-size: 20px;
+    }
+  }
+
+  .tbody {
+    padding: 10px 0;
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid #666;
+
+      .cell {
+        width: 120px;
       }
     }
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: block;
 }
