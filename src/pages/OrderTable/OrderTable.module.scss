@@ -20,30 +20,43 @@
 
       div {
         text-align: left;
-        width: 100px;
+        width: 122px;
         font-size: 20px;
       }
     }
 
     .tbody {
 
+      .div {
+        padding: 0 20px;
+      }
+
       .row {
         display: flex;
         flex-direction: row;
+        cursor: pointer;
+        padding: 6px 0;
+
+        &:hover {
+          background-color: grey;
+        }
 
         .cell {
           width: 123px;
         }
       }
 
+      .active {
+        background-color: grey;
+      }
     }
   }
 }
 
 
 .inner-table {
-  width: 525px;
   margin: 0 auto;
+
 
   .thead {
     display: flex;
@@ -62,7 +75,7 @@
   .tbody {
     padding: 10px 0;
 
-    .row {
+    .inner-row {
       display: flex;
       flex-direction: row;
       border-bottom: 1px solid #666;
