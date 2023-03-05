@@ -1,7 +1,5 @@
 import {Component} from "react";
 import styles from './OrderTable.module.scss';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 export default class TableOrder extends Component {
 
@@ -9,7 +7,9 @@ export default class TableOrder extends Component {
         super(props)
         this.state = {
             orders: [],
-            dataIsLoaded: false
+            dataIsLoaded: false,
+            isOpen: false,
+            activeRow: null,
         }
     }
 
@@ -26,66 +26,84 @@ export default class TableOrder extends Component {
 
     }
 
-    getTableSettings() {
-        return this.props?.config?.orders_table;
-    }
-
-
-    formatResponse(settings) {
+    formatResponse() {
         let data = [];
-        const tableSettings = settings;
-        if (tableSettings && this.state.orders) {
+        if (this.state.orders) {
             data = this.state.orders.map(order => {
-                const tableColumns = {};
-                tableColumns.id = order.customer.id;
-                tableColumns.customer = `${order.customer.name.firstName} ${order.customer.name.lastName}`;
-                return tableColumns;
+                return {
+                    id: order.customer.id,
+                    customer: `${order.customer.name.firstName} ${order.customer.name.lastName}`,
+                    products: order.products
+                }
             })
         }
-        data = this.formatTableColumns(tableSettings, data);
         return data
     }
 
-    formatTableColumns(tableSettings, data) {
-        return data.map(order => {
-            const tableColumns = {};
-            tableSettings.forEach(col => {
-                tableColumns[col.label] = order[col.field];
-            })
-            return tableColumns;
-        })
+
+    toggleTable = (id) => {
+        this.setState((prevState) => ({
+            isOpen: !prevState.isOpen,
+            activeRow: id
+        }));
     }
 
 
     render() {
 
-        const settings = this.getTableSettings();
-        const tableData = this.formatResponse(settings);
+        const data = this.formatResponse();
+        const {isOpen, activeRow} = this.state;
+
+        const userList = data.map((user, id) => (
+            <div className={styles.div}>
+                <div key={id} onClick={() => this.toggleTable(id)}
+                     className={`${styles.row} ${id === activeRow ? styles.active : ''}`}>
+                    <div className={styles.cell}>{user.id}</div>
+                    <div>{user.customer}</div>
+                </div>
+                <div className={`${styles['inner-table']} ${isOpen ? "" : styles.hidden}`}>
+                    <div className={styles.thead}>
+                        <div>Date</div>
+                        <div>Product</div>
+                        <div>Amount</div>
+                        <div>Price</div>
+                    </div>
+                    <div className={styles.tbody}>
+                        {user['products'].map((product, productId) => (
+                            <>
+                                <div key={productId} className={styles['inner-row']}>
+                                    <div className={styles.cell}>2023-01-05</div>
+                                    <div className={styles.cell}>{product.name}</div>
+                                    <div className={styles.cell}>{product.amount}</div>
+                                    <div className={styles.cell}>{product.price}</div>
+                                </div>
+                                <div key={productId + 1} className={styles['inner-row']}>
+                                    <div className={styles.cell}>2023-02-14</div>
+                                    <div className={styles.cell}>{product.name}</div>
+                                    <div className={styles.cell}>{product.amount}</div>
+                                    <div className={styles.cell}>{product.price}</div>
+                                </div>
+                            </>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        ))
 
         return (
             <section className={styles['table-section']}>
-                <table className={styles.table}>
-                    <caption>Orders</caption>
-                    <thead>
-                    <tr>
-                        {settings && settings.map((column, key) => {
-                            return <th key={key}>{column.label}</th>
-                        })}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {tableData && tableData.map((column, key1) => {
-                        return <tr key={key1}>
-                            {settings.map((col, key2) => {
-                                return <td key={key1 + key2}>{column[col.label]}</td>
-                            })}
-                        </tr>
-                    })}
-                    <button className={styles.button}>
-                        <FontAwesomeIcon icon={faAngleDown}/>
-                    </button>
-                    </tbody>
-                </table>
+                <div className={styles.table}>
+                    <h2>Orders</h2>
+                        <div className={styles.thead}>
+                            <div>ID</div>
+                            <div>Customer</div>
+                        </div>
+                  <div className={styles.tbody}>
+                      <div>
+                          {userList}
+                      </div>
+                  </div>
+                </div>
             </section>
         )
     }
