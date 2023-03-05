@@ -55,8 +55,8 @@ export default class TableOrder extends Component {
         const {isOpen, activeRow} = this.state;
 
         const userList = data.map((user, id) => (
-            <div className={styles.div}>
-                <div key={id} onClick={() => this.toggleTable(id)}
+            <div className={styles.div} key={user.id}>
+                <div onClick={() => this.toggleTable(id)}
                      className={`${styles.row} ${id === activeRow ? styles.active : ''}`}>
                     <div className={styles.cell}>{user.id}</div>
                     <div>{user.customer}</div>
@@ -69,21 +69,13 @@ export default class TableOrder extends Component {
                         <div>Price</div>
                     </div>
                     <div className={styles.tbody}>
-                        {user['products'].map((product, productId) => (
-                            <>
-                                <div key={productId} className={styles['inner-row']}>
-                                    <div className={styles.cell}>2023-01-05</div>
-                                    <div className={styles.cell}>{product.name}</div>
-                                    <div className={styles.cell}>{product.amount}</div>
-                                    <div className={styles.cell}>{product.price}</div>
-                                </div>
-                                <div key={productId + 1} className={styles['inner-row']}>
-                                    <div className={styles.cell}>2023-02-14</div>
-                                    <div className={styles.cell}>{product.name}</div>
-                                    <div className={styles.cell}>{product.amount}</div>
-                                    <div className={styles.cell}>{product.price}</div>
-                                </div>
-                            </>
+                        {user['products'].map((product) => (
+                            <div key={product.id} className={styles['inner-row']}>
+                                <div className={styles.cell}>2023-02-14</div>
+                                <div className={styles.cell}>{product.name}</div>
+                                <div className={styles.cell}>{product.amount}</div>
+                                <div className={styles.cell}>{product.price}</div>
+                            </div>
                         ))}
                     </div>
                 </div>
