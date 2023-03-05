@@ -92,17 +92,17 @@ export default class TableOrder extends Component {
 
         return (
             <section className={styles['table-section']}>
+                <h2>Orders</h2>
                 <div className={styles.table}>
-                    <h2>Orders</h2>
-                        <div className={styles.thead}>
-                            <div>ID</div>
-                            <div>Customer</div>
+                    <div className={styles.thead}>
+                        <div>ID</div>
+                        <div>Customer</div>
+                    </div>
+                    <div className={styles.tbody}>
+                        <div>
+                            {userList}
                         </div>
-                  <div className={styles.tbody}>
-                      <div>
-                          {userList}
-                      </div>
-                  </div>
+                    </div>
                 </div>
             </section>
         )
