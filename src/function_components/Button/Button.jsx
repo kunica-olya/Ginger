@@ -1,8 +1,7 @@
 import styles from "../Button/Button.module.scss";
 import {ReactComponent as Icon} from "../../assets/svg/Vector.svg";
 
-const Button = (props) => {
-    const {text} = props;
+const Button = ({text}) => {
 
     return (
         <a href='https://instagram.com/ginger.konditori' className={styles['button-subscribe']}>

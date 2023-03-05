@@ -1,8 +1,7 @@
 import styles from "./Card.module.scss";
 import Button from "../Button/Button";
 
-const Card = (props) => {
-    const {img, title, additionalInfo, description, price, weight} = props;
+const Card = ({img, title, additionalInfo, description, price, weight}) => {
 
     return (
         <div className={styles.card}>
