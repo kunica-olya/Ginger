@@ -18,13 +18,15 @@
       {
         "id": 1,
         "name": "Currant zephyr",
-        "price": "₴25",
+        "price": 25,
+        "currency": "₴",
         "amount": 6
       },
       {
         "id": 2,
         "name": "Currant zephyr",
-        "price": "₴25",
+        "price": 25,
+        "currency": "₴",
         "amount": 15
       }
     ]
@@ -48,17 +50,17 @@
       {
         "id": 3,
         "name": "Blueberry zephyr",
-        "price": "₴50",
+        "price": 50,
+        "currency": "₴",
         "amount": 10
       },
-
       {
         "id": 4,
         "name": "Mango zephyr",
-        "price": "₴50",
+        "price": 50,
+        "currency": "₴",
         "amount": 10
       }
-
     ]
   },
   {
@@ -80,17 +82,17 @@
       {
         "id": 5,
         "name": "Mango zephyr",
-        "price": "₴50",
+        "price": 50,
+        "currency": "₴",
         "amount": 20
       },
-
       {
         "id": 6,
         "name": "Currant zephyr",
-        "price": "₴50",
+        "price": 50,
+        "currency": "z₴",
         "amount": 12
       }
-
     ]
   },
   {
@@ -112,7 +114,8 @@
       {
         "id": 7,
         "name": "Apple zephyr",
-        "price": "₴43",
+        "price": 43,
+        "currency": "₴",
         "amount": 15
       }
     ]
