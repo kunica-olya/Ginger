@@ -30,10 +30,13 @@ export default class TableOrder extends Component {
         let data = [];
         if (this.state.orders) {
             data = this.state.orders.map(order => {
+                let sum = order.products.reduce((acc, curr) => acc + curr.price * curr.amount, 0);
                 return {
                     id: order.customer.id,
                     customer: `${order.customer.name.firstName} ${order.customer.name.lastName}`,
-                    products: order.products
+                    products: order.products,
+                    totalPrice: sum,
+                    totalPriceCurrency: order.products ? order.products[0].currency : ''
                 }
             })
         }
@@ -46,7 +49,7 @@ export default class TableOrder extends Component {
         if (this.state.activeRow !== id) {
             isOpen = true;
         }
-        this.setState( () => ({
+        this.setState(() => ({
             isOpen: isOpen,
             activeRow: id,
         }));
@@ -57,6 +60,8 @@ export default class TableOrder extends Component {
 
         const data = this.formatResponse();
         const {isOpen, activeRow} = this.state;
+
+        console.log(data)
 
         const userList = data.map((user, id) => (
             <div className={styles.div} key={user.id}>
@@ -79,9 +84,13 @@ export default class TableOrder extends Component {
                                 <div className={styles.cell}>2023-02-14</div>
                                 <div className={styles.cell}>{product.name}</div>
                                 <div className={styles.cell}>{product.amount}</div>
-                                <div className={styles.cell}>{product.price}</div>
+                                <div className={styles.cell}>{product.currency}{product.price}</div>
                             </div>
                         ))}
+                        <div className={styles.total}>
+                            <div className={styles['total-price']}>Total Price</div>
+                            <div className={styles.price}>{user.totalPriceCurrency}{user.totalPrice}</div>
+                        </div>
                     </div>
                 </div>
             </div>

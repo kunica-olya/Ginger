@@ -84,6 +84,21 @@
         width: 120px;
       }
     }
+
+    .total {
+      display: flex;
+      flex-direction: row;
+      margin-top: 5px;
+      font-weight: bold;
+
+      .total-price {
+        width: 360px;
+      }
+
+      .price {
+        font-weight: bold;
+      }
+    }
   }
 }
 
