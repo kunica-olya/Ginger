@@ -10,6 +10,7 @@ export default class TableOrder extends Component {
             dataIsLoaded: false,
             isOpen: false,
             activeRow: null,
+            customerInfo: null,
         }
     }
 
@@ -44,7 +45,8 @@ export default class TableOrder extends Component {
     toggleTable = (id) => {
         this.setState((prevState) => ({
             isOpen: !prevState.isOpen,
-            activeRow: id
+            activeRow: id,
+            customerInfo: id
         }));
     }
 
@@ -52,7 +54,7 @@ export default class TableOrder extends Component {
     render() {
 
         const data = this.formatResponse();
-        const {isOpen, activeRow} = this.state;
+        const {isOpen, activeRow, customerInfo} = this.state;
 
         const userList = data.map((user, id) => (
             <div className={styles.div} key={user.id}>
@@ -61,7 +63,9 @@ export default class TableOrder extends Component {
                     <div className={styles.cell}>{user.id}</div>
                     <div>{user.customer}</div>
                 </div>
-                <div className={`${styles['inner-table']} ${isOpen ? "" : styles.hidden}`}>
+                <div
+                    className={`${styles['inner-table']} 
+                    ${id === customerInfo && isOpen ? styles['customer-info'] : styles.hidden}`}>
                     <div className={styles.thead}>
                         <div>Date</div>
                         <div>Product</div>
