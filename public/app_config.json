@@ -7,15 +7,5 @@
   "github_label": "Github",
   "design_label": "Original design",
   "button-icon": "./src/assets/svg/basket-shopping.svg",
-  "button_label": "Buy",
-  "orders_table": [
-    {
-      "label": "ID",
-      "field": "id"
-    },
-    {
-      "label": "Customer",
-      "field": "customer"
-    }
-  ]
+  "button_label": "Buy"
 }
