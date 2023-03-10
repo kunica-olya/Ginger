@@ -1,9 +1,8 @@
 import {Component} from 'react';
 import styles from "./Card.module.scss";
+import ButtonView from "../Button/ButtonView";
 
-import Button from '../../class_components/Button/Button';
-
-export default class Card extends Component {
+export default class CardView extends Component {
 
     render() {
 
@@ -28,7 +27,7 @@ export default class Card extends Component {
                         <div className={styles.weight}>{weight}</div>
                     </div>
                 </div>
-                <Button text={'Buy'}/>
+                <ButtonView text={'Buy'}/>
             </div>
         )
     }

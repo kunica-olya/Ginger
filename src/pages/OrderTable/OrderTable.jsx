@@ -1,5 +1,6 @@
 import {Component} from "react";
-import styles from './OrderTable.module.scss';
+import {OrderTableView} from "./OrderTableView";
+import styles from "./OrderTable.module.scss";
 
 export default class TableOrder extends Component {
 
@@ -23,7 +24,6 @@ export default class TableOrder extends Component {
                 });
             })
             .catch(error => console.error('Error fetching orders_json', error))
-
     }
 
     formatResponse() {
@@ -55,13 +55,44 @@ export default class TableOrder extends Component {
         }));
     }
 
+    addElement = () => {
+
+        let element = {
+            "orderId": 100010,
+            "customer": {
+                "id": 5,
+                "name": {
+                    "firstName": "Ben",
+                    "lastName": "Smith"
+                },
+                "phone": "0994905678",
+                "address": {
+                    "street": "Murakami",
+                    "home": "7",
+                    "flat": "10"
+                }
+            },
+            "products": [
+                {
+                    "id": 8,
+                    "name": "Currant zephyr",
+                    "price": 27,
+                    "currency": "₴",
+                    "amount": 10
+                }
+            ]
+        }
+
+        this.setState(prevState => ({
+            orders: [...prevState.orders, element]
+        }))
+    }
+
 
     render() {
 
         const data = this.formatResponse();
         const {isOpen, activeRow} = this.state;
-
-        console.log(data)
 
         const userList = data.map((user, id) => (
             <div className={styles.div} key={user.id}>
@@ -97,22 +128,10 @@ export default class TableOrder extends Component {
         ))
 
         return (
-            <section className={styles['table-section']}>
-                <h2>Orders</h2>
-                <div className={styles.table}>
-                    <div className={styles.thead}>
-                        <div>ID</div>
-                        <div>Customer</div>
-                    </div>
-                    <div className={styles.tbody}>
-                        <div>
-                            {userList}
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <OrderTableView addElement={this.addElement}>
+                {userList}
+            </OrderTableView>
         )
     }
 }
-
 

@@ -1,7 +1,7 @@
 import {Component} from 'react';
-import Header from './class_components/Header/Header';
+import HeaderView from './class_components/Header/HeaderView';
 import Main from './class_components/Main/Main';
-import Footer from './class_components/Footer/Footer';
+import FooterView from './class_components/Footer/FooterView';
 import { Route, Routes } from "react-router-dom";
 import OrderTable from "./pages/OrderTable/OrderTable";
 
@@ -29,14 +29,14 @@ export default class App extends Component {
 
         return (
             <>
-                <Header config={config}/>
+                <HeaderView config={config}/>
                 <Routes>
                     <Route>
                         <Route path="/" element={<Main config={config}/>} />
                         <Route path="/orders" element={<OrderTable config={config}/>} />
                     </Route>
                 </Routes>
-                <Footer config={config}/>
+                <FooterView config={config}/>
             </>
         )
     }

@@ -4,10 +4,9 @@ import image1 from '../../assets/img/gallery/gallery-1.jpg';
 import image2 from '../../assets/img/gallery/gallery-2.jpg';
 import image3 from '../../assets/img/gallery/gallery-3.jpg';
 import image4 from '../../assets/img/gallery/gallery-4.jpg';
-import Button from '../../function_components/Button/Button';
-// import Button from '../../class_components/Button/Button';
+import ButtonView from '../../class_components/Button/ButtonView';
 
-export default class Gallery extends Component {
+export default class GalleryView extends Component {
 
     render() {
         return (
@@ -29,7 +28,7 @@ export default class Gallery extends Component {
                         <h2 className={styles.title}>Gallery</h2>
                         <p className={styles.description}>You inspire us to create airy, tender zephyrs. Check out our
                             desserts on Instagram</p>
-                        <Button text={'Subscribe'}/>
+                        <ButtonView text={'Subscribe'}/>
                     </div>
                     <div>
                         <img id={styles.different} className={`${styles.image} ${styles['radius-image']}`}

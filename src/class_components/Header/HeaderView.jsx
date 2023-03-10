@@ -2,7 +2,7 @@ import {Component} from 'react';
 import styles from './Header.module.scss';
 import {Link} from "react-router-dom";
 
-export default class Header extends Component {
+export default class HeaderView extends Component {
 
     render() {
         const {address, phone} = this.props.config;

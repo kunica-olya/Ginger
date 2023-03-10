@@ -2,7 +2,7 @@ import {Component} from 'react';
 import {ReactComponent as Logo} from '../../assets/svg/Logo-white.svg';
 import styles from './Footer.module.scss';
 
-export default class Footer extends Component {
+export default class FooterView extends Component {
 
     render() {
         const {author} = this.props.config;
