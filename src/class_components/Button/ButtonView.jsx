@@ -1,5 +1,6 @@
 import {Component} from 'react';
-import {ReactComponent as Icon} from "../../assets/svg/bag.svg";
+import {ReactComponent as IconBag} from "../../assets/svg/bag.svg";
+import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
 import styles from './Button.module.scss';
 
 export default class ButtonView extends Component {
@@ -9,7 +10,8 @@ export default class ButtonView extends Component {
 
         return (
             <button onClick={click} className={styles['button-buy']}>
-                <Icon/>
+                {text === "Subscribe" && <IconInstagram/>}
+                {text === "Buy" && <IconBag/>}
                 <span className={styles['button-text']}>{text}</span>
             </button>
         )
