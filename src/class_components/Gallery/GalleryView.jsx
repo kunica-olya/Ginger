@@ -5,6 +5,7 @@ import image2 from '../../assets/img/gallery/gallery-2.jpg';
 import image3 from '../../assets/img/gallery/gallery-3.jpg';
 import image4 from '../../assets/img/gallery/gallery-4.jpg';
 import ButtonView from '../../class_components/Button/ButtonView';
+import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
 
 export default class GalleryView extends Component {
 
@@ -28,7 +29,9 @@ export default class GalleryView extends Component {
                         <h2 className={styles.title}>Gallery</h2>
                         <p className={styles.description}>You inspire us to create airy, tender zephyrs. Check out our
                             desserts on Instagram</p>
-                        <ButtonView text={'Subscribe'}/>
+                        <ButtonView text={'Subscribe'}>
+                            <IconInstagram/>
+                        </ButtonView>
                     </div>
                     <div>
                         <img id={styles.different} className={`${styles.image} ${styles['radius-image']}`}

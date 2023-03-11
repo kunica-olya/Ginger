@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import styles from "./Card.module.scss";
 import ButtonView from "../Button/ButtonView";
+import {ReactComponent as IconBag} from "../../assets/svg/bag.svg";
 
 export default class CardView extends Component {
 
@@ -27,7 +28,9 @@ export default class CardView extends Component {
                         <div className={styles.weight}>{weight}</div>
                     </div>
                 </div>
-                <ButtonView text={'Buy'}/>
+                <ButtonView text={'Buy'}>
+                    <IconBag />
+                </ButtonView>
             </div>
         )
     }

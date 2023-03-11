@@ -3,6 +3,7 @@ import styles from "./Main.module.scss";
 import {ReactComponent as Logo} from "../../assets/svg/Logo-dark.svg";
 import GalleryView from "../Gallery/GalleryView";
 import ButtonView from "../Button/ButtonView";
+import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
 
 export default class MainView extends Component {
 
@@ -16,7 +17,9 @@ export default class MainView extends Component {
                         </a>
                         <p className={styles.description}>Try and choose your flavor of delicate zephyr on
                             Instagram </p>
-                        <ButtonView text={'Subscribe'}/>
+                        <ButtonView text={'Subscribe'}>
+                            <IconInstagram/>
+                        </ButtonView>
                     </div>
                     <div className={styles.strawberry}></div>
                     <div className={styles['background-zephir']}></div>
