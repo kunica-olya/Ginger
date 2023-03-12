@@ -1,10 +1,10 @@
 @import "./src/styles/vars/vars.module.scss";
 
 .modal-window {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: #bebdbd;
+  background-color: #fff;
   left: 0;
   right: 0;
   width: 790px;
@@ -12,6 +12,19 @@
   margin-top: 50px;
   padding: 45px 45px;
   border-radius: 10px;
+  top: 100px;
+
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
 
   h2 {
     text-align: left;
