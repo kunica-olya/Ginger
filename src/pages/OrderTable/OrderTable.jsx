@@ -11,6 +11,15 @@ export default class TableOrder extends Component {
             dataIsLoaded: false,
             isOpen: false,
             activeRow: null,
+            isShowModal: false,
+            newOrder: {
+                id: '',
+                firstName: '',
+                lastName: '',
+                productName: '',
+                productPrice: '',
+                productAmount: ''
+            }
         }
     }
 
@@ -55,37 +64,12 @@ export default class TableOrder extends Component {
         }));
     }
 
-    addElement = () => {
-
-        let element = {
-            "orderId": 100010,
-            "customer": {
-                "id": 5,
-                "name": {
-                    "firstName": "Ben",
-                    "lastName": "Smith"
-                },
-                "phone": "0994905678",
-                "address": {
-                    "street": "Murakami",
-                    "home": "7",
-                    "flat": "10"
-                }
-            },
-            "products": [
-                {
-                    "id": 8,
-                    "name": "Currant zephyr",
-                    "price": 27,
-                    "currency": "₴",
-                    "amount": 10
-                }
-            ]
-        }
-
-        this.setState(prevState => ({
-            orders: [...prevState.orders, element]
-        }))
+    showModal = () => {
+        console.log('show modal');
+        this.setState({ isShowModal: true }, () => {
+            console.log('state isShowModal', this.state.isShowModal);
+        });
+        console.log('state isShowModal', this.state.isShowModal)
     }
 
 
@@ -128,7 +112,10 @@ export default class TableOrder extends Component {
         ))
 
         return (
-            <OrderTableView addElement={this.addElement}>
+            <OrderTableView
+                showModal={this.showModal}
+                isOpenModal={this.state.isShowModal}
+            >
                 {userList}
             </OrderTableView>
         )

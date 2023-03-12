@@ -90,7 +90,7 @@
         "id": 6,
         "name": "Currant zephyr",
         "price": 50,
-        "currency": "z₴",
+        "currency": "₴",
         "amount": 12
       }
     ]

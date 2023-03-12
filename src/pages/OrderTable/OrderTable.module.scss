@@ -10,6 +10,7 @@
     width: 525px;
     border: 1px solid #666666;
     margin: 0 auto;
+    margin-top: 40px;
 
     .thead {
       display: flex;
@@ -57,11 +58,10 @@
     justify-content: center;
     margin-top: 40px;
 
-    .button-add {
-      width: 100px;
+    svg {
+      color: #fff;
     }
   }
-
 }
 
 
