@@ -1,0 +1,30 @@
+.modal-window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  left: 0;
+  right: 0;
+  width: 790px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 45px 15px;
+  border-radius: 10px;
+
+  h2 {
+    text-align: left;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      padding: 10px 10px;
+      width: 275px;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+  }
+}
