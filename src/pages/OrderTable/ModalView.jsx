@@ -6,9 +6,13 @@ import ButtonView from "../../class_components/Button/ButtonView";
 export class ModalView extends Component {
 
     render() {
-        const {isOpen} = this.props;
+        const {children, clickIcon} = this.props;
         return (
-            <div className={isOpen ? `${styles['modal-window']}` : `${styles.hidden}`}>
+            <div className={styles['modal-window']}>
+                <div className={styles['modal-content']}></div>
+                <div onClick={clickIcon} className={styles['close-icon']}>
+                    {children}
+                </div>
                 <h2>Add Element</h2>
                 <form action="">
                     <div className={styles.row}>

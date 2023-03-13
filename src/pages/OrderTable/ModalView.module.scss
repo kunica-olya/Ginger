@@ -30,6 +30,19 @@
     text-align: left;
   }
 
+  .modal-content {
+    position: relative;
+  }
+
+  .close-icon {
+    position: absolute;
+    font-size: 25px;
+    cursor: pointer;
+    right: 25px;
+    top: 20px;
+  }
+
+
   .row {
     display: flex;
     flex-direction: row;
@@ -60,8 +73,4 @@
       }
     }
   }
-
-  //.hidden {
-  //  display: none;
-  //}
 }

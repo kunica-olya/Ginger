@@ -65,11 +65,15 @@ export default class TableOrder extends Component {
     }
 
     showModal = () => {
-        console.log('show modal');
-        this.setState({ isShowModal: true }, () => {
-            console.log('state isShowModal', this.state.isShowModal);
-        });
-        console.log('state isShowModal', this.state.isShowModal)
+        this.setState({
+            isShowModal: true
+        })
+    }
+
+    closeModal = () => {
+        this.setState(prevState => ({
+            isShowModal: !prevState.isShowModal
+        }))
     }
 
 
@@ -115,6 +119,7 @@ export default class TableOrder extends Component {
             <OrderTableView
                 showModal={this.showModal}
                 isOpenModal={this.state.isShowModal}
+                closeModal={this.closeModal}
             >
                 {userList}
             </OrderTableView>

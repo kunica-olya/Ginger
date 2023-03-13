@@ -2,14 +2,14 @@ import {Component} from "react";
 import styles from "./OrderTable.module.scss";
 import ButtonView from "../../class_components/Button/ButtonView";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faPlus, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {ModalView} from "./ModalView";
 
 
 export class OrderTableView extends Component {
 
     render() {
-        const {showModal, isOpenModal} = this.props;
+        const {showModal, isOpenModal,closeModal} = this.props;
         return (
             <section className={styles['table-section']}>
                 <h2>Orders</h2>
@@ -32,7 +32,10 @@ export class OrderTableView extends Component {
                     </div>
                 </div>
                 <div>
-                    {isOpenModal && <ModalView isOpen={isOpenModal}/>}
+                    {isOpenModal && <ModalView clickIcon={closeModal}>
+                        <FontAwesomeIcon icon={faXmark}/>
+                    </ModalView>
+                    }
                 </div>
             </section>
         )
