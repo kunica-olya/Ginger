@@ -4,11 +4,11 @@ import styles from './Button.module.scss';
 export default class ButtonView extends Component {
 
     render() {
-        const {text, click, children, width} = this.props;
+        const {text, click, children, width, marginRight} = this.props;
 
 
         return (
-            <button onClick={click} style={{width}} className={styles['button-buy']}>
+            <button onClick={click} style={{width,marginRight}} className={styles['button-buy']}>
                 {children}
                 <span className={styles['button-text']}>{text}</span>
             </button>

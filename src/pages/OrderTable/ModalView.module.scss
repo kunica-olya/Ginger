@@ -73,4 +73,11 @@
       }
     }
   }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 80px;
+  }
 }

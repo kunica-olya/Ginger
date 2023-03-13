@@ -6,11 +6,11 @@ import ButtonView from "../../class_components/Button/ButtonView";
 export class ModalView extends Component {
 
     render() {
-        const {children, clickIcon} = this.props;
+        const {children, close} = this.props;
         return (
             <div className={styles['modal-window']}>
                 <div className={styles['modal-content']}></div>
-                <div onClick={clickIcon} className={styles['close-icon']}>
+                <div onClick={close} className={styles['close-icon']}>
                     {children}
                 </div>
                 <h2>Add Element</h2>
@@ -41,7 +41,16 @@ export class ModalView extends Component {
                             </div>
                         </div>
                     </div>
-                    <ButtonView text={'Save'}/>
+                    <div className={styles.buttons}>
+                        <ButtonView text={'Cancel'}
+                                    click={close}
+                                    width='230px'
+                                    marginRight='30px'
+                        />
+                        <ButtonView text={'Save'}
+                                    width='250px'
+                        />
+                    </div>
                 </form>
             </div>
         )

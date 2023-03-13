@@ -9,14 +9,14 @@ import {ModalView} from "./ModalView";
 export class OrderTableView extends Component {
 
     render() {
-        const {showModal, isOpenModal,closeModal} = this.props;
+        const {showModal, isOpenModal, closeModal} = this.props;
         return (
             <section className={styles['table-section']}>
                 <h2>Orders</h2>
                 <div className={styles['button-container']}>
                     <ButtonView click={(e) => showModal(e)}
                                 text={'Add'}
-                                width='150px'>
+                    >
                         <FontAwesomeIcon icon={faPlus}/>
                     </ButtonView>
                 </div>
@@ -32,7 +32,7 @@ export class OrderTableView extends Component {
                     </div>
                 </div>
                 <div>
-                    {isOpenModal && <ModalView clickIcon={closeModal}>
+                    {isOpenModal && <ModalView close={closeModal}>
                         <FontAwesomeIcon icon={faXmark}/>
                     </ModalView>
                     }
