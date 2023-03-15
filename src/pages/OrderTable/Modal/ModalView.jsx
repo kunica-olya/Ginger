@@ -6,7 +6,7 @@ import ButtonView from "../../../class_components/Button/ButtonView";
 export class ModalView extends Component {
 
     render() {
-        const {children, close} = this.props;
+        const {children, close, changeInput, formReady} = this.props;
         return (
             <div className={styles['modal-window']}>
                 <div className={styles['modal-content']}></div>
@@ -19,29 +19,29 @@ export class ModalView extends Component {
                         <div className={styles.column}>
                             <div>
                                 <label htmlFor="id">ID</label>
-                                <input id='id' type="text"/>
+                                <input onChange={changeInput} id='id' type="text"/>
                             </div>
                             <div>
                                 <label htmlFor="firstName">First name</label>
-                                <input id="firstName" type="text"/>
+                                <input onChange={changeInput} id="firstName" type="text"/>
                             </div>
                             <div>
                                 <label htmlFor="lastName">Last name</label>
-                                <input id="lastName" type="text"/>
+                                <input onChange={changeInput} id="lastName" type="text"/>
                             </div>
                         </div>
                         <div className={styles.column}>
                             <div>
-                                <label htmlFor="productName">ProductName</label>
-                                <input id="productName" type="text"/>
+                                <label htmlFor="productName">Product</label>
+                                <input onChange={changeInput} id="productName" type="text"/>
                             </div>
                             <div>
-                                <label htmlFor="price">Price</label>
-                                <input id="price" type="text"/>
+                                <label htmlFor="productPrice">Price</label>
+                                <input onChange={changeInput} id="productPrice" type="text"/>
                             </div>
                             <div>
-                                <label htmlFor="amount">Amount</label>
-                                <input id="amount" type="text"/>
+                                <label htmlFor="productAmount">Amount</label>
+                                <input onChange={changeInput} id="productAmount" type="text"/>
                             </div>
                         </div>
                     </div>
@@ -52,6 +52,7 @@ export class ModalView extends Component {
                                     marginRight='30px'
                         />
                         <ButtonView text={'Save'}
+                                    click={formReady}
                                     width='250px'
                         />
                     </div>

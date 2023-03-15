@@ -9,6 +9,7 @@ export default class OrderTable extends Component {
         this.state = {
             orders: [],
             dataIsLoaded: false,
+            isOpen: false,
             activeRow: null,
         }
     }
@@ -54,6 +55,14 @@ export default class OrderTable extends Component {
         }));
     }
 
+    handlerAddData = (data) => {
+        const newArray = this.state.orders;
+        newArray.push(data);
+        this.setState({
+            orders: newArray
+        })
+    }
+
 
     render() {
 
@@ -94,7 +103,7 @@ export default class OrderTable extends Component {
         ))
 
         return (
-            <OrderTableView>
+            <OrderTableView handlerAddData={this.handlerAddData}>
                 {userList}
             </OrderTableView>
         )
