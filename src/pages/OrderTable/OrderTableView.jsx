@@ -6,11 +6,12 @@ import {Modal} from "./Modal/Modal";
 export class OrderTableView extends Component {
 
     render() {
+        const {handlerAddData} = this.props
         return (
             <section className={styles['table-section']}>
                 <h2>Orders</h2>
                 <div className={styles['button-container']}>
-                    <Modal/>
+                    <Modal handlerAddData={handlerAddData} />
                 </div>
                 <div className={styles.table}>
                     <div className={styles.thead}>
