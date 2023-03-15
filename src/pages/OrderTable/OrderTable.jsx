@@ -2,24 +2,14 @@ import {Component} from "react";
 import {OrderTableView} from "./OrderTableView";
 import styles from "./OrderTable.module.scss";
 
-export default class TableOrder extends Component {
+export default class OrderTable extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
             orders: [],
             dataIsLoaded: false,
-            isOpen: false,
             activeRow: null,
-            isShowModal: false,
-            newOrder: {
-                id: '',
-                firstName: '',
-                lastName: '',
-                productName: '',
-                productPrice: '',
-                productAmount: ''
-            }
         }
     }
 
@@ -64,18 +54,6 @@ export default class TableOrder extends Component {
         }));
     }
 
-    showModal = () => {
-        this.setState({
-            isShowModal: true
-        })
-    }
-
-    closeModal = () => {
-        this.setState(prevState => ({
-            isShowModal: !prevState.isShowModal
-        }))
-    }
-
 
     render() {
 
@@ -116,11 +94,7 @@ export default class TableOrder extends Component {
         ))
 
         return (
-            <OrderTableView
-                showModal={this.showModal}
-                isOpenModal={this.state.isShowModal}
-                closeModal={this.closeModal}
-            >
+            <OrderTableView>
                 {userList}
             </OrderTableView>
         )
