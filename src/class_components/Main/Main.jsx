@@ -1,7 +1,5 @@
 import {Component} from "react";
-import styles from "./Main.module.scss";
 import MainView from "./MainView";
-import CardView from "../Card/CardView";
 
 
 export default class Main extends Component {
@@ -27,26 +25,10 @@ export default class Main extends Component {
 
 
     render() {
-        const {dataIsLoaded, cards} = this.state;
-        let data = <p>Data is not loading</p>
-
-        if (dataIsLoaded) {
-            data = <div id={'menu'} className={styles.wrapper}>
-                {
-                    cards.map(card => {
-                        return <CardView
-                            key={card.id}
-                            card={card}
-                        />
-                    })
-                }
-            </div>
-        }
+        const {cards} = this.state;
 
         return (
-            <MainView>
-                {data}
-            </MainView>
+            <MainView data={cards}/>
         )
     }
 }
