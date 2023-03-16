@@ -7,7 +7,7 @@ import image4 from '../../assets/img/gallery/gallery-4.jpg';
 import ButtonView from '../../class_components/Button/ButtonView';
 import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
 
-export default class GalleryView extends Component {
+export class GalleryView extends Component {
 
     render() {
         return (

@@ -6,16 +6,6 @@ export default class HeaderView extends Component {
 
     render() {
         const {address, phone} = this.props.config;
-        let data = <p>No data</p>;
-
-        if (address && phone !== null) {
-            data = <div className={styles.contacts}>
-                <a className={styles.location}>
-                    {address}
-                </a>
-                <a className={styles.phone} href={'tel:' + phone}>{phone}</a>
-            </div>
-        }
 
         return (
             <div className={styles.container}>
@@ -37,7 +27,16 @@ export default class HeaderView extends Component {
                                 <Link to="/orders">Orders</Link>
                             </li>
                         </ul>
-                        {data}
+                        {address && phone !== null ? (
+                            <div className={styles.contacts}>
+                                <a className={styles.location}>{address}</a>
+                                <a className={styles.phone} href={`tel:${phone}`}>
+                                    {phone}
+                                </a>
+                            </div>
+                        ) : (
+                            <p>No data</p>
+                        )}
                     </nav>
                 </header>
             </div>

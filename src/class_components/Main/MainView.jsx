@@ -1,13 +1,15 @@
 import {Component} from "react";
 import styles from "./Main.module.scss";
 import {ReactComponent as Logo} from "../../assets/svg/Logo-dark.svg";
-import GalleryView from "../Gallery/GalleryView";
 import ButtonView from "../Button/ButtonView";
 import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
+import CardView from "../Card/CardView";
+import {GalleryView} from "../Gallery/GalleryView";
 
 export default class MainView extends Component {
 
     render() {
+        const {data} = this.props
         return (
             <div className={styles.container}>
                 <section className={styles.jumbotron}>
@@ -28,7 +30,16 @@ export default class MainView extends Component {
                 <div className={styles.background}></div>
 
                 <section id={styles['cards']}>
-                    {this.props.children}
+                    <div id={'menu'} className={styles.wrapper}>
+                        {
+                            data.map(card => {
+                                return <CardView
+                                    key={card.id}
+                                    card={card}
+                                />
+                            })
+                        }
+                    </div>
                 </section>
 
                 <section id={styles['gallery']}>

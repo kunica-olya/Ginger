@@ -5,31 +5,16 @@ import styles from './Footer.module.scss';
 export default class FooterView extends Component {
 
     render() {
+
         const {author} = this.props.config;
         const github = {
             label: this.props.config.github_label,
             link: this.props.config.github_link,
-        };
+        }
 
         const design = {
             label: this.props.config.design_label,
             link: this.props.config.design_link,
-        };
-
-        let data = <p>No data</p>;
-
-        if (github && author && design !== null) {
-            data = <ul>
-                <li>Author: {author}</li>
-                <li>
-                    <a className={styles['creator-link']}
-                       href={github.link}>{github.label}</a>
-                </li>
-                <li>
-                    <a className={styles['creator-link']}
-                       href={design.link}>{design.label}</a>
-                </li>
-            </ul>
         }
 
         return (
@@ -50,7 +35,21 @@ export default class FooterView extends Component {
                             <div className={styles.copyright}>All rights reserved © 2022. Ginger konditori</div>
                         </div>
                         <div className={styles.creator}>
-                            {data}
+                            {github && author && design !== null ? (
+                                <ul>
+                                    <li>Author: {author}</li>
+                                    <li>
+                                        <a className={styles['creator-link']}
+                                           href={github.link}>{github.label}</a>
+                                    </li>
+                                    <li>
+                                        <a className={styles['creator-link']}
+                                           href={design.link}>{design.label}</a>
+                                    </li>
+                                </ul>
+                            ) : (
+                                <p>No data</p>
+                            )}
                         </div>
                     </div>
                 </div>
