@@ -4,7 +4,7 @@ import {ReactComponent as Logo} from "../../assets/svg/Logo-dark.svg";
 import ButtonView from "../Button/ButtonView";
 import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
 import CardView from "../Card/CardView";
-import {GalleryView} from "../Gallery/GalleryView";
+import {GalleryLoader} from "../Gallery/GalleryLoader";
 
 export default class MainView extends Component {
 
@@ -44,7 +44,7 @@ export default class MainView extends Component {
 
                 <section id={styles['gallery']}>
                     <div id='gallery'>
-                        <GalleryView/>
+                        <GalleryLoader/>
                     </div>
                 </section>
             </div>
