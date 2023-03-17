@@ -48,8 +48,6 @@ export default class OrderTable extends Component {
             isOpen: activeRow !== id ? true : !isOpen,
             activeRow: id,
         }))
-        console.log('isOpen', this.state.isOpen)
-        console.log('activeRow', this.state.activeRow)
     }
 
     handlerAddData = (data) => {
@@ -61,7 +59,6 @@ export default class OrderTable extends Component {
     }
 
     makeElementInactive = () => {
-        console.log('double click')
         this.toggleTable(null)
     }
 

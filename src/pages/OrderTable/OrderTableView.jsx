@@ -6,8 +6,18 @@ import {Modal} from "./Modal/Modal";
 export class OrderTableView extends Component {
 
     render() {
-        const {isOpen, activeRow, data, handlerAddData, toggleTable, doubleClick, handlerImageUnloader} = this.props;
+        const {
+            isOpen,
+            activeRow,
+            data,
+            handlerAddData,
+            toggleTable,
+            doubleClick,
+            handlerImageUnloader
+        } = this.props;
+
         const image = 'invalid path';
+
         return (
             <section className={styles['table-section']}>
                 <h2>Orders</h2>
@@ -29,8 +39,8 @@ export class OrderTableView extends Component {
                                             <div className={styles.cell}>{user.id}</div>
                                             <div>{user.customer}</div>
                                         </div>
-                                        <div className={`${styles['inner-table']} 
-                    ${id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}>
+                                        <div className={`${styles['inner-table']}
+                                        ${id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}>
                                             <div className={styles.thead}>
                                                 <div>Date</div>
                                                 <div>Product</div>
@@ -49,8 +59,7 @@ export class OrderTableView extends Component {
                                                 ))}
                                                 <div className={styles.total}>
                                                     <div className={styles['total-price']}>Total Price</div>
-                                                    <div
-                                                        className={styles.price}>{user.totalPriceCurrency}{user.totalPrice}</div>
+                                                    <div className={styles.price}>{user.totalPriceCurrency}{user.totalPrice}</div>
                                                 </div>
                                             </div>
                                         </div>
