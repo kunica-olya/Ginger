@@ -65,10 +65,15 @@ export default class OrderTable extends Component {
         this.toggleTable(null)
     }
 
+    handlerImageUnloader = () => {
+        console.log('Image is unloaded')
+    }
+
     render() {
 
         const data = this.formatResponse();
         const {isOpen, activeRow} = this.state;
+
 
         return (
             <OrderTableView
@@ -78,6 +83,7 @@ export default class OrderTable extends Component {
                 toggleTable={this.toggleTable}
                 handlerAddData={this.handlerAddData}
                 doubleClick={this.makeElementInactive}
+                handlerImageUnloader={this.handlerImageUnloader}
             >
             </OrderTableView>
         )

@@ -6,7 +6,8 @@ import {Modal} from "./Modal/Modal";
 export class OrderTableView extends Component {
 
     render() {
-        const {isOpen, activeRow, data, handlerAddData, toggleTable, doubleClick} = this.props;
+        const {isOpen, activeRow, data, handlerAddData, toggleTable, doubleClick, handlerImageUnloader} = this.props;
+        const image = 'invalid path';
         return (
             <section className={styles['table-section']}>
                 <h2>Orders</h2>
@@ -59,6 +60,8 @@ export class OrderTableView extends Component {
                         </div>
                     </div>
                 </div>
+                <img onError={handlerImageUnloader}
+                     src={image} alt="zephyr"/>
             </section>
         )
     }
