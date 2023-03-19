@@ -1,7 +1,7 @@
 import {Component} from "react";
 import styles from "./OrderTable.module.scss";
 import {Modal} from "./Modal/Modal";
-import {ButtonRemoveView} from "../../class_components/Button/ButtonRemove/ButtonRemoveView";
+import {ButtonRemoveView} from "./ButtonRemove/ButtonRemoveView";
 
 
 export class OrderTableView extends Component {
@@ -15,7 +15,6 @@ export class OrderTableView extends Component {
             toggleTable,
             doubleClick,
             handlerImageUnloader,
-            handlerKeyDownControl,
             handlerRemoveElement,
         } = this.props;
 
@@ -28,7 +27,7 @@ export class OrderTableView extends Component {
                 <div className={styles['button-container']}>
                     <Modal handlerAddData={handlerAddData}/>
                 </div>
-                <div className={styles.table} ref={this.props.tableRef} onKeyDown={handlerKeyDownControl}>
+                <div className={styles.table} ref={this.props.tableRef}>
                     <div className={styles.thead}>
                         <div>ID</div>
                         <div>Customer</div>
@@ -40,7 +39,6 @@ export class OrderTableView extends Component {
                                     <div className={styles.div} key={user.id}>
                                         <div onClick={() => toggleTable(user.id)}
                                              onDoubleClick={doubleClick}
-                                             tabIndex={0}
                                              className={`${styles.row} ${user.id === activeRow ? styles.active : ''}`}>
                                             <div className={styles['cell-id']}>{user.id}</div>
                                             <div className={styles['cell-customer']}>{user.customer}</div>
