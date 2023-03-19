@@ -42,13 +42,22 @@
           background-color: grey;
         }
 
-        .cell {
+        .cell-id {
           width: 123px;
+        }
+
+        .cell-customer {
+          width: 320px;
         }
       }
 
       .active {
         background-color: grey;
+      }
+
+      .active-tab {
+        outline: none;
+        border: 2px solid blue;
       }
     }
   }

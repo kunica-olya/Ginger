@@ -1,6 +1,7 @@
 import {Component} from "react";
 import styles from "./OrderTable.module.scss";
 import {Modal} from "./Modal/Modal";
+import {ButtonRemoveView} from "../../class_components/Button/ButtonRemove/ButtonRemoveView";
 
 
 export class OrderTableView extends Component {
@@ -13,10 +14,13 @@ export class OrderTableView extends Component {
             handlerAddData,
             toggleTable,
             doubleClick,
-            handlerImageUnloader
+            handlerImageUnloader,
+            handlerKeyDownControl,
+            handlerRemoveElement,
         } = this.props;
 
         const image = 'invalid path';
+
 
         return (
             <section className={styles['table-section']}>
@@ -24,7 +28,7 @@ export class OrderTableView extends Component {
                 <div className={styles['button-container']}>
                     <Modal handlerAddData={handlerAddData}/>
                 </div>
-                <div className={styles.table}>
+                <div className={styles.table} ref={this.props.tableRef} onKeyDown={handlerKeyDownControl}>
                     <div className={styles.thead}>
                         <div>ID</div>
                         <div>Customer</div>
@@ -32,15 +36,21 @@ export class OrderTableView extends Component {
                     <div className={styles.tbody}>
                         <div>
                             {
-                                data.map((user, id) => (
+                                data.map((user) => (
                                     <div className={styles.div} key={user.id}>
-                                        <div onClick={() => toggleTable(id)} onDoubleClick={doubleClick}
-                                             className={`${styles.row} ${id === activeRow ? styles.active : ''}`}>
-                                            <div className={styles.cell}>{user.id}</div>
-                                            <div>{user.customer}</div>
+                                        <div onClick={() => toggleTable(user.id)}
+                                             onDoubleClick={doubleClick}
+                                             tabIndex={0}
+                                             className={`${styles.row} ${user.id === activeRow ? styles.active : ''}`}>
+                                            <div className={styles['cell-id']}>{user.id}</div>
+                                            <div className={styles['cell-customer']}>{user.customer}</div>
+                                            <div className={styles['button-remove']}>
+                                                <ButtonRemoveView
+                                                    click={() => handlerRemoveElement(user.id)}/>
+                                            </div>
                                         </div>
                                         <div className={`${styles['inner-table']}
-                                        ${id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}>
+                                        ${user.id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}>
                                             <div className={styles.thead}>
                                                 <div>Date</div>
                                                 <div>Product</div>
@@ -59,7 +69,8 @@ export class OrderTableView extends Component {
                                                 ))}
                                                 <div className={styles.total}>
                                                     <div className={styles['total-price']}>Total Price</div>
-                                                    <div className={styles.price}>{user.totalPriceCurrency}{user.totalPrice}</div>
+                                                    <div
+                                                        className={styles.price}>{user.totalPriceCurrency}{user.totalPrice}</div>
                                                 </div>
                                             </div>
                                         </div>
