@@ -13,7 +13,8 @@ export class OrderTableView extends Component {
             handlerAddData,
             toggleTable,
             doubleClick,
-            handlerImageUnloader
+            handlerImageUnloader,
+            handlerRemoveElement,
         } = this.props;
 
         const image = 'invalid path';
@@ -34,7 +35,7 @@ export class OrderTableView extends Component {
                             {
                                 data.map((user, id) => (
                                     <div className={styles.div} key={user.id}>
-                                        <div onClick={() => toggleTable(id)} onDoubleClick={doubleClick}
+                                        <div onClick={() => toggleTable(i)} onDoubleClick={doubleClick}
                                              className={`${styles.row} ${id === activeRow ? styles.active : ''}`}>
                                             <div className={styles.cell}>{user.id}</div>
                                             <div>{user.customer}</div>
@@ -59,7 +60,8 @@ export class OrderTableView extends Component {
                                                 ))}
                                                 <div className={styles.total}>
                                                     <div className={styles['total-price']}>Total Price</div>
-                                                    <div className={styles.price}>{user.totalPriceCurrency}{user.totalPrice}</div>
+                                                    <div
+                                                        className={styles.price}>{user.totalPriceCurrency}{user.totalPrice}</div>
                                                 </div>
                                             </div>
                                         </div>

@@ -66,6 +66,19 @@ export default class OrderTable extends Component {
         console.log('Image is unloaded')
     }
 
+
+    handlerRemoveElement = (id) => {
+
+        const newOrders = this.state.orders.filter(customer => {
+            return customer.customer.id !== id;
+        })
+
+        this.setState({
+            orders: newOrders
+        })
+    }
+
+
     render() {
 
         const data = this.formatResponse();
@@ -79,6 +92,7 @@ export default class OrderTable extends Component {
                 activeRow={activeRow}
                 toggleTable={this.toggleTable}
                 handlerAddData={this.handlerAddData}
+                handlerRemoveElement={this.handlerRemoveElement}
                 doubleClick={this.makeElementInactive}
                 handlerImageUnloader={this.handlerImageUnloader}
             >
