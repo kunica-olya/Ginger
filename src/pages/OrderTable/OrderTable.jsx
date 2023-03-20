@@ -84,7 +84,6 @@ export default class OrderTable extends Component {
         const data = this.formatResponse();
         const {isOpen, activeRow} = this.state;
 
-
         return (
             <OrderTableView
                 data={data}

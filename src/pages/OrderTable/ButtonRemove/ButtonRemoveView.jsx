@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
-import styles from './ButtonRemove.module.scss'
+import styles from "./ButtonRemoveView.module.scss"
 
 export class ButtonRemoveView extends Component {
 

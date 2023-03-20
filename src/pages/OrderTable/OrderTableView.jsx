@@ -35,10 +35,14 @@ export class OrderTableView extends Component {
                             {
                                 data.map((user, id) => (
                                     <div className={styles.div} key={user.id}>
-                                        <div onClick={() => toggleTable(i)} onDoubleClick={doubleClick}
-                                             className={`${styles.row} ${id === activeRow ? styles.active : ''}`}>
-                                            <div className={styles.cell}>{user.id}</div>
-                                            <div>{user.customer}</div>
+                                        <div onClick={() => toggleTable(user.id)} onDoubleClick={doubleClick}
+                                             className={`${styles.row} ${user.id === activeRow ? styles.active : ''}`}>
+                                            <div className={styles['cell-id']}>{user.id}</div>
+                                            <div className={styles['cell-customer']}>{user.customer}</div>
+                                            <div className={styles['button-remove']}>
+                                                <ButtonRemoveView
+                                                    click={() => handlerRemoveElement(user.id)}/>
+                                            </div>
                                         </div>
                                         <div className={`${styles['inner-table']}
                                         ${id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}>
