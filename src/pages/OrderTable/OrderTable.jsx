@@ -1,7 +1,9 @@
 import {Component} from "react";
 import {OrderTableView} from "./OrderTableView";
+import React from "react";
 
 export default class OrderTable extends Component {
+
 
     constructor(props) {
         super(props)
@@ -10,7 +12,9 @@ export default class OrderTable extends Component {
             dataIsLoaded: false,
             isOpen: false,
             activeRow: null,
+            hotKeys: []
         }
+        this.tableRef = React.createRef();
     }
 
     componentDidMount() {
@@ -23,6 +27,9 @@ export default class OrderTable extends Component {
                 });
             })
             .catch(error => console.error('Error fetching orders_json', error))
+        document.addEventListener('keydown', this.handlerKeyDown);
+        document.addEventListener('keyup', this.handlerKeyUp);
+        this.tableRef.current.focus();
     }
 
     formatResponse() {
@@ -79,6 +86,53 @@ export default class OrderTable extends Component {
     }
 
 
+    handlerKeyDown = (e) => {
+
+        const keys = this.state.hotKeys;
+
+        if (!keys.includes(e.key)) {
+            keys.push(e.key)
+        }
+    }
+
+
+    handlerKeyUp = () => {
+        const pressedKeys = this.state.hotKeys;
+
+        this.setState({
+            hotKeys: []
+        })
+
+        if (pressedKeys.includes('Control') && pressedKeys.includes('c')) {
+            this.setState({
+                isOpen: false,
+                activeRow: 4
+            })
+        }
+
+        if (pressedKeys.includes('Control') && pressedKeys.includes('Shift')) {
+            this.setState({
+                isOpen: false,
+                activeRow: 3
+            })
+        }
+
+        if (pressedKeys.includes('Alt') && pressedKeys.includes('c')) {
+            this.setState({
+                isOpen: false,
+                activeRow: 2
+            })
+        }
+
+        if (pressedKeys.includes('Control') && pressedKeys.includes('Shift') && pressedKeys.includes('S')) {
+            this.setState({
+                isOpen: false,
+                activeRow: 1
+            })
+        }
+    }
+
+
     render() {
 
         const data = this.formatResponse();
@@ -94,6 +148,8 @@ export default class OrderTable extends Component {
                 handlerRemoveElement={this.handlerRemoveElement}
                 doubleClick={this.makeElementInactive}
                 handlerImageUnloader={this.handlerImageUnloader}
+                tableRef={this.tableRef}
+                handlerKeyDown={this.handlerKeyDown}
             >
             </OrderTableView>
         )

@@ -27,19 +27,16 @@ export class Modal extends Component {
     }
 
     handlerOnChange = (e) => {
-        console.log('onChange input')
         this.setState({
             newOrder: {
                 ...this.state.newOrder,
                 [e.target.id]: e.target.value
             }
         })
-        console.log('state', this.state.newOrder)
     }
 
     submitForm = (e) => {
         e.preventDefault()
-        console.log('form is ready submit')
         const formattedData = {
             "orderId": '2000005',
             "customer": {
