@@ -1,6 +1,7 @@
 import {Component} from "react";
 import styles from "./OrderTable.module.scss";
 import {Modal} from "./Modal/Modal";
+import {ButtonRemoveView} from "./ButtonRemove/ButtonRemoveView";
 
 
 export class OrderTableView extends Component {
