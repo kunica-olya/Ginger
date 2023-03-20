@@ -69,12 +69,12 @@ export default class OrderTable extends Component {
 
     handlerRemoveElement = (id) => {
 
-        const newOrders = this.state.orders.filter(customer => {
-            return customer.customer.id !== id;
+        const filteredOrders = this.state.orders.filter(order => {
+            return order.customer.id !== id;
         })
 
         this.setState({
-            orders: newOrders
+            orders: filteredOrders
         })
     }
 

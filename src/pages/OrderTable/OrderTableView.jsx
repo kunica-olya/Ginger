@@ -34,10 +34,12 @@ export class OrderTableView extends Component {
                     <div className={styles.tbody}>
                         <div>
                             {
-                                data.map((user, id) => (
+                                data.map((user) => (
                                     <div className={styles.div} key={user.id}>
                                         <div onClick={() => toggleTable(user.id)} onDoubleClick={doubleClick}
-                                             className={`${styles.row} ${user.id === activeRow ? styles.active : ''}`}>
+                                             className={`${styles.row} 
+                                             ${user.id === activeRow ? styles.active : ''}`}
+                                        >
                                             <div className={styles['cell-id']}>{user.id}</div>
                                             <div className={styles['cell-customer']}>{user.customer}</div>
                                             <div className={styles['button-remove']}>
@@ -46,7 +48,8 @@ export class OrderTableView extends Component {
                                             </div>
                                         </div>
                                         <div className={`${styles['inner-table']}
-                                        ${id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}>
+                                        ${user.id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}
+                                        >
                                             <div className={styles.thead}>
                                                 <div>Date</div>
                                                 <div>Product</div>
@@ -59,14 +62,16 @@ export class OrderTableView extends Component {
                                                         <div className={styles.cell}>2023-02-14</div>
                                                         <div className={styles.cell}>{product.name}</div>
                                                         <div className={styles.cell}>{product.amount}</div>
-                                                        <div
-                                                            className={styles.cell}>{product.currency}{product.price}</div>
+                                                        <div className={styles.cell}>{product.currency}
+                                                            {product.price}
+                                                        </div>
                                                     </div>
                                                 ))}
                                                 <div className={styles.total}>
                                                     <div className={styles['total-price']}>Total Price</div>
-                                                    <div
-                                                        className={styles.price}>{user.totalPriceCurrency}{user.totalPrice}</div>
+                                                    <div className={styles.price}>{user.totalPriceCurrency}
+                                                        {user.totalPrice}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
