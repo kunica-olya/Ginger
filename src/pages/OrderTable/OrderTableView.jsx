@@ -16,6 +16,8 @@ export class OrderTableView extends Component {
             doubleClick,
             handlerImageUnloader,
             handlerRemoveElement,
+            handlerKeyDown,
+            tableRef
         } = this.props;
 
         const image = 'invalid path';
@@ -26,7 +28,10 @@ export class OrderTableView extends Component {
                 <div className={styles['button-container']}>
                     <Modal handlerAddData={handlerAddData}/>
                 </div>
-                <div className={styles.table}>
+                <div className={styles.table}
+                     ref={tableRef}
+                     onKeyDown={handlerKeyDown}
+                >
                     <div className={styles.thead}>
                         <div>ID</div>
                         <div>Customer</div>
@@ -36,7 +41,8 @@ export class OrderTableView extends Component {
                             {
                                 data.map((user) => (
                                     <div className={styles.div} key={user.id}>
-                                        <div onClick={() => toggleTable(user.id)} onDoubleClick={doubleClick}
+                                        <div onClick={() => toggleTable(user.id)}
+                                             onDoubleClick={doubleClick}
                                              className={`${styles.row} 
                                              ${user.id === activeRow ? styles.active : ''}`}
                                         >
