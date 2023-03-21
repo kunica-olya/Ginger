@@ -32,6 +32,13 @@ export default class OrderTable extends Component {
         this.tableRef.current.focus();
     }
 
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handlerKeyDown);
+        document.removeEventListener('keyup', this.handlerKeyUp);
+    }
+
+
     formatResponse() {
         let data = [];
         if (this.state.orders) {
