@@ -29,7 +29,7 @@ export default class CardView extends Component {
                     </div>
                 </div>
                 <ButtonView text={'Buy'}>
-                    <IconBag />
+                    <IconBag/>
                 </ButtonView>
             </div>
         )

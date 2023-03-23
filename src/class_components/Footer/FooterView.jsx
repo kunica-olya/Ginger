@@ -35,7 +35,7 @@ export default class FooterView extends Component {
                             <div className={styles.copyright}>All rights reserved © 2022. Ginger konditori</div>
                         </div>
                         <div className={styles.creator}>
-                            {github && author && design !== null ? (
+                            {author !== null ? (
                                 <ul>
                                     <li>Author: {author}</li>
                                     <li>

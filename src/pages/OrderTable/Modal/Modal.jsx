@@ -36,14 +36,23 @@ export class Modal extends Component {
     }
 
     submitForm = (e) => {
+        const {
+            id,
+            firstName,
+            lastName,
+            productName,
+            productPrice,
+            productAmount
+        } = this.state.newOrder
+
         e.preventDefault()
         const formattedData = {
             "orderId": '2000005',
             "customer": {
-                "id": this.state.newOrder.id,
+                id,
                 "name": {
-                    "firstName": this.state.newOrder.firstName,
-                    "lastName": this.state.newOrder.lastName
+                    firstName,
+                    lastName
                 },
                 "phone": "0994905678",
                 "address": {
@@ -69,10 +78,10 @@ export class Modal extends Component {
                 },
                 {
                     "id": 3,
-                    "name": this.state.newOrder.productName,
-                    "price": this.state.newOrder.productPrice,
+                    "name": productName,
+                    "price": productPrice,
                     "currency": "₴",
-                    "amount": this.state.newOrder.productAmount
+                    "amount": productAmount
                 }
             ]
         }
@@ -83,7 +92,7 @@ export class Modal extends Component {
         const {isOpenModal} = this.state;
         return (
             <>
-                <ButtonView click={(e) => this.toggleModal(e)}
+                <ButtonView click={this.toggleModal}
                             text={'Add'}
                             width='130px'
                 >

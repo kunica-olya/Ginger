@@ -40,9 +40,12 @@ export default class OrderTable extends Component {
 
 
     formatResponse() {
+
         let data = [];
-        if (this.state.orders) {
-            data = this.state.orders.map(order => {
+        const {orders} = this.state;
+
+        if (orders) {
+            data = orders.map(order => {
                 let sum = order.products.reduce((acc, curr) => acc + curr.price * curr.amount, 0);
                 return {
                     id: order.customer.id,
@@ -65,11 +68,9 @@ export default class OrderTable extends Component {
     }
 
     handlerAddData = (data) => {
-        const newArray = this.state.orders;
-        newArray.push(data);
-        this.setState({
-            orders: newArray
-        })
+        this.setState(({orders}) => ({
+            orders: [...orders, data]
+        }))
     }
 
     makeElementInactive = () => {
@@ -83,12 +84,14 @@ export default class OrderTable extends Component {
 
     handlerRemoveElement = (id) => {
 
-        const filteredOrders = this.state.orders.filter(order => {
+        const {orders} = this.state;
+
+        const removedOrders = orders.filter(order => {
             return order.customer.id !== id;
         })
 
         this.setState({
-            orders: filteredOrders
+            orders: [...removedOrders]
         })
     }
 
