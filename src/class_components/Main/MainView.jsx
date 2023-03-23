@@ -31,14 +31,12 @@ export default class MainView extends Component {
 
                 <section id={styles['cards']}>
                     <div id={'menu'} className={styles.wrapper}>
-                        {
-                            data.map(card => {
-                                return <CardView
-                                    key={card.id}
-                                    card={card}
-                                />
-                            })
-                        }
+                        {data.map(card => (
+                            <CardView
+                                key={card.id}
+                                card={card}
+                            />
+                        ))}
                     </div>
                 </section>
 
