@@ -1,0 +1,46 @@
+@import './src/styles/reset/reset.module';
+@import './src/styles/vars/vars.module';
+
+
+.title {
+  color: $secondary-text-color;
+  font-size: 40px;
+  margin-bottom: 24px;
+  font-family: 'Calibri';
+}
+
+.contacts {
+  width: 280px;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:nth-child(3) {
+      margin-bottom: 48px;
+    }
+  }
+
+  .icon {
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  .contact {
+    font-size: $font-size-md-3;
+    color: $secondary-text-color;
+    font-weight: 500;
+    font-family: 'Calibri';
+  }
+
+  .icon-map {
+    margin-right: 8px;
+  }
+}
+
