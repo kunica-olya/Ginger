@@ -12,11 +12,11 @@ const Header = () => {
                     <div className={styles.block}></div>
                     <ul>
                         <li><a href='#menu'>Menu</a></li>
-                        <li><a href='#'>Gallery</a></li>
-                        <li><a href='#'>Contacts</a></li>
+                        <li><a href='#gallery'>Gallery</a></li>
+                        <li><a href='#contacts'>Contacts</a></li>
                     </ul>
                     <div className={styles.contacts}>
-                        <a className={styles.location}>
+                        <a className={styles.location} href='#сontacts'>
                             Kyiv, st. Shevchenko, 24
                         </a>
                         <a className={styles.phone} href="tel:066-05-10-749">066 05 10 749</a>

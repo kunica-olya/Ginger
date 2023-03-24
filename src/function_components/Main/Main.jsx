@@ -9,7 +9,7 @@ import cardsData from "./../../cardsData";
         <div className={styles.container}>
             <section className={styles.jumbotron}>
                 <div className={styles.subtitle}>
-                    <a className={styles.logo} href='#'>
+                    <a className={styles.logo} href='/'>
                         <img src={Logo} alt="logo"/>
                     </a>
                     <p className={styles.description}>Try and choose your flavor of delicate zephyr on

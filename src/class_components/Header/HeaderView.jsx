@@ -1,6 +1,6 @@
 import {Component} from 'react';
 import styles from './Header.module.scss';
-import {Link} from "react-router-dom";
+import {HashLink as Link} from 'react-router-hash-link';
 
 export default class HeaderView extends Component {
 
@@ -20,16 +20,20 @@ export default class HeaderView extends Component {
                             <li>
                                 <Link to="/#menu">Menu</Link>
                             </li>
-                            {/*<li><a href='#menu'>Menu</a></li>*/}
-                            <li><a href='#gallery'>Gallery</a></li>
-                            <li><a href='#contacts'>Contacts</a></li>
                             <li>
-                                <Link to="/orders">Orders</Link>
+                                <Link to="/#gallery">Gallery</Link>
+                            </li>
+                            <li>
+                                <Link to="/#contacts">Contacts</Link>
+                            </li>
+
+                            <li>
+                                <Link smooth to="/orders">Orders</Link>
                             </li>
                         </ul>
                         {address && phone !== null ? (
                             <div className={styles.contacts}>
-                                <a className={styles.location}>{address}</a>
+                                <a className={styles.location} href='#contacts'>{address}</a>
                                 <a className={styles.phone} href={`tel:${phone}`}>
                                     {phone}
                                 </a>
