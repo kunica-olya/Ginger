@@ -5,6 +5,10 @@ import ButtonView from "../Button/ButtonView";
 import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
 import CardView from "../Card/CardView";
 import {GalleryLoader} from "../Gallery/GalleryLoader";
+import {ContactsView} from "../Contacts/ContactsView";
+import {WorkScheduleView} from "../Contacts/WorkSchedule/WorkScheduleView";
+
+
 
 export default class MainView extends Component {
 
@@ -14,7 +18,7 @@ export default class MainView extends Component {
             <div className={styles.container}>
                 <section className={styles.jumbotron}>
                     <div className={styles.subtitle}>
-                        <a className={styles.logo} href='#'>
+                        <a className={styles.logo} href='/'>
                             <Logo/>
                         </a>
                         <p className={styles.description}>Try and choose your flavor of delicate zephyr on
@@ -44,6 +48,11 @@ export default class MainView extends Component {
                     <div id='gallery'>
                         <GalleryLoader/>
                     </div>
+                </section>
+
+                <section id='contacts'>
+                    <ContactsView/>
+                    <WorkScheduleView/>
                 </section>
             </div>
         )
