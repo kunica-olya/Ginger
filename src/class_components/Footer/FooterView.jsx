@@ -21,15 +21,15 @@ export default class FooterView extends Component {
             <footer className={styles.footer}>
                 <div className={styles.container}>
                     <div className={styles['footer-container']}>
-                        <a className={styles.logo} href="#">
+                        <a className={styles.logo} href='/'>
                             <Logo/>
                         </a>
                         <div className={styles['footer-info']}>
                             <nav>
                                 <ul>
                                     <li><a href="#menu">Menu</a></li>
-                                    <li><a href='#'>Gallery</a></li>
-                                    <li><a href="#">About us</a></li>
+                                    <li><a href='#gallery'>Gallery</a></li>
+                                    <li><a href="#about-us">About us</a></li>
                                 </ul>
                             </nav>
                             <div className={styles.copyright}>All rights reserved © 2022. Ginger konditori</div>

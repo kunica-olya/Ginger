@@ -13,7 +13,6 @@
     width: 872px;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1;
     top: -55px;
     left: 0;
   }
@@ -31,6 +30,7 @@
       top: 0;
       width: 745px;
       z-index: 1;
+      pointer-events: none;
     }
 
     .repeat-background {
