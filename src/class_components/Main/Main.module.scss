@@ -87,6 +87,22 @@
     margin-bottom: 120px;
   }
 
+
+  section#contacts {
+    margin-bottom: 100px;
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .block {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
 }
 
 
