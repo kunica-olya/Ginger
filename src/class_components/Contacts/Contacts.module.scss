@@ -11,6 +11,8 @@
 
 .contacts {
   width: 280px;
+  display: flex;
+  flex-direction: column;
 
   .row {
     display: flex;

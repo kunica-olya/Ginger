@@ -7,7 +7,7 @@ import CardView from "../Card/CardView";
 import {GalleryLoader} from "../Gallery/GalleryLoader";
 import {ContactsView} from "../Contacts/ContactsView";
 import {WorkScheduleView} from "../Contacts/WorkSchedule/WorkScheduleView";
-
+import {MapView} from "../Contacts/Map/MapView";
 
 
 export default class MainView extends Component {
@@ -50,9 +50,14 @@ export default class MainView extends Component {
                     </div>
                 </section>
 
-                <section id='contacts'>
-                    <ContactsView/>
-                    <WorkScheduleView/>
+                <section id={styles['contacts']}>
+                    <div className={styles.info}>
+                        <div className={styles.block}>
+                            <ContactsView/>
+                            <WorkScheduleView/>
+                        </div>
+                        <MapView/>
+                    </div>
                 </section>
             </div>
         )

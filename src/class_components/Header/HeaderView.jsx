@@ -28,7 +28,7 @@ export default class HeaderView extends Component {
                             </li>
 
                             <li>
-                                <Link smooth to="/orders">Orders</Link>
+                                <Link to="/orders">Orders</Link>
                             </li>
                         </ul>
                         {address && phone !== null ? (

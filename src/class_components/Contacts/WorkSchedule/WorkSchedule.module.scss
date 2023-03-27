@@ -5,6 +5,8 @@
   color: $secondary-text-color;
   margin-bottom: 130px;
   margin-top: 65px;
+  display: flex;
+  flex-direction: column;
 
   .title {
     font-size: $font-size-lg;
