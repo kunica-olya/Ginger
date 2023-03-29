@@ -4,7 +4,6 @@ import React from "react";
 
 export default class OrderTable extends Component {
 
-
     constructor(props) {
         super(props)
         this.state = {
@@ -12,7 +11,9 @@ export default class OrderTable extends Component {
             dataIsLoaded: false,
             isOpen: false,
             activeRow: null,
-            hotKeys: []
+            hotKeys: [],
+            directionSort: null,
+            originalOrders: []
         }
         this.tableRef = React.createRef();
     }
@@ -23,8 +24,9 @@ export default class OrderTable extends Component {
             .then((data) => {
                 this.setState({
                     orders: data,
-                    dataIsLoaded: true
-                });
+                    dataIsLoaded: true,
+                    originalOrders: data
+                })
             })
             .catch(error => console.error('Error fetching orders_json', error))
         document.addEventListener('keydown', this.handlerKeyDown);
@@ -143,6 +145,69 @@ export default class OrderTable extends Component {
     }
 
 
+    handlerSort = () => {
+
+        const {orders, originalOrders, directionSort} = this.state;
+
+        const originalCopy = [...originalOrders];
+
+        if (directionSort === 'asc') {
+            orders.sort((a, b) => {
+                const fullNameA = `${a.customer.name.firstName}${a.customer.name.lastName}`
+                const fullNameB = `${b.customer.name.firstName}${b.customer.name.lastName}`
+
+                return fullNameA.toLowerCase().localeCompare(fullNameB.toLowerCase());
+            })
+            this.setState({
+                orders: orders
+            })
+        }
+
+        if (directionSort === 'desc') {
+            orders.sort((a, b) => {
+                const fullNameA = `${a.customer.name.firstName}${a.customer.name.lastName}`
+                const fullNameB = `${b.customer.name.firstName}${b.customer.name.lastName}`
+
+                return fullNameA.toLowerCase().localeCompare(fullNameB.toLowerCase());
+            })
+                .reverse()
+
+            this.setState({
+                orders: orders
+            })
+        }
+
+        if (directionSort === null) {
+            console.log('sort null')
+            this.setState({
+                orders: originalCopy,
+            })
+        }
+    }
+
+
+    handlerToggleSortDirection = () => {
+
+        const {directionSort} = this.state;
+        let newDirectionSort;
+
+
+        if (directionSort === 'asc') {
+            newDirectionSort = 'desc';
+        } else if (directionSort === 'desc') {
+            newDirectionSort = null;
+        } else {
+            newDirectionSort = 'asc';
+        }
+
+        this.setState({
+            directionSort: newDirectionSort
+        })
+
+        this.handlerSort()
+    }
+
+
     render() {
 
         const data = this.formatResponse();
@@ -160,6 +225,7 @@ export default class OrderTable extends Component {
                 handlerImageUnloader={this.handlerImageUnloader}
                 tableRef={this.tableRef}
                 handlerKeyDown={this.handlerKeyDown}
+                handlerToggleSortDirection={this.handlerToggleSortDirection}
             >
             </OrderTableView>
         )

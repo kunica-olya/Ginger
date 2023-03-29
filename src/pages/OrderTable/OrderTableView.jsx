@@ -17,7 +17,8 @@ export class OrderTableView extends Component {
             handlerImageUnloader,
             handlerRemoveElement,
             handlerKeyDown,
-            tableRef
+            tableRef,
+            handlerToggleSortDirection
         } = this.props;
 
         const image = 'invalid path';
@@ -34,7 +35,9 @@ export class OrderTableView extends Component {
                 >
                     <div className={styles.thead}>
                         <div>ID</div>
-                        <div>Customer</div>
+                        <div className={styles.sort}
+                             onClick={handlerToggleSortDirection}>Customer
+                        </div>
                     </div>
                     <div className={styles.tbody}>
                         <div>
