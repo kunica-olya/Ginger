@@ -28,7 +28,11 @@ export default class CardView extends Component {
                         <div className={styles.weight}>{weight}</div>
                     </div>
                 </div>
-                <ButtonView text={'Buy'}>
+                <ButtonView
+                    text={'Buy'}
+                    variant={'secondary'}
+                >
+
                     <IconBag/>
                 </ButtonView>
             </div>
