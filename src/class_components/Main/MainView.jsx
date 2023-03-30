@@ -23,7 +23,10 @@ export default class MainView extends Component {
                         </a>
                         <p className={styles.description}>Try and choose your flavor of delicate zephyr on
                             Instagram </p>
-                        <ButtonView text={'Subscribe'}>
+                        <ButtonView
+                            text={'Subscribe'}
+                            variant={'primary'}
+                        >
                             <IconInstagram/>
                         </ButtonView>
                     </div>

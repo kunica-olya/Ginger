@@ -34,7 +34,10 @@ export class GalleryView extends Component {
                         <h2 className={styles.title}>Gallery</h2>
                         <p className={styles.description}>You inspire us to create airy, tender zephyrs. Check out our
                             desserts on Instagram</p>
-                        <ButtonView text={'Subscribe'}>
+                        <ButtonView
+                            text={'Subscribe'}
+                            variant={'primary'}
+                        >
                             <IconInstagram/>
                         </ButtonView>
                     </div>

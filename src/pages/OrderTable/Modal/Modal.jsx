@@ -94,7 +94,7 @@ export class Modal extends Component {
             <>
                 <ButtonView click={this.toggleModal}
                             text={'Add'}
-                            width='130px'
+                            variant="add"
                 >
                     <FontAwesomeIcon icon={faPlus}/>
                 </ButtonView>

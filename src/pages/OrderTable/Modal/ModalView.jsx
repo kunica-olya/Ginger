@@ -2,7 +2,6 @@ import {Component} from "react";
 import styles from './ModalView.module.scss'
 import ButtonView from "../../../class_components/Button/ButtonView";
 
-
 export class ModalView extends Component {
 
     render() {
@@ -48,12 +47,11 @@ export class ModalView extends Component {
                     <div className={styles.buttons}>
                         <ButtonView text={'Cancel'}
                                     click={close}
-                                    width='230px'
-                                    marginRight='30px'
+                                    variant={'cancel'}
                         />
                         <ButtonView text={'Save'}
                                     click={formReady}
-                                    width='250px'
+                                    variant={'save'}
                         />
                     </div>
                 </form>
