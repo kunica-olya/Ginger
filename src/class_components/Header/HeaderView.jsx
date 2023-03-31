@@ -30,6 +30,10 @@ export default class HeaderView extends Component {
                             <li>
                                 <Link to="/orders">Orders</Link>
                             </li>
+
+                            <li>
+                                <Link to="/todo">Todo</Link>
+                            </li>
                         </ul>
                         {address && phone !== null ? (
                             <div className={styles.contacts}>
