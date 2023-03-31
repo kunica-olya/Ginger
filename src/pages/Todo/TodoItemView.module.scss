@@ -1,0 +1,14 @@
+.todo-items {
+  display: flex;
+  flex-direction: column;
+
+  .todo-item {
+    width: 300px;
+    margin-bottom: 20px;
+    padding: 12px 10px;
+    border-radius: 25px;
+    background-color: mediumpurple;
+  }
+
+
+}
