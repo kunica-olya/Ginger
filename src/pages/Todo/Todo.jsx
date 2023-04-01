@@ -15,7 +15,6 @@ export class Todo extends Component {
 
 
     handlerOnChange = (e) => {
-
         this.setState({
             userValue: e.target.value
         })
@@ -24,6 +23,10 @@ export class Todo extends Component {
     handlerAddTask = () => {
 
         const {userValue} = this.state;
+
+        if (userValue.trim() === '') {
+            return;
+        }
 
         this.setState(({todos}) => ({
             todos: [...todos, userValue],
