@@ -1,0 +1,27 @@
+section#todo {
+  margin: 375px 0px;
+
+
+  .todo-container {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    margin: 0 auto;
+    align-items: center;
+
+    .todo-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 45px;
+
+      .input {
+        margin-right: 35px;
+        width: 300px;
+        border-radius: 25px;
+        padding: 10px 10px;
+        background-color: skyblue;
+      }
+    }
+  }
+}
