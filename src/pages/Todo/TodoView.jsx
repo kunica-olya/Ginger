@@ -34,10 +34,7 @@ export class TodoView extends Component {
                     </div>
 
                     <div>
-                        {isCreatedTodo && <TodoItemView todos={todos}
-
-                        />
-                        }
+                        {isCreatedTodo && <TodoItemView todos={todos}/>}
                     </div>
                 </div>
             </section>

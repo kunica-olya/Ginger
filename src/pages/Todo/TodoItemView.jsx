@@ -16,6 +16,19 @@ export class TodoItemView extends Component {
     }
 
 
+    componentWillUnmount() {
+        let items = document.querySelectorAll(`.${styles['todo-items']}`)
+        items.forEach((item) => {
+            item.removeEventListener('dragstart', this.handlerDragStart);
+            item.removeEventListener('dragenter', this.handlerDragEnter);
+            item.removeEventListener('dragleave', this.handlerDragLeave);
+            item.removeEventListener('dragover', this.handlerDragOver);
+            item.removeEventListener('dragend', this.handlerDragEnd);
+            item.removeEventListener('drop', this.handlerDrop);
+        })
+    }
+
+
     handlerDragStart = (e) => {
         e.target.style.opacity = '0.4';
         this.dragElem = e.target;
