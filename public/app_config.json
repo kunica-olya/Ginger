@@ -5,7 +5,5 @@
   "github_link": "https://github.com/kunica-olya",
   "design_link": "https://www.figma.com/file/KiqkPZwteg1Blj55j3KWWz/Ginger-konditori?node-id=1%3A545&t=JZUUf68HXQYY18Mg-0",
   "github_label": "Github",
-  "design_label": "Original design",
-  "button-icon": "./src/assets/svg/basket-shopping.svg",
-  "button_label": "Buy"
+  "design_label": "Original design"
 }
