@@ -15,7 +15,8 @@ export class TodoView extends Component {
             userValue,
             handlerAddTask,
             todos,
-            handlerKeyDown
+            handlerKeyDown,
+            refs,
         } = this.props
 
         return (
@@ -35,7 +36,7 @@ export class TodoView extends Component {
                         </ButtonView>
                     </div>
                     <div>
-                        {isCreatedTodo && <TodoItemView todos={todos}/>}
+                        {isCreatedTodo && <TodoItemView refs={refs} todos={todos}/>}
                     </div>
                 </div>
             </section>
