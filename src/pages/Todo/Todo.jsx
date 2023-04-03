@@ -17,6 +17,10 @@ export class Todo extends Component {
         document.addEventListener('keydown', this.handlerKeyDown)
     }
 
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handlerKeyDown)
+    }
+
     handlerKeyDown = (e) => {
         if (e.keyCode === 13) {
             this.handlerAddTask();
