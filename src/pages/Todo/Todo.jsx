@@ -35,6 +35,7 @@ export class Todo extends Component {
     }
 
     componentWillUnmount() {
+        document.addEventListener('keydown', this.handlerKeyDown);
         const {refs} = this.state;
         refs.forEach((item) => {
             const draggableItem = item.current;
@@ -91,12 +92,10 @@ export class Todo extends Component {
     }
 
     handlerDragEnd = (e) => {
-        console.log('dragEnd');
         e.target.style.opacity = '1';
     }
 
     handlerDragEnter = (e) => {
-        console.log('handlerDragEnter');
         e.target.classList.add('over');
     }
 
