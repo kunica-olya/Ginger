@@ -13,6 +13,16 @@ export class Todo extends Component {
         }
     }
 
+    componentDidMount() {
+        document.addEventListener('keydown', this.handlerKeyDown)
+    }
+
+    handlerKeyDown = (e) => {
+        if (e.keyCode === 13) {
+            this.handlerAddTask();
+        }
+    }
+
 
     handlerOnChange = (e) => {
         this.setState({
@@ -36,7 +46,6 @@ export class Todo extends Component {
 
     }
 
-
     render() {
         const {isCreatedTodo, userValue, todos} = this.state;
         return (
@@ -46,6 +55,7 @@ export class Todo extends Component {
                           isCreatedTodo={isCreatedTodo}
                           userValue={userValue}
                           handlerAddTask={this.handlerAddTask}
+                          handlerKeyDown={this.handlerKeyDown}
                 />
             </>
         )

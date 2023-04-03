@@ -14,7 +14,8 @@ export class TodoView extends Component {
             isCreatedTodo,
             userValue,
             handlerAddTask,
-            todos
+            todos,
+            handlerKeyDown
         } = this.props
 
         return (
@@ -23,16 +24,16 @@ export class TodoView extends Component {
                     <div className={styles['todo-row']}>
                         <input className={styles['input']} type="text" placeholder={'New task'}
                                onChange={changeInput}
+                               onKeyDown={handlerKeyDown}
                                value={userValue}
                         />
                         <ButtonView click={handlerAddTask}
-                                    text={'Add'}
+                                    text={'Create'}
                                     variant="add"
                         >
                             <FontAwesomeIcon icon={faPlus}/>
                         </ButtonView>
                     </div>
-
                     <div>
                         {isCreatedTodo && <TodoItemView todos={todos}/>}
                     </div>
