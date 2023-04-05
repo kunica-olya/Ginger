@@ -8,6 +8,7 @@ import {GalleryLoader} from "../Gallery/GalleryLoader";
 import {ContactsView} from "../Contacts/ContactsView";
 import {WorkScheduleView} from "../Contacts/WorkSchedule/WorkScheduleView";
 import {MapView} from "../Contacts/Map/MapView";
+import {BUTTON} from "../../constants/constants";
 
 
 export default class MainView extends Component {
@@ -25,7 +26,7 @@ export default class MainView extends Component {
                             Instagram </p>
                         <ButtonView
                             text={'Subscribe'}
-                            variant={'primary'}
+                            variant={BUTTON.PRIMARY}
                         >
                             <IconInstagram/>
                         </ButtonView>

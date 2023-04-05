@@ -66,7 +66,7 @@ export class OrderTableView extends Component {
                                                 <div>Price</div>
                                             </div>
                                             <div className={styles.tbody}>
-                                                {user['products'].map((product) => (
+                                                {user.products.map((product) => (
                                                     <div key={product.id} className={styles['inner-row']}>
                                                         <div className={styles.cell}>2023-02-14</div>
                                                         <div className={styles.cell}>{product.name}</div>

@@ -3,6 +3,7 @@ import {ModalView} from "./ModalView";
 import ButtonView from "../../../class_components/Button/ButtonView";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
+import {BUTTON} from "../../../constants/constants";
 
 export class Modal extends Component {
     constructor(props) {
@@ -94,7 +95,7 @@ export class Modal extends Component {
             <>
                 <ButtonView click={this.toggleModal}
                             text={'Add'}
-                            variant="add"
+                            variant={BUTTON.ADD}
                 >
                     <FontAwesomeIcon icon={faPlus}/>
                 </ButtonView>
