@@ -2,6 +2,7 @@ import {Component} from 'react';
 import styles from "./Card.module.scss";
 import ButtonView from "../Button/ButtonView";
 import {ReactComponent as IconBag} from "../../assets/svg/bag.svg";
+import {BUTTON} from "../../constants/constants";
 
 export default class CardView extends Component {
 
@@ -30,7 +31,7 @@ export default class CardView extends Component {
                 </div>
                 <ButtonView
                     text={'Buy'}
-                    variant={'secondary'}
+                    variant={BUTTON.SECONDARY}
                 >
 
                     <IconBag/>

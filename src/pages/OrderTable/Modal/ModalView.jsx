@@ -1,6 +1,7 @@
 import {Component} from "react";
 import styles from './ModalView.module.scss'
 import ButtonView from "../../../class_components/Button/ButtonView";
+import {BUTTON} from "../../../constants/constants";
 
 export class ModalView extends Component {
 
@@ -47,11 +48,12 @@ export class ModalView extends Component {
                     <div className={styles.buttons}>
                         <ButtonView text={'Cancel'}
                                     click={close}
-                                    variant={'cancel'}
+                                    variant={BUTTON.CANCEL}
+                                    className={'different'}
                         />
                         <ButtonView text={'Save'}
                                     click={formReady}
-                                    variant={'save'}
+                                    variant={BUTTON.SAVE}
                         />
                     </div>
                 </form>

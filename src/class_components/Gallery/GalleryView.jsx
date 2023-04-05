@@ -6,6 +6,7 @@ import image3 from '../../assets/img/gallery/gallery-3.jpg';
 import image4 from '../../assets/img/gallery/gallery-4.jpg';
 import ButtonView from '../../class_components/Button/ButtonView';
 import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
+import {BUTTON} from "../../constants/constants";
 
 export class GalleryView extends Component {
 
@@ -36,7 +37,7 @@ export class GalleryView extends Component {
                             desserts on Instagram</p>
                         <ButtonView
                             text={'Subscribe'}
-                            variant={'primary'}
+                            variant={BUTTON.PRIMARY}
                         >
                             <IconInstagram/>
                         </ButtonView>

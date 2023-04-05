@@ -10,7 +10,6 @@
   border-radius: 32px;
   cursor: pointer;
 
-
   &:hover {
     background: $dark-hover-color;
   }
@@ -39,10 +38,15 @@
 }
 
 .cancel {
-  width: 230px;
-  margin-right: 30px;
+  width: 220px;
 }
 
 .save {
-  width: 240px;
+  width: 225px;
 }
+
+.different {
+  margin-right: 30px;
+  background-color: $secondary-text-color;
+}
+
