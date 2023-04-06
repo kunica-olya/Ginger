@@ -13,7 +13,8 @@ export default class ButtonView extends Component {
         } = this.props;
 
         return (
-            <button onClick={click} className={`${styles.button} ${styles[variant]} ${styles[className]}`}>
+            <button onClick={click} className={`${styles.button} ${styles[variant]}
+            ${className ? styles[className] : ''}`}>
                 {children}
                 <span className={styles['button-text']}>{text}</span>
             </button>
