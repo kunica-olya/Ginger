@@ -1,8 +1,9 @@
 import {Component} from "react";
 import {OrderTableView} from "./OrderTableView";
+import {withLayout} from "../../class_components/HOC/withLayout";
 import React from "react";
 
-export default class OrderTable extends Component {
+class OrderTable extends Component {
 
     constructor(props) {
         super(props)
@@ -178,7 +179,6 @@ export default class OrderTable extends Component {
         }
 
         if (directionSort === null) {
-            console.log('sort null')
             this.setState({
                 orders: originalCopy,
             })
@@ -231,4 +231,6 @@ export default class OrderTable extends Component {
         )
     }
 }
+
+export default withLayout(OrderTable);
 

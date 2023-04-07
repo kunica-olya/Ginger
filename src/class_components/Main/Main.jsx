@@ -1,8 +1,8 @@
 import {Component} from "react";
 import MainView from "./MainView";
+import {withLayout} from "../HOC/withLayout";
 
-
-export default class Main extends Component {
+class Main extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -32,3 +32,5 @@ export default class Main extends Component {
         )
     }
 }
+
+export default withLayout(Main);

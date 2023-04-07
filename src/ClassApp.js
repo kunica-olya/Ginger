@@ -1,9 +1,8 @@
-import {Component} from 'react';
-import Main from './class_components/Main/Main';
+import {Component} from "react";
 import {Route, Routes} from "react-router-dom";
+import Main from "./class_components/Main/Main";
 import OrderTable from "./pages/OrderTable/OrderTable";
-import {Todo} from "./pages/Todo/Todo";
-import withLayout from "./class_components/HOC/withLayout";
+import Todo from "./pages/Todo/Todo";
 
 export default class App extends Component {
     constructor(props) {
@@ -27,17 +26,14 @@ export default class App extends Component {
     render() {
         const {config} = this.state;
 
-        const WrappedMain = withLayout(Main);
-        const WrappedOrderTable = withLayout(OrderTable);
-        const WrappedTodo = withLayout(Todo);
 
         return (
             <>
                 <Routes>
                     <Route>
-                        <Route path="/" element={<WrappedMain config={config}/>}/>
-                        <Route path="/orders" element={<WrappedOrderTable config={config}/>}/>
-                        <Route path="/todo" element={<WrappedTodo config={config}/>}/>
+                        <Route path="/" element={<Main config={config}/>}/>
+                        <Route path="/orders" element={<OrderTable config={config}/>}/>
+                        <Route path="/todo" element={<Todo config={config}/>}/>
                     </Route>
                 </Routes>
             </>
