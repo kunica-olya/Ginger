@@ -28,12 +28,12 @@ export class Modal extends Component {
     }
 
     handlerOnChange = (e) => {
-        this.setState({
+        this.setState(({newOrder}) => ({
             newOrder: {
-                ...this.state.newOrder,
+                ...newOrder,
                 [e.target.id]: e.target.value
             }
-        })
+        }))
     }
 
     submitForm = (e) => {
