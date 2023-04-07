@@ -3,7 +3,8 @@ import styles from "./TodoView.module.scss";
 import ButtonView from "../../class_components/Button/ButtonView";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {TodoItemView} from "./TodoItemView";
+import {TodoItem} from "./TodoItem";
+import {BUTTON} from "../../constants/constants";
 
 
 export class TodoView extends Component {
@@ -15,8 +16,6 @@ export class TodoView extends Component {
             userValue,
             handlerAddTask,
             todos,
-            handlerKeyDown,
-            refs,
         } = this.props
 
         return (
@@ -25,19 +24,22 @@ export class TodoView extends Component {
                     <div className={styles['todo-row']}>
                         <input className={styles['input']} type="text" placeholder={'New task'}
                                onChange={changeInput}
-                               onKeyDown={handlerKeyDown}
                                value={userValue}
                         />
                         <ButtonView click={handlerAddTask}
                                     text={'Create'}
-                                    variant="add"
+                                    variant={BUTTON.ADD}
                         >
                             <FontAwesomeIcon icon={faPlus}/>
                         </ButtonView>
                     </div>
-                    <div>
-                        {isCreatedTodo && <TodoItemView refs={refs} todos={todos}/>}
-                    </div>
+                    {todos.map((todo, index) =>
+                        <TodoItem isCreatedTodo={isCreatedTodo}
+                                  todo={todo}
+                                  key={index}
+                        />
+                    )}
+
                 </div>
             </section>
         )
