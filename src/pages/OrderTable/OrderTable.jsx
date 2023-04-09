@@ -12,7 +12,6 @@ class OrderTable extends Component {
             dataIsLoaded: false,
             isOpen: false,
             activeRow: null,
-            hotKeys: [],
             directionSort: null,
             originalOrders: []
         }
@@ -31,14 +30,12 @@ class OrderTable extends Component {
             })
             .catch(error => console.error('Error fetching orders_json', error))
         document.addEventListener('keydown', this.handlerKeyDown);
-        document.addEventListener('keyup', this.handlerKeyUp);
         this.tableRef.current.focus();
     }
 
 
     componentWillUnmount() {
         document.removeEventListener('keydown', this.handlerKeyDown);
-        document.removeEventListener('keyup', this.handlerKeyUp);
     }
 
 
@@ -101,43 +98,22 @@ class OrderTable extends Component {
 
     handlerKeyDown = (e) => {
 
-        const keys = this.state.hotKeys;
-
-        if (!keys.includes(e.key)) {
-            keys.push(e.key)
-        }
-    }
-
-
-    handlerKeyUp = () => {
-        const pressedKeys = this.state.hotKeys;
-
-        this.setState({
-            hotKeys: []
-        })
-
-        if (pressedKeys.includes('Control') && pressedKeys.includes('c')) {
+        if (e.ctrlKey && e.key === 'c') {
             this.setState({
                 isOpen: false,
                 activeRow: 4
             })
-        }
-
-        if (pressedKeys.includes('Control') && pressedKeys.includes('Shift')) {
+        } else if (e.ctrlKey && e.shiftKey) {
             this.setState({
                 isOpen: false,
                 activeRow: 3
             })
-        }
-
-        if (pressedKeys.includes('Alt') && pressedKeys.includes('c')) {
+        } else if (e.altKey && e.key === 'c') {
             this.setState({
                 isOpen: false,
                 activeRow: 2
             })
-        }
-
-        if (pressedKeys.includes('Control') && pressedKeys.includes('Shift') && pressedKeys.includes('S')) {
+        } else if (e.altKey && e.key === 'v') {
             this.setState({
                 isOpen: false,
                 activeRow: 1
