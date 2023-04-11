@@ -17,7 +17,7 @@ class Todo extends Component {
             userValue: '',
             isCreatedTodo: false,
             theme: THEMES.LIGHT,
-            label: LABEL.PRIMARY,
+            label: LABEL.SECONDARY,
             checked: false
         }
     }
@@ -71,7 +71,7 @@ class Todo extends Component {
         this.setState(({theme, checked}) => ({
             theme: theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT,
             checked: !checked,
-            label: theme === THEMES.DARK ? LABEL.PRIMARY : LABEL.SECONDARY
+            label: theme === THEMES.DARK ? LABEL.SECONDARY : LABEL.PRIMARY
         }))
     }
 
