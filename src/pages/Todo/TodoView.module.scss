@@ -25,5 +25,17 @@ section#todo {
         background-color: skyblue;
       }
     }
+
+    .toggle-switch {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      label {
+        margin-right: 10px;
+        font-size: 17px;
+        font-weight: 700;
+      }
+    }
   }
 }

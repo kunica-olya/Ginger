@@ -20,7 +20,8 @@ class TodoView extends Component {
             todos,
             theme,
             checked,
-            toggleTheme
+            toggleTheme,
+            label
         } = this.props
 
         return (
@@ -44,7 +45,10 @@ class TodoView extends Component {
                                   key={index}
                         />
                     )}
-                    <Switch checked={checked} onChange={toggleTheme}/>
+                    <div className={styles['toggle-switch']}>
+                        <label style={{color: label}} htmlFor="switch">Light Mode</label>
+                        <Switch id='switch' checked={checked} onChange={toggleTheme}/>
+                    </div>
                 </div>
             </section>
         )
