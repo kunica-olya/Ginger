@@ -1,6 +1,11 @@
 import {Component} from "react";
-import {TodoView} from "./TodoView";
+import TodoView from "./TodoView";
 import {withLayout} from "../../class_components/HOC/withLayout";
+import {THEMES} from "../../constants/constants";
+import React from "react";
+
+
+export const ThemeContext = React.createContext();
 
 class Todo extends Component {
 
@@ -11,6 +16,8 @@ class Todo extends Component {
             todos: [],
             userValue: '',
             isCreatedTodo: false,
+            theme: THEMES.LIGHT,
+            checked: false
         }
     }
 
@@ -53,22 +60,34 @@ class Todo extends Component {
 
     }
 
-    handlerChangePosition = () => {
+    // handlerChangePosition = () => {
+    //
+    // }
 
+
+    toggleTheme = () => {
+
+        this.setState(({theme, checked}) => ({
+            theme: theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT,
+            checked: !checked
+        }))
     }
 
 
     render() {
 
-        const {isCreatedTodo, userValue, todos} = this.state;
+        const {isCreatedTodo, userValue, todos, theme, checked} = this.state;
+
         return (
             <>
-                <TodoView todos={todos}
-                          changeInput={this.handlerOnChange}
-                          isCreatedTodo={isCreatedTodo}
-                          userValue={userValue}
-                          handlerAddTask={this.handlerAddTask}
-                />
+                <ThemeContext.Provider value={{theme, checked, toggleTheme: this.toggleTheme}}>
+                    <TodoView todos={todos}
+                              changeInput={this.handlerOnChange}
+                              isCreatedTodo={isCreatedTodo}
+                              userValue={userValue}
+                              handlerAddTask={this.handlerAddTask}
+                    />
+                </ThemeContext.Provider>
             </>
         )
     }
