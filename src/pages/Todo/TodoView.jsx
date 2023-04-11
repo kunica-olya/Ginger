@@ -5,9 +5,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {TodoItem} from "./TodoItem";
 import {BUTTON} from "../../constants/constants";
+import {withTheme} from "../../class_components/HOC/withTheme";
+import Switch from 'react-switch';
 
 
-export class TodoView extends Component {
+class TodoView extends Component {
     render() {
 
         const {
@@ -16,11 +18,14 @@ export class TodoView extends Component {
             userValue,
             handlerAddTask,
             todos,
+            theme,
+            checked,
+            toggleTheme
         } = this.props
 
         return (
             <section id={styles['todo']}>
-                <div className={styles['todo-container']}>
+                <div className={styles['todo-container']} style={{backgroundColor: theme}}>
                     <div className={styles['todo-row']}>
                         <input className={styles['input']} type="text" placeholder={'New task'}
                                onChange={changeInput}
@@ -39,9 +44,11 @@ export class TodoView extends Component {
                                   key={index}
                         />
                     )}
-
+                    <Switch checked={checked} onChange={toggleTheme}/>
                 </div>
             </section>
         )
     }
 }
+
+export default withTheme(TodoView);
