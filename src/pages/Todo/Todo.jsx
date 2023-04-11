@@ -1,7 +1,7 @@
 import {Component} from "react";
 import TodoView from "./TodoView";
 import {withLayout} from "../../class_components/HOC/withLayout";
-import {THEMES} from "../../constants/constants";
+import {THEMES, LABEL} from "../../constants/constants";
 import React from "react";
 
 
@@ -17,6 +17,7 @@ class Todo extends Component {
             userValue: '',
             isCreatedTodo: false,
             theme: THEMES.LIGHT,
+            label: LABEL.PRIMARY,
             checked: false
         }
     }
@@ -69,18 +70,19 @@ class Todo extends Component {
 
         this.setState(({theme, checked}) => ({
             theme: theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT,
-            checked: !checked
+            checked: !checked,
+            label: theme === THEMES.DARK ? LABEL.PRIMARY : LABEL.SECONDARY
         }))
     }
 
 
     render() {
 
-        const {isCreatedTodo, userValue, todos, theme, checked} = this.state;
+        const {isCreatedTodo, userValue, todos, theme, checked, label} = this.state;
 
         return (
             <>
-                <ThemeContext.Provider value={{theme, checked, toggleTheme: this.toggleTheme}}>
+                <ThemeContext.Provider value={{theme, checked, label, toggleTheme: this.toggleTheme}}>
                     <TodoView todos={todos}
                               changeInput={this.handlerOnChange}
                               isCreatedTodo={isCreatedTodo}

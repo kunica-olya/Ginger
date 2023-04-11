@@ -10,3 +10,8 @@ export const THEMES = {
     LIGHT: '#296a99',
     DARK: '#001a54'
 }
+
+export const LABEL = {
+    PRIMARY: '#fff',
+    SECONDARY: '#000'
+}

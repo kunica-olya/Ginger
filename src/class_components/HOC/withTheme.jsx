@@ -6,8 +6,9 @@ export function withTheme(WrappedComponent) {
         render() {
             return (
                 <ThemeContext.Consumer>
-                    {({theme, toggleTheme, checked}) => (
-                        <WrappedComponent theme={theme} checked={checked} toggleTheme={toggleTheme} {...this.props} />
+                    {({theme, toggleTheme, checked, label}) => (
+                        <WrappedComponent theme={theme} checked={checked} label={label}
+                                          toggleTheme={toggleTheme} {...this.props} />
                     )}
                 </ThemeContext.Consumer>
             )
