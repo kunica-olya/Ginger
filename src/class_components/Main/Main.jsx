@@ -1,6 +1,6 @@
 import {Component} from "react";
 import MainView from "./MainView";
-import {withLayout} from "../HOC/withLayout";
+import withLayout from "../HOC/withLayout";
 
 class Main extends Component {
     constructor(props) {

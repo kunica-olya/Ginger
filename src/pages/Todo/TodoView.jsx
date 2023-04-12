@@ -3,10 +3,10 @@ import styles from "./TodoView.module.scss";
 import ButtonView from "../../class_components/Button/ButtonView";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {TodoItem} from "./TodoItem";
 import {BUTTON} from "../../constants/constants";
 import {withTheme} from "../../class_components/HOC/withTheme";
 import Switch from 'react-switch';
+import {TodoItemView} from "./TodoItemView";
 
 
 class TodoView extends Component {
@@ -40,7 +40,7 @@ class TodoView extends Component {
                         </ButtonView>
                     </div>
                     {todos.map((todo, index) =>
-                        <TodoItem isCreatedTodo={isCreatedTodo}
+                        <TodoItemView isCreatedTodo={isCreatedTodo}
                                   todo={todo}
                                   key={index}
                         />

@@ -1,6 +1,6 @@
 import {Component} from "react";
 import TodoView from "./TodoView";
-import {withLayout} from "../../class_components/HOC/withLayout";
+import withLayout from "../../class_components/HOC/withLayout";
 import {THEMES, LABEL} from "../../constants/constants";
 import React from "react";
 
@@ -60,10 +60,6 @@ class Todo extends Component {
         }))
 
     }
-
-    // handlerChangePosition = () => {
-    //
-    // }
 
 
     toggleTheme = () => {
