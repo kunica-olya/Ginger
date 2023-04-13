@@ -15,3 +15,8 @@ export const LABEL = {
     PRIMARY: '#fff',
     SECONDARY: '#000'
 }
+
+export const SORT = {
+    ASC: 'asc',
+    DESC: 'desc'
+}

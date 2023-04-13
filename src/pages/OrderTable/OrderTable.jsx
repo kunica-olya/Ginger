@@ -2,6 +2,7 @@ import {Component} from "react";
 import {OrderTableView} from "./OrderTableView";
 import withLayout from "../../class_components/HOC/withLayout";
 import React from "react";
+import {SORT} from "../../constants/constants";
 
 class OrderTable extends Component {
 
@@ -128,7 +129,7 @@ class OrderTable extends Component {
 
         const originalCopy = [...originalOrders];
 
-        if (directionSort === 'asc') {
+        if (directionSort === SORT.ASC) {
             orders.sort((a, b) => {
                 const fullNameA = `${a.customer.name.firstName}${a.customer.name.lastName}`
                 const fullNameB = `${b.customer.name.firstName}${b.customer.name.lastName}`
@@ -140,7 +141,7 @@ class OrderTable extends Component {
             })
         }
 
-        if (directionSort === 'desc') {
+        if (directionSort === SORT.DESC) {
             orders.sort((a, b) => {
                 const fullNameA = `${a.customer.name.firstName}${a.customer.name.lastName}`
                 const fullNameB = `${b.customer.name.firstName}${b.customer.name.lastName}`
@@ -168,12 +169,12 @@ class OrderTable extends Component {
         let newDirectionSort;
 
 
-        if (directionSort === 'asc') {
-            newDirectionSort = 'desc';
-        } else if (directionSort === 'desc') {
+        if (directionSort === SORT.ASC) {
+            newDirectionSort = SORT.DESC;
+        } else if (directionSort === SORT.DESC) {
             newDirectionSort = null;
         } else {
-            newDirectionSort = 'asc';
+            newDirectionSort = SORT.ASC;
         }
 
         this.setState({
