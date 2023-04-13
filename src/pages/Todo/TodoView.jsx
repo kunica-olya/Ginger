@@ -39,12 +39,9 @@ class TodoView extends Component {
                             <FontAwesomeIcon icon={faPlus}/>
                         </ButtonView>
                     </div>
-                    {todos.map((todo, index) =>
-                        <TodoItemView isCreatedTodo={isCreatedTodo}
-                                  todo={todo}
-                                  key={index}
-                        />
-                    )}
+
+                    {isCreatedTodo && <TodoItemView todos={todos}/>}
+
                     <div className={styles['toggle-switch']}>
                         <label style={{color: label}} htmlFor="switch">Light Mode</label>
                         <Switch id='switch' checked={checked} onChange={toggleTheme}/>

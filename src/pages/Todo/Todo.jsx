@@ -77,16 +77,14 @@ class Todo extends Component {
         const {isCreatedTodo, userValue, todos, theme, checked, label} = this.state;
 
         return (
-            <>
-                <ThemeContext.Provider value={{theme, checked, label, toggleTheme: this.toggleTheme}}>
-                    <TodoView todos={todos}
-                              changeInput={this.handlerOnChange}
-                              isCreatedTodo={isCreatedTodo}
-                              userValue={userValue}
-                              handlerAddTask={this.handlerAddTask}
-                    />
-                </ThemeContext.Provider>
-            </>
+            <ThemeContext.Provider value={{theme, checked, label, toggleTheme: this.toggleTheme}}>
+                <TodoView todos={todos}
+                          changeInput={this.handlerOnChange}
+                          isCreatedTodo={isCreatedTodo}
+                          userValue={userValue}
+                          handlerAddTask={this.handlerAddTask}
+                />
+            </ThemeContext.Provider>
         )
     }
 }
