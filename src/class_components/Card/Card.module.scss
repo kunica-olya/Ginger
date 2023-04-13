@@ -1,4 +1,4 @@
-@import "./src/assets/vars/vars.module.scss";
+@import "./src/styles/vars/vars.module.scss";
 
 .card {
   display: flex;
@@ -12,6 +12,7 @@
 
   .custom-card {
     z-index: -1;
+
     &:before {
       background: url('../../assets/svg/card-border.svg');
       content: "";
