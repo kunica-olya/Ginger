@@ -129,6 +129,7 @@ class OrderTable extends Component {
 
         const originalCopy = [...originalOrders];
 
+
         if (directionSort === SORT.ASC) {
             orders.sort((a, b) => {
                 const fullNameA = `${a.customer.name.firstName}${a.customer.name.lastName}`
@@ -136,24 +137,17 @@ class OrderTable extends Component {
 
                 return fullNameA.toLowerCase().localeCompare(fullNameB.toLowerCase());
             })
-            this.setState({
-                orders: orders
-            })
         }
+
 
         if (directionSort === SORT.DESC) {
-            orders.sort((a, b) => {
-                const fullNameA = `${a.customer.name.firstName}${a.customer.name.lastName}`
-                const fullNameB = `${b.customer.name.firstName}${b.customer.name.lastName}`
-
-                return fullNameA.toLowerCase().localeCompare(fullNameB.toLowerCase());
-            })
-                .reverse()
-
-            this.setState({
-                orders: orders
-            })
+            orders.reverse()
         }
+
+        this.setState({
+            orders: orders
+        });
+
 
         if (directionSort === null) {
             this.setState({
