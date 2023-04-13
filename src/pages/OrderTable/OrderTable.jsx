@@ -169,12 +169,12 @@ class OrderTable extends Component {
         let newDirectionSort;
 
 
-        if (directionSort === 'SORT.ASC') {
+        if (directionSort === SORT.ASC) {
             newDirectionSort = SORT.DESC;
         } else if (directionSort === SORT.DESC) {
             newDirectionSort = null;
         } else {
-            newDirectionSort = SORT.DESC;
+            newDirectionSort = SORT.ASC;
         }
 
         this.setState({
