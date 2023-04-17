@@ -1,49 +1,40 @@
-import {Component} from "react";
 import {OrderTableView} from "./OrderTableView";
 import {withLayout} from "../../components/HOC/withLayout";
 import React from "react";
 import {SORT} from "../../constants/constants";
+import {useState, useEffect, useRef} from "react";
 
-class OrderTable extends Component {
+const OrderTable = () => {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            orders: [],
-            dataIsLoaded: false,
-            isOpen: false,
-            activeRow: null,
-            directionSort: null,
-            originalOrders: []
-        }
-        this.tableRef = React.createRef();
-    }
+    const [orders, setOrders] = useState([]);
+    const [dataIsLoaded, setDataIsLoaded] = useState(false);
+    const [originalOrders, setOriginalOrders] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeRow, setActiveRow] = useState(null);
+    const [directionSort, setDirectionSort] = useState(null);
 
-    componentDidMount() {
+    const tableRef = useRef(null);
+
+
+    useEffect(() => {
         fetch('/orders.json')
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    orders: data,
-                    dataIsLoaded: true,
-                    originalOrders: data
-                })
+            .then(response => response.json())
+            .then(data => {
+                setOrders(data);
+                setDataIsLoaded(true);
+                setOriginalOrders(data)
             })
             .catch(error => console.error('Error fetching orders_json', error))
-        document.addEventListener('keydown', this.handlerKeyDown);
-        this.tableRef.current.focus();
-    }
+        document.addEventListener('keydown', handlerKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handlerKeyDown);
+        }
+    }, [])
 
 
-    componentWillUnmount() {
-        document.removeEventListener('keydown', this.handlerKeyDown);
-    }
-
-
-    formatResponse() {
+    const formatResponse = () => {
 
         let data = [];
-        const {orders} = this.state;
 
         if (orders) {
             data = orders.map(order => {
@@ -61,74 +52,62 @@ class OrderTable extends Component {
     }
 
 
-    toggleTable = (id) => {
-        this.setState(({isOpen, activeRow}) => ({
-            isOpen: activeRow !== id ? true : !isOpen,
-            activeRow: id,
-        }))
+    const toggleTable = (id) => {
+        if (activeRow === id) {
+            setIsOpen(!isOpen)
+        } else {
+            setIsOpen(true)
+        }
+
+        setActiveRow(id);
     }
 
-    handlerAddData = (data) => {
-        this.setState(({orders}) => ({
-            orders: [...orders, data]
-        }))
+    const handlerAddData = (data) => {
+        setOrders([...orders, data]);
     }
 
-    makeElementInactive = () => {
-        this.toggleTable(null)
+    const makeElementInactive = () => {
+        toggleTable(null)
     }
 
-    handlerImageUnloader = () => {
+    const handlerImageUnloader = () => {
         console.log('Image is unloaded')
     }
 
 
-    handlerRemoveElement = (id) => {
-
-        const {orders} = this.state;
+    const handlerRemoveElement = (id) => {
 
         const removedOrders = orders.filter(order => {
             return order.customer.id !== id;
         })
 
-        this.setState({
-            orders: [...removedOrders]
-        })
+        setOrders([...removedOrders])
     }
 
 
-    handlerKeyDown = (e) => {
+    const handlerKeyDown = (e) => {
+
+        tableRef.current.focus();
 
         if (e.ctrlKey && e.key === 'c') {
-            this.setState({
-                isOpen: false,
-                activeRow: 4
-            })
+            setIsOpen(false);
+            setActiveRow(4);
         } else if (e.ctrlKey && e.shiftKey) {
-            this.setState({
-                isOpen: false,
-                activeRow: 3
-            })
+            setIsOpen(false);
+            setActiveRow(3);
         } else if (e.altKey && e.key === 'c') {
-            this.setState({
-                isOpen: false,
-                activeRow: 2
-            })
+            setIsOpen(false);
+            setActiveRow(2);
         } else if (e.altKey && e.key === 'v') {
-            this.setState({
-                isOpen: false,
-                activeRow: 1
-            })
+            setIsOpen(false);
+            setActiveRow(1);
         }
     }
 
 
-    handlerSort = () => {
-
-        const {orders, originalOrders, directionSort} = this.state;
+    const handlerSort = () => {
 
         const originalCopy = [...originalOrders];
-
 
         if (directionSort === SORT.ASC) {
             orders.sort((a, b) => {
@@ -139,29 +118,21 @@ class OrderTable extends Component {
             })
         }
 
-
         if (directionSort === SORT.DESC) {
             orders.reverse()
         }
 
-        this.setState({
-            orders: orders
-        });
-
+        setOrders(orders)
 
         if (directionSort === null) {
-            this.setState({
-                orders: originalCopy,
-            })
+            setOrders(originalCopy)
         }
     }
 
 
-    handlerToggleSortDirection = () => {
+    const handlerToggleSortDirection = () => {
 
-        const {directionSort} = this.state;
         let newDirectionSort;
-
 
         if (directionSort === SORT.ASC) {
             newDirectionSort = SORT.DESC;
@@ -171,37 +142,31 @@ class OrderTable extends Component {
             newDirectionSort = SORT.ASC;
         }
 
-        this.setState({
-            directionSort: newDirectionSort
-        })
-
-        this.handlerSort()
+        setDirectionSort(newDirectionSort)
+        handlerSort()
     }
 
 
-    render() {
+    const data = formatResponse();
 
-        const data = this.formatResponse();
-        const {isOpen, activeRow} = this.state;
-
-        return (
-            <OrderTableView
+    return (
+        <>
+            {dataIsLoaded && <OrderTableView
                 data={data}
                 isOpen={isOpen}
                 activeRow={activeRow}
-                toggleTable={this.toggleTable}
-                handlerAddData={this.handlerAddData}
-                handlerRemoveElement={this.handlerRemoveElement}
-                doubleClick={this.makeElementInactive}
-                handlerImageUnloader={this.handlerImageUnloader}
-                tableRef={this.tableRef}
-                handlerKeyDown={this.handlerKeyDown}
-                handlerToggleSortDirection={this.handlerToggleSortDirection}
-            >
-            </OrderTableView>
-        )
-    }
+                toggleTable={toggleTable}
+                handlerAddData={handlerAddData}
+                handlerRemoveElement={handlerRemoveElement}
+                doubleClick={makeElementInactive}
+                handlerImageUnloader={handlerImageUnloader}
+                tableRef={tableRef}
+                handlerKeyDown={handlerKeyDown}
+                handlerToggleSortDirection={handlerToggleSortDirection}
+            />
+            }
+        </>
+    )
 }
-
 export default withLayout(OrderTable);
 

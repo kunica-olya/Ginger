@@ -2,7 +2,7 @@ import {MainView} from "./MainView";
 import {withLayout} from "../HOC/withLayout";
 import {useState, useEffect} from "react";
 
-export const Main = () => {
+const Main = () => {
 
     const [cards, setCards] = useState([]);
     const [dataIsLoaded, setDataIsLoaded] = useState(false)
