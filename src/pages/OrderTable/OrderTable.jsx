@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {OrderTableView} from "./OrderTableView";
-import withLayout from "../../class_components/HOC/withLayout";
+import {withLayout} from "../../components/HOC/withLayout";
 import React from "react";
 import {SORT} from "../../constants/constants";
 

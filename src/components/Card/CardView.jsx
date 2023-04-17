@@ -1,7 +1,11 @@
 import styles from "./Card.module.scss";
-import Button from "../Button/Button";
+import {ButtonView} from "../Button/ButtonView";
+import {ReactComponent as IconBag} from "../../assets/svg/bag.svg";
+import {BUTTON} from "../../constants/constants";
 
-const Card = ({img, title, additionalInfo, description, price, weight}) => {
+export const CardView = ({card}) => {
+
+    const {img, title, additionalInfo, description, price, weight} = card;
 
     return (
         <div className={styles.card}>
@@ -22,8 +26,12 @@ const Card = ({img, title, additionalInfo, description, price, weight}) => {
                     <div className={styles.weight}>{weight}</div>
                 </div>
             </div>
-            <Button/>
+            <ButtonView
+                text={'Buy'}
+                variant={BUTTON.SECONDARY}
+            >
+                <IconBag/>
+            </ButtonView>
         </div>
     )
 }
-export default Card;

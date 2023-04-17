@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
-// import App from './App';
-import App from './ClassApp';
+
+import {App} from './App';
 import './assets/fonts/calibri.ttf';
 import './assets/fonts/calibri_bold.ttf';
 
@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-        <App/>
+            <App/>
         </BrowserRouter>
     </React.StrictMode>
 )
