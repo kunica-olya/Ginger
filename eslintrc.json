@@ -11,7 +11,8 @@
     "plugin:import/typescript"
   ],
   "plugins": [
-    "jest"
+    "jest",
+    "react-hooks"
   ],
   "rules": {
     "no-param-reassign": [
@@ -39,6 +40,8 @@
     ],
     "jsx-a11y/label-has-for": 0,
     "class-methods-use-this": 0,
-    "jsx-a11y/no-autofocus": 0
+    "jsx-a11y/no-autofocus": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
