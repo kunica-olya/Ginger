@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {ModalView} from "./ModalView";
-import ButtonView from "../../../class_components/Button/ButtonView";
+import {ButtonView} from "../../../components/Button/ButtonView";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {BUTTON} from "../../../constants/constants";

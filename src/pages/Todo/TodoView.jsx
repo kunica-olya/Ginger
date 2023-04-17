@@ -1,10 +1,10 @@
 import {Component} from "react";
 import styles from "./TodoView.module.scss";
-import ButtonView from "../../class_components/Button/ButtonView";
+import {ButtonView} from "../../components/Button/ButtonView";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {BUTTON} from "../../constants/constants";
-import {withTheme} from "../../class_components/HOC/withTheme";
+import {withTheme} from "../../components/HOC/withTheme";
 import Switch from 'react-switch';
 import {TodoItemView} from "./TodoItemView";
 

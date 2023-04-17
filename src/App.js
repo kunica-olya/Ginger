@@ -1,17 +1,33 @@
-import Header from './function_components/Header/Header' ;
-import Main from './function_components/Main/Main';
-import Footer from './function_components/Footer/Footer';
+import {Route, Routes} from "react-router-dom";
+import Main from "./components/Main/Main";
+import OrderTable from "./pages/OrderTable/OrderTable";
+import Todo from "./pages/Todo/Todo";
+import {useState, useEffect} from "react";
 
-const App = () => {
+export const App = () => {
+
+    const [config, setConfig] = useState({});
+
+
+    useEffect(() => {
+        fetch('/app_config.json')
+            .then(response => response.json())
+            .then(data => {
+                setConfig(data);
+            })
+            .catch(error => console.error('Error fetching data_json', error));
+    }, [])
+
+
     return (
         <>
-            <Header/>
-            <Main/>
-            <Footer/>
+            <Routes>
+                <Route>
+                    <Route path="/" element={<Main config={config}/>}/>
+                    <Route path="/orders" element={<OrderTable config={config}/>}/>
+                    <Route path="/todo" element={<Todo config={config}/>}/>
+                </Route>
+            </Routes>
         </>
     )
 }
-export default App;
-
-
-
