@@ -32,13 +32,15 @@ const Main = () => {
                     height={50}
                     width={50}
                     color="#4fa94d"
-                    wrapperStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
-                    wrapperClass=""
+                    wrapperStyle={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: '30%',
+                        marginBottom: '30%'
+                    }}
                     visible={true}
                     ariaLabel='oval-loading'
-                    secondaryColor="#4fa94d"
-                    strokeWidth={2}
-                    strokeWidthSecondary={2}
                 />
             )}
         </div>
