@@ -7,7 +7,7 @@ import {ReactComponent as Map} from "../../assets/svg/map.svg";
 
 export const ContactsView = () => {
     return (
-        <>
+        <div id={'contacts'}>
             <h2 className={styles.title}>Contacts</h2>
             <div className={styles['contacts']}>
                 <div className={styles.row}>
@@ -37,6 +37,6 @@ export const ContactsView = () => {
                     <span className={styles.contact}>Kyiv, st. Shevchenko, 24</span>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
