@@ -1,42 +1,34 @@
-import {Component} from "react";
 import {ModalView} from "./ModalView";
 import {ButtonView} from "../../../components/Button/ButtonView";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {BUTTON} from "../../../constants/constants";
+import {useState} from "react";
+import {useModal} from "../../../custom_hooks/useModal";
 
-export class Modal extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isOpenModal: false,
-            newOrder: {
-                id: '',
-                firstName: '',
-                lastName: '',
-                productName: '',
-                productPrice: '',
-                productAmount: ''
-            }
+export const Modal = ({handlerAddData}) => {
+
+    const {isOpen, toggleModal} = useModal();
+    const [newOrder, setNewOrder] = useState(
+        {
+            id: '',
+            firstName: '',
+            lastName: '',
+            productName: '',
+            productPrice: '',
+            productAmount: ''
         }
+    )
+
+
+    const handlerOnChange = (e) => {
+        const {id, value} = e.target;
+        setNewOrder({...newOrder, [id]: value})
     }
 
-    toggleModal = () => {
-        this.setState(prevState => ({
-            isOpenModal: !prevState.isOpenModal
-        }))
-    }
 
-    handlerOnChange = (e) => {
-        this.setState(({newOrder}) => ({
-            newOrder: {
-                ...newOrder,
-                [e.target.id]: e.target.value
-            }
-        }))
-    }
+    const submitForm = (e) => {
 
-    submitForm = (e) => {
         const {
             id,
             firstName,
@@ -44,7 +36,8 @@ export class Modal extends Component {
             productName,
             productPrice,
             productAmount
-        } = this.state.newOrder
+        } = newOrder
+
 
         e.preventDefault()
         const formattedData = {
@@ -86,30 +79,27 @@ export class Modal extends Component {
                 }
             ]
         }
-        this.props.handlerAddData(formattedData)
+        handlerAddData(formattedData)
     }
 
-    render() {
-        const {isOpenModal} = this.state;
-        return (
-            <>
-                <ButtonView click={this.toggleModal}
-                            text={'Add'}
-                            variant={BUTTON.ADD}
-                >
-                    <FontAwesomeIcon icon={faPlus}/>
-                </ButtonView>
-                <div>
-                    {isOpenModal && <ModalView
-                        close={this.toggleModal}
-                        changeInput={this.handlerOnChange}
-                        formReady={this.submitForm}
-                    >
-                        <FontAwesomeIcon icon={faXmark}/>
-                    </ModalView>
-                    }
-                </div>
-            </>
-        )
-    }
+
+    return (
+        <>
+            <ButtonView click={toggleModal}
+                        text={'Add'}
+                        variant={BUTTON.ADD}
+            >
+                <FontAwesomeIcon icon={faPlus}/>
+            </ButtonView>
+            <div>
+                {isOpen &&
+                <ModalView close={toggleModal}
+                           changeInput={handlerOnChange}
+                           formReady={submitForm}>
+                    <FontAwesomeIcon icon={faXmark}/>
+                </ModalView>
+                }
+            </div>
+        </>
+    )
 }
