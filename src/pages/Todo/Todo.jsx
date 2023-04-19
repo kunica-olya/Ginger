@@ -43,10 +43,10 @@ const Todo = () => {
             return;
         }
 
-        setTodos([...todos, userValue]);
+        const newTodo = {id: todos.length, task: userValue};
+        setTodos([...todos, newTodo]);
         setIsCreatedTodo(true);
         setUserValue('');
-
     }
 
 

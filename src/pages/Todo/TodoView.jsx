@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {BUTTON} from "../../constants/constants";
 import Switch from 'react-switch';
-import {TodoItemView} from "./TodoItemView";
+import {TodoItem} from "./TodoItem";
 import {useContext} from "react";
 import {ThemeContext} from "./Todo";
 
@@ -28,7 +28,7 @@ export const TodoView = ({changeInput, isCreatedTodo, userValue, handlerAddTask,
                     </ButtonView>
                 </div>
 
-                {isCreatedTodo && <TodoItemView todos={todos}/>}
+                <TodoItem isCreatedTodo={isCreatedTodo} todos={todos}/>
 
                 <div className={styles['toggle-switch']}>
                     <label style={{color: theme.colorLabel}} htmlFor="switch">Light Mode</label>
