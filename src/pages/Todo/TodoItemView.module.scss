@@ -10,4 +10,12 @@
     background-color: mediumpurple;
     cursor: move;
   }
+
+  .draggable {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .dragend {
+    opacity: 1;
+  }
 }
