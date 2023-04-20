@@ -63,8 +63,7 @@ const Todo = () => {
     return (
         <ThemeContext.Provider value={{theme, checked, colorLabel, toggleTheme: toggleTheme}}>
             <TodosContext.Provider value={{todos, isCreatedTodo, setTodos}}>
-                <TodoView todos={todos}
-                          changeInput={handlerOnChange}
+                <TodoView changeInput={handlerOnChange}
                           userValue={userValue}
                           handlerAddTask={handlerAddTask}
                 />
