@@ -1,53 +1,59 @@
 import styles from "./TodoItemView.module.scss";
-import {useState} from "react";
+import {useState, useContext} from "react";
+import {TodosContext} from "./Todo";
 
-export const TodoItem = ({isCreatedTodo, todos}) => {
+export const TodoItem = () => {
+
+    const todo = useContext(TodosContext);
 
     const [activeElement, setActiveElement] = useState(null);
-    const [draggableElement, setDraggableElement] = useState(null)
+    const [overElement, setOverElement] = useState(null);
     const [isDragEnd, setIsDragEnd] = useState(false);
 
-
     const handlerDragStart = (id) => {
-        setDraggableElement(id)
+        const index = todo.todos.findIndex(i => i.id === id)
+        setActiveElement(index);
     }
-
 
     const handlerDragEnd = () => {
         setIsDragEnd(true);
         setActiveElement(null);
+        setOverElement(null);
     }
 
-    const handlerDragOver = (e) => {
-        if (e.preventDefault) {
-            e.preventDefault();
-        }
-        return false;
+    const handlerDragOver = (e, todo) => {
+        e.preventDefault();
+        setOverElement(todo);
     }
 
-    const handlerDrop = () => {
-        console.log('drop');
+    const handlerDrop = (targetId) => {
+        const index = todo.todos.findIndex(i => i.id === targetId)
+        const newTodos = [...todo.todos];
+        const temp = newTodos[index];
+        newTodos[index] = newTodos[activeElement];
+        newTodos[activeElement] = temp;
+
+        setActiveElement(null)
+        setOverElement(null);
+        todo.setTodos(newTodos);
     }
 
-    const handlerDragEnter = (id) => {
-        setActiveElement(id);
+    const isOver = (todoItem) => {
+        return overElement && overElement.id === todoItem.id
     }
-
 
     return (
         <div>
-            {isCreatedTodo && <div className={styles['todo-items']}>
+            {todo.isCreatedTodo && <div className={styles['todo-items']}>
                 {
-                    todos.map((todo) => (
+                    todo.todos.map((todo) => (
                         <div draggable={'true'}
                              onDragStart={() => handlerDragStart(todo.id)}
                              onDragEnd={handlerDragEnd}
-                             onDragOver={handlerDragOver}
-                             onDrop={handlerDrop}
-                             onDragEnter={() => handlerDragEnter(todo.id)}
+                             onDragOver={(e) => handlerDragOver(e, todo)}
+                             onDrop={() => handlerDrop(todo.id)}
                              className={`${styles['todo-item']}
-                                 ${activeElement === todo.id ? 'over' : ''}
-                                 ${draggableElement === todo.id ? styles.draggable : ''}
+                                 ${isOver(todo) ? styles.over : ''}
                                  ${isDragEnd ? styles.dragend : ''}
                                  `}
 
