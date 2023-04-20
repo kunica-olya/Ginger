@@ -5,6 +5,7 @@ import React, {useState, useEffect} from "react";
 
 
 export const ThemeContext = React.createContext();
+export const TodosContext = React.createContext();
 
 const Todo = () => {
 
@@ -61,12 +62,13 @@ const Todo = () => {
 
     return (
         <ThemeContext.Provider value={{theme, checked, colorLabel, toggleTheme: toggleTheme}}>
-            <TodoView todos={todos}
-                      changeInput={handlerOnChange}
-                      isCreatedTodo={isCreatedTodo}
-                      userValue={userValue}
-                      handlerAddTask={handlerAddTask}
-            />
+            <TodosContext.Provider value={{todos, isCreatedTodo, setTodos}}>
+                <TodoView todos={todos}
+                          changeInput={handlerOnChange}
+                          userValue={userValue}
+                          handlerAddTask={handlerAddTask}
+                />
+            </TodosContext.Provider>
         </ThemeContext.Provider>
     )
 }

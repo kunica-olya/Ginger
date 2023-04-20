@@ -8,7 +8,7 @@ import {TodoItem} from "./TodoItem";
 import {useContext} from "react";
 import {ThemeContext} from "./Todo";
 
-export const TodoView = ({changeInput, isCreatedTodo, userValue, handlerAddTask, todos}) => {
+export const TodoView = ({changeInput, userValue, handlerAddTask}) => {
 
     const theme = useContext(ThemeContext);
 
@@ -28,7 +28,7 @@ export const TodoView = ({changeInput, isCreatedTodo, userValue, handlerAddTask,
                     </ButtonView>
                 </div>
 
-                <TodoItem isCreatedTodo={isCreatedTodo} todos={todos}/>
+                <TodoItem/>
 
                 <div className={styles['toggle-switch']}>
                     <label style={{color: theme.colorLabel}} htmlFor="switch">Light Mode</label>

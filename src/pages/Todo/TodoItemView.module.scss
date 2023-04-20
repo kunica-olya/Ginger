@@ -11,8 +11,9 @@
     cursor: move;
   }
 
-  .draggable {
+  .over {
     background-color: rgba(0, 0, 0, 0.4);
+    border: 3px dotted #000;
   }
 
   .dragend {
