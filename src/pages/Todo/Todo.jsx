@@ -5,7 +5,7 @@ import React, {useState, useEffect} from "react";
 
 
 export const ThemeContext = React.createContext();
-export const TodosContext = React.createContext();
+
 
 const Todo = () => {
 
@@ -15,6 +15,11 @@ const Todo = () => {
     const [theme, setTheme] = useState(THEMES.LIGHT);
     const [colorLabel, setColorLabel] = useState(LABEL.SECONDARY);
     const [checked, setChecked] = useState(false);
+
+
+    const [activeElement, setActiveElement] = useState(null);
+    const [overElement, setOverElement] = useState(null);
+    const [isDragEnd, setIsDragEnd] = useState(false);
 
 
     useEffect(() => {
@@ -60,14 +65,59 @@ const Todo = () => {
     }
 
 
+    const handlerDragStart = (id) => {
+        const index = todos.findIndex(i => i.id === id)
+        setActiveElement(index);
+    }
+
+    const handlerDragEnd = () => {
+        setIsDragEnd(true);
+        setActiveElement(null);
+        setOverElement(null);
+    }
+
+    const handlerDragOver = (e, todo) => {
+        e.preventDefault();
+        setOverElement(todo);
+    }
+
+    const handlerDrop = (targetId) => {
+        const index = todos.findIndex(i => i.id === targetId)
+        const newTodos = [...todos];
+        const temp = newTodos[index];
+        newTodos[index] = newTodos[activeElement];
+        newTodos[activeElement] = temp;
+
+        setActiveElement(null)
+        setOverElement(null);
+        setTodos(newTodos);
+    }
+
+    const isOver = (todoItem) => {
+        return overElement && overElement.id === todoItem.id
+    }
+
+
     return (
-        <ThemeContext.Provider value={{theme, checked, colorLabel, toggleTheme: toggleTheme}}>
-            <TodosContext.Provider value={{todos, isCreatedTodo, setTodos}}>
-                <TodoView changeInput={handlerOnChange}
-                          userValue={userValue}
-                          handlerAddTask={handlerAddTask}
-                />
-            </TodosContext.Provider>
+        <ThemeContext.Provider
+            value={{
+                theme,
+                checked,
+                colorLabel,
+                toggleTheme: toggleTheme
+            }}>
+            <TodoView changeInput={handlerOnChange}
+                      userValue={userValue}
+                      handlerAddTask={handlerAddTask}
+                      todos={todos}
+                      isCreatedTodo={isCreatedTodo}
+                      isDragEnd={isDragEnd}
+                      handlerDragStart={handlerDragStart}
+                      handlerDragEnd={handlerDragEnd}
+                      handlerDragOver={handlerDragOver}
+                      handlerDrop={handlerDrop}
+                      isOver={isOver}
+            />
         </ThemeContext.Provider>
     )
 }
