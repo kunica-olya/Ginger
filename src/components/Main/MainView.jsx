@@ -11,7 +11,6 @@ import {BUTTON} from "../../constants/constants";
 
 
 export const MainView = ({data}) => {
-
     return (
         <div className={styles.container}>
             <section className={styles.jumbotron}>

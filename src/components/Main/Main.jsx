@@ -2,24 +2,48 @@ import {MainView} from "./MainView";
 import {withLayout} from "../HOC/withLayout";
 import {useState, useEffect} from "react";
 import {Oval} from "react-loader-spinner";
+import {API_KEY, BASE_URL, API_URL} from "../../constants/constants";
 
 const Main = () => {
 
     const [cards, setCards] = useState([]);
     const [dataIsLoaded, setDataIsLoaded] = useState(false)
 
+    const getData = async () => {
+        try {
+            setDataIsLoaded(false)
+            const response = await fetch(API_URL + "/cards?populate=*&sort=id:asc", {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${API_KEY}`
+                    }
+                }
+            )
 
-    useEffect(() => {
-        fetch('/cardsData.json')
-            .then(response => response.json())
-            .then(data => {
-                setTimeout(() => {
-                    setCards(data);
-                    setDataIsLoaded(true);
-                }, 3000)
+            const data = await response.json();
 
+            const formattedData = data.data.map((item) => {
+                return {
+                    id: item.id,
+                    title: item.attributes.title,
+                    description: item.attributes.description,
+                    additionalInfo: item.attributes.additionalInfo,
+                    price: item.attributes.price,
+                    weight: item.attributes.weight,
+                    currency: item.attributes.currency,
+                    img: BASE_URL + item.attributes.img.data.attributes.url
+                }
             })
-            .catch(error => console.error('Error fetching data_json', error));
+            setCards(formattedData);
+            setDataIsLoaded(true)
+        } catch (error) {
+            console.error('Error fetch data', error)
+        }
+    }
+
+
+    useEffect (() => {
+        getData()
     }, []);
 
 

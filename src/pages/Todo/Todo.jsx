@@ -1,6 +1,6 @@
 import {TodoView} from "./TodoView";
 import {withLayout} from "../../components/HOC/withLayout";
-import {THEMES, LABEL} from "../../constants/constants";
+import {THEMES, LABEL, API_KEY, API_URL} from "../../constants/constants";
 import React, {useState, useEffect} from "react";
 
 
@@ -11,7 +11,6 @@ const Todo = () => {
 
     const [todos, setTodos] = useState([]);
     const [userValue, setUserValue] = useState('');
-    const [isCreatedTodo, setIsCreatedTodo] = useState(false);
     const [theme, setTheme] = useState(THEMES.LIGHT);
     const [colorLabel, setColorLabel] = useState(LABEL.SECONDARY);
     const [checked, setChecked] = useState(false);
@@ -20,6 +19,72 @@ const Todo = () => {
     const [activeElement, setActiveElement] = useState(null);
     const [overElement, setOverElement] = useState(null);
     const [isDragEnd, setIsDragEnd] = useState(false);
+
+
+    const createTodo = async (value) => {
+        try {
+            const response = await fetch(API_URL + "/todos", {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({"data": {"Text": value}})
+                }
+            )
+
+            const data = await response.json();
+
+            const formattedData = {
+                id: data.data.id,
+                task: data.data.attributes.Text
+            };
+
+            return formattedData;
+
+        } catch (error) {
+            console.log('Error fetching POST data', error)
+        }
+    }
+
+
+    const getTodoList = async () => {
+        try {
+            const response = await fetch(API_URL + "/todos", {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${API_KEY}`,
+                    },
+                }
+            )
+
+            const data = await response.json();
+
+
+            const formattedData = data.data.map(item => {
+                return {
+                    id: item.id,
+                    task: item.attributes.Text
+                }
+            })
+
+
+            setTodos(formattedData)
+            return formattedData;
+
+        } catch (error) {
+            console.log('Error fetching POST data', error)
+        }
+    }
+
+    useEffect(() => {
+
+        async function load() {
+            setTodos(await getTodoList())
+        }
+
+        load();
+    }, [])
 
 
     useEffect(() => {
@@ -40,18 +105,17 @@ const Todo = () => {
     const handlerOnChange = (e) => {
         const {value} = e.target;
         setUserValue(value);
-
     }
 
-    const handlerAddTask = () => {
+    const handlerAddTask = async () => {
 
         if (userValue.trim() === '') {
             return;
         }
 
-        const newTodo = {id: todos.length, task: userValue};
+        const newTodo = await createTodo(userValue)
+
         setTodos([...todos, newTodo]);
-        setIsCreatedTodo(true);
         setUserValue('');
     }
 
@@ -65,8 +129,7 @@ const Todo = () => {
     }
 
 
-    const handlerDragStart = (id) => {
-        const index = todos.findIndex(i => i.id === id)
+    const handlerDragStart = (index) => {
         setActiveElement(index);
     }
 
@@ -81,8 +144,7 @@ const Todo = () => {
         setOverElement(todo);
     }
 
-    const handlerDrop = (targetId) => {
-        const index = todos.findIndex(i => i.id === targetId)
+    const handlerDrop = (index) => {
         const newTodos = [...todos];
         const temp = newTodos[index];
         newTodos[index] = newTodos[activeElement];
@@ -110,7 +172,6 @@ const Todo = () => {
                       userValue={userValue}
                       handlerAddTask={handlerAddTask}
                       todos={todos}
-                      isCreatedTodo={isCreatedTodo}
                       isDragEnd={isDragEnd}
                       handlerDragStart={handlerDragStart}
                       handlerDragEnd={handlerDragEnd}
