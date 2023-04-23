@@ -12,7 +12,7 @@ const Main = () => {
     const getData = async () => {
         try {
             setDataIsLoaded(false)
-            const response = await fetch(API_URL + "/cards?populate=*", {
+            const response = await fetch(API_URL + "/cards?populate=*&sort=id:asc", {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${API_KEY}`

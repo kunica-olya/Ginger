@@ -12,7 +12,6 @@ export const TodoView = ({
                              userValue,
                              handlerAddTask,
                              todos,
-                             isCreatedTodo,
                              handlerDragStart,
                              handlerDragEnd,
                              handlerDragOver,
@@ -39,26 +38,25 @@ export const TodoView = ({
                     </ButtonView>
                 </div>
 
-                <div>
-                    {isCreatedTodo && <div className={styles['todo-items']}>
-                        {
-                            todos.map((todo) => (
-                                <div draggable={'true'}
-                                     onDragStart={() => handlerDragStart(todo.id)}
-                                     onDragEnd={handlerDragEnd}
-                                     onDragOver={(e) => handlerDragOver(e, todo)}
-                                     onDrop={() => handlerDrop(todo.id)}
-                                     className={`${styles['todo-item']}
+
+                <div className={styles['todo-items']}>
+                    {
+                        todos.map((todo, index) => (
+                            <div draggable={'true'}
+                                 onDragStart={() => handlerDragStart(index)}
+                                 onDragEnd={handlerDragEnd}
+                                 onDragOver={(e) => handlerDragOver(e, todo)}
+                                 onDrop={() => handlerDrop(index)}
+                                 className={`${styles['todo-item']}
                                  ${isOver(todo) ? styles.over : ''}
                                  ${isDragEnd ? styles.dragend : ''}
                                  `}
 
-                                     key={todo.id}
-                                >
-                                    {todo.task}
-                                </div>
-                            ))}
-                    </div>
+                                 key={todo.id}
+                            >
+                                {todo.task}
+                            </div>
+                        ))
                     }
                 </div>
 
