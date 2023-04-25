@@ -5,7 +5,15 @@ import {BUTTON} from "../../constants/constants";
 
 export const CardView = ({card}) => {
 
-    const {img, title, additionalInfo, description, price, weight} = card;
+    const {
+        img,
+        title,
+        additionalInfo,
+        description,
+        price,
+        currency,
+        weight
+    } = card;
 
     return (
         <div className={styles.card}>
@@ -22,7 +30,7 @@ export const CardView = ({card}) => {
                 </div>
                 <div className={styles.description}>{description}</div>
                 <div className={styles.info}>
-                    <div className={styles.price}>{price}</div>
+                    <div className={styles.price}>{currency}{price}</div>
                     <div className={styles.weight}>{weight}</div>
                 </div>
             </div>
