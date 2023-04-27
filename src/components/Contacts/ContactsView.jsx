@@ -3,12 +3,16 @@ import {ReactComponent as Viber} from "../../assets/svg/viber.svg";
 import {ReactComponent as Telegram} from "../../assets/svg/telegram.svg";
 import {ReactComponent as Phone} from "../../assets/svg/phone.svg";
 import {ReactComponent as Map} from "../../assets/svg/map.svg";
+import {useTranslation} from "react-i18next";
 
 
 export const ContactsView = () => {
+
+    const {t} = useTranslation();
+
     return (
         <div id={'contacts'}>
-            <h2 className={styles.title}>Contacts</h2>
+            <h2 className={styles.title}>{t('contacts.title')}</h2>
             <div className={styles['contacts']}>
                 <div className={styles.row}>
                     <div className={styles.icon}>
@@ -34,7 +38,7 @@ export const ContactsView = () => {
                     <div className={styles['icon-map']}>
                         <Map/>
                     </div>
-                    <span className={styles.contact}>Kyiv, st. Shevchenko, 24</span>
+                    <span className={styles.contact}>{t('contacts.address')}</span>
                 </div>
             </div>
         </div>

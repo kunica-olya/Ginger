@@ -1,13 +1,25 @@
 import styles from './WorkSchedule.module.scss'
+import {useTranslation} from "react-i18next";
+
 
 export const WorkScheduleView = () => {
+
+    const {t} = useTranslation();
+
     return (
         <div className={styles.schedule}>
-            <h2 className={styles.title}>Work schedule:</h2>
+            <h2 className={styles.title}>{t('contacts.subtitle')}</h2>
             <ul>
-                <li><strong>Mon-Fri: </strong> from 9:00 a.m. to 8:00 p.m</li>
-                <li><strong>Sat: </strong>from 9:00 a.m. to 7:00 p.m</li>
-                <li><strong>Sun: </strong> Closed</li>
+                <li><strong>{t('contacts.week.monFri')}</strong>
+                    {t('contacts.week.openingHours')}
+                </li>
+                <li><strong>{t('contacts.week.sat')}</strong>
+                    {t('contacts.week.openingHoursSat')}
+                </li>
+                <li>
+                    <strong> {t('contacts.week.sun')}</strong>
+                    {t('contacts.week.openingHoursSun')}
+                </li>
             </ul>
         </div>
     )

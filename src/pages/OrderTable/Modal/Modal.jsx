@@ -5,8 +5,12 @@ import {faPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {BUTTON} from "../../../constants/constants";
 import {useState} from "react";
 import {useModal} from "../../../custom_hooks/useModal";
+import {useTranslation} from "react-i18next";
 
 export const Modal = ({handlerAddData}) => {
+
+
+    const {t} = useTranslation();
 
     const {isOpen, toggleModal} = useModal();
     const [newOrder, setNewOrder] = useState(
@@ -86,16 +90,15 @@ export const Modal = ({handlerAddData}) => {
     return (
         <>
             <ButtonView click={toggleModal}
-                        text={'Add'}
+                        text={t('orderTablePage.buttonAdd')}
                         variant={BUTTON.ADD}
             >
                 <FontAwesomeIcon icon={faPlus}/>
             </ButtonView>
             <div>
-                {isOpen &&
-                <ModalView close={toggleModal}
-                           changeInput={handlerOnChange}
-                           formReady={submitForm}>
+                {isOpen && <ModalView close={toggleModal}
+                                      changeInput={handlerOnChange}
+                                      formReady={submitForm}>
                     <FontAwesomeIcon icon={faXmark}/>
                 </ModalView>
                 }

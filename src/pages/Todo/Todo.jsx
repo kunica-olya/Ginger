@@ -3,7 +3,6 @@ import {withLayout} from "../../components/HOC/withLayout";
 import {THEMES, LABEL, API_KEY, API_URL} from "../../constants/constants";
 import React, {useState, useEffect} from "react";
 
-
 export const ThemeContext = React.createContext();
 
 

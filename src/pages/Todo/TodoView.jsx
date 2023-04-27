@@ -6,6 +6,7 @@ import {BUTTON} from "../../constants/constants";
 import Switch from 'react-switch';
 import {useContext} from "react";
 import {ThemeContext} from "./Todo";
+import {useTranslation} from "react-i18next";
 
 export const TodoView = ({
                              changeInput,
@@ -22,16 +23,19 @@ export const TodoView = ({
 
     const theme = useContext(ThemeContext);
 
+    const {t} = useTranslation()
+
     return (
         <section id={styles['todo']}>
             <div className={styles['todo-container']} style={{backgroundColor: theme.theme}}>
                 <div className={styles['todo-row']}>
-                    <input className={styles['input']} type="text" placeholder={'New task'}
+                    <input className={styles['input']} type="text"
+                           placeholder={t('todoPage.inputPlaceholder')}
                            onChange={changeInput}
                            value={userValue}
                     />
                     <ButtonView click={handlerAddTask}
-                                text={'Create'}
+                                text={t('todoPage.buttonCreate')}
                                 variant={BUTTON.ADD}
                     >
                         <FontAwesomeIcon icon={faPlus}/>
@@ -51,7 +55,6 @@ export const TodoView = ({
                                  ${isOver(todo) ? styles.over : ''}
                                  ${isDragEnd ? styles.dragend : ''}
                                  `}
-
                                  key={todo.id}
                             >
                                 {todo.task}
@@ -61,7 +64,9 @@ export const TodoView = ({
                 </div>
 
                 <div className={styles['toggle-switch']}>
-                    <label style={{color: theme.colorLabel}} htmlFor="switch">Light Mode</label>
+                    <label style={{color: theme.colorLabel}} htmlFor="switch">
+                        {t('todoPage.labelMode')}
+                    </label>
                     <Switch id='switch' checked={theme.checked} onChange={theme.toggleTheme}/>
                 </div>
             </div>

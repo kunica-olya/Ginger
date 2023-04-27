@@ -1,7 +1,10 @@
 import {ReactComponent as Logo} from '../../assets/svg/Logo-white.svg';
 import styles from './Footer.module.scss';
+import {useTranslation} from "react-i18next";
 
 export const FooterView = ({config}) => {
+
+    const {t} = useTranslation();
 
     const {author} = config;
     const github = {
@@ -24,24 +27,24 @@ export const FooterView = ({config}) => {
                     <div className={styles['footer-info']}>
                         <nav>
                             <ul>
-                                <li><a href="#menu">Menu</a></li>
-                                <li><a href='#gallery'>Gallery</a></li>
-                                <li><a href="#about-us">About us</a></li>
+                                <li><a href="#menu">{t('footer.menu')}</a></li>
+                                <li><a href='#gallery'>{t('footer.gallery')}</a></li>
+                                <li><a href="#about-us">{t('footer.aboutUs')}</a></li>
                             </ul>
                         </nav>
-                        <div className={styles.copyright}>All rights reserved © 2022. Ginger konditori</div>
+                        <div className={styles.copyright}>{t('footer.copyright')}</div>
                     </div>
                     <div className={styles.creator}>
                         {author !== null ? (
                             <ul>
-                                <li>Author: {author}</li>
+                                <li>{t('footer.creatorAuthor')}</li>
                                 <li>
                                     <a className={styles['creator-link']}
-                                       href={github.link}>{github.label}</a>
+                                       href={github.link}>{t('footer.creatorGithub')}</a>
                                 </li>
                                 <li>
                                     <a className={styles['creator-link']}
-                                       href={design.link}>{design.label}</a>
+                                       href={design.link}>{t('footer.creatorDesign')}</a>
                                 </li>
                             </ul>
                         ) : (

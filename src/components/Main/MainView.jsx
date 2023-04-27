@@ -8,9 +8,13 @@ import {ContactsView} from "../Contacts/ContactsView";
 import {WorkScheduleView} from "../Contacts/WorkSchedule/WorkScheduleView";
 import {MapView} from "../Contacts/Map/MapView";
 import {BUTTON} from "../../constants/constants";
+import {useTranslation} from "react-i18next";
 
 
 export const MainView = ({data}) => {
+
+    const {t} = useTranslation()
+
     return (
         <div className={styles.container}>
             <section className={styles.jumbotron}>
@@ -18,10 +22,9 @@ export const MainView = ({data}) => {
                     <a className={styles.logo} href='/'>
                         <Logo/>
                     </a>
-                    <p className={styles.description}>Try and choose your flavor of delicate zephyr on
-                        Instagram </p>
+                    <p className={styles.description}>{t('jumbotron.description')}</p>
                     <ButtonView
-                        text={'Subscribe'}
+                        text={t('jumbotron.buttonSubscribe')}
                         variant={BUTTON.PRIMARY}
                     >
                         <IconInstagram/>

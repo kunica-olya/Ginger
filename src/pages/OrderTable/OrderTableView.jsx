@@ -1,6 +1,7 @@
 import styles from "./OrderTable.module.scss";
 import {Modal} from "./Modal/Modal";
 import {ButtonRemoveView} from "./ButtonRemove/ButtonRemoveView";
+import {useTranslation} from "react-i18next";
 
 
 export const OrderTableView = ({
@@ -20,9 +21,11 @@ export const OrderTableView = ({
 
     const image = 'invalid path';
 
+    const {t} = useTranslation();
+
     return (
         <section className={styles['table-section']}>
-            <h2>Orders</h2>
+            <h2>{t('orderTablePage.title')}</h2>
             <div className={styles['button-container']}>
                 <Modal handlerAddData={handlerAddData}/>
             </div>
@@ -33,7 +36,7 @@ export const OrderTableView = ({
                 <div className={styles.thead}>
                     <div>ID</div>
                     <div className={styles.sort}
-                         onClick={handlerToggleSortDirection}>Customer
+                         onClick={handlerToggleSortDirection}>{t('orderTablePage.customer')}
                     </div>
                 </div>
                 <div className={styles.tbody}>
@@ -57,10 +60,10 @@ export const OrderTableView = ({
                                         ${user.id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}
                                     >
                                         <div className={styles.thead}>
-                                            <div>Date</div>
-                                            <div>Product</div>
-                                            <div>Amount</div>
-                                            <div>Price</div>
+                                            <div>{t('orderTablePage.innerTableData')}</div>
+                                            <div>{t('orderTablePage.innerTableProduct')}</div>
+                                            <div>{t('orderTablePage.innerTableAmount')}</div>
+                                            <div>{t('orderTablePage.innerTablePrice')}</div>
                                         </div>
                                         <div className={styles.tbody}>
                                             {user.products.map((product) => (
@@ -74,9 +77,11 @@ export const OrderTableView = ({
                                                 </div>
                                             ))}
                                             <div className={styles.total}>
-                                                <div className={styles['total-price']}>Total Price</div>
-                                                <div className={styles.price}>{user.totalPriceCurrency}
-                                                    {user.totalPrice}
+                                                <div className={styles['total-price']}>
+                                                    {t('orderTablePage.innerTableTotalPrice')}
+                                                </div>
+                                                <div className={styles.price}>
+                                                    {user.totalPriceCurrency}{user.totalPrice}
                                                 </div>
                                             </div>
                                         </div>
