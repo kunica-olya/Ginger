@@ -4,6 +4,8 @@ import OrderTable from "./pages/OrderTable/OrderTable";
 import Todo from "./pages/Todo/Todo";
 import {useState, useEffect} from "react";
 
+import './i18n';
+
 export const App = () => {
 
     const [config, setConfig] = useState({});

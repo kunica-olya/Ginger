@@ -6,8 +6,11 @@ import image4 from '../../assets/img/gallery/gallery-4.jpg';
 import {ButtonView} from '../Button/ButtonView';
 import {ReactComponent as IconInstagram} from "../../assets/svg/instagram.svg";
 import {BUTTON} from "../../constants/constants";
+import {useTranslation} from "react-i18next";
 
 export const GalleryView = ({handlerImageLoader}) => {
+
+    const {t} = useTranslation();
 
     return (
         <div className={styles['gallery-container']}>
@@ -30,10 +33,9 @@ export const GalleryView = ({handlerImageLoader}) => {
             <div className={styles['gallery-items']}>
                 <div className={styles['content-block']}>
                     <h2 className={styles.title}>Gallery</h2>
-                    <p className={styles.description}>You inspire us to create airy, tender zephyrs. Check out our
-                        desserts on Instagram</p>
+                    <p className={styles.description}>{t('gallery.description')}</p>
                     <ButtonView
-                        text={'Subscribe'}
+                        text={t('gallery.buttonSubscribe')}
                         variant={BUTTON.PRIMARY}
                     >
                         <IconInstagram/>
