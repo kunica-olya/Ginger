@@ -27,7 +27,10 @@ export const Modal = ({handlerAddData}) => {
 
     const handlerOnChange = (e) => {
         const {id, value} = e.target;
-        setNewOrder({...newOrder, [id]: value})
+
+        setNewOrder((prevNewOrder) => ({
+            ...prevNewOrder, [id]: value
+        }))
     }
 
 
