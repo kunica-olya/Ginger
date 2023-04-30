@@ -6,14 +6,11 @@ import React, {useState, useEffect, useCallback} from "react";
 
 export const ThemeContext = React.createContext();
 
-
 const Todo = () => {
 
     const [todos, setTodos] = useState([]);
     const [userValue, setUserValue] = useState('');
     const [theme, setTheme] = useState(THEMES.LIGHT);
-    const [colorLabel, setColorLabel] = useState(LABEL.SECONDARY);
-    const [checked, setChecked] = useState(false);
 
 
     const [activeElement, setActiveElement] = useState(null);
@@ -121,11 +118,7 @@ const Todo = () => {
 
 
     const toggleTheme = () => {
-
         setTheme(theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT);
-        setChecked(!checked);
-        setColorLabel(theme === THEMES.DARK ? LABEL.SECONDARY : LABEL.PRIMARY)
-
     }
 
 
@@ -159,6 +152,9 @@ const Todo = () => {
         return overElement && overElement.id === todoItem.id
     }
 
+
+    const checked = theme === THEMES.LIGHT;
+    const colorLabel = theme === THEMES.LIGHT ? LABEL.SECONDARY : LABEL.PRIMARY;
 
     return (
         <ThemeContext.Provider
