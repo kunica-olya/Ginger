@@ -2,7 +2,7 @@ import {OrderTableView} from "./OrderTableView";
 import {withLayout} from "../../components/HOC/withLayout";
 import React from "react";
 import {SORT} from "../../constants/constants";
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect, useRef, useCallback} from "react";
 
 const OrderTable = () => {
 
@@ -12,6 +12,7 @@ const OrderTable = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeRow, setActiveRow] = useState(null);
     const [directionSort, setDirectionSort] = useState(null);
+
 
     const tableRef = useRef(null);
 
@@ -25,11 +26,36 @@ const OrderTable = () => {
                 setOriginalOrders(data)
             })
             .catch(error => console.error('Error fetching orders_json', error))
+    }, [])
+
+
+
+    const handlerKeyDown = useCallback((e) => {
+
+        tableRef.current.focus();
+
+        if (e.ctrlKey && e.key === 'c') {
+            setIsOpen(false);
+            setActiveRow(4);
+        } else if (e.ctrlKey && e.shiftKey) {
+            setIsOpen(false);
+            setActiveRow(3);
+        } else if (e.altKey && e.key === 'c') {
+            setIsOpen(false);
+            setActiveRow(2);
+        } else if (e.altKey && e.key === 'v') {
+            setIsOpen(false);
+            setActiveRow(1);
+        }
+    }, [])
+
+
+    useEffect(() => {
         document.addEventListener('keydown', handlerKeyDown);
         return () => {
             document.removeEventListener('keydown', handlerKeyDown);
         }
-    }, [])
+    }, [handlerKeyDown])
 
 
     const formatResponse = () => {
@@ -82,26 +108,6 @@ const OrderTable = () => {
         })
 
         setOrders([...removedOrders])
-    }
-
-
-    const handlerKeyDown = (e) => {
-
-        tableRef.current.focus();
-
-        if (e.ctrlKey && e.key === 'c') {
-            setIsOpen(false);
-            setActiveRow(4);
-        } else if (e.ctrlKey && e.shiftKey) {
-            setIsOpen(false);
-            setActiveRow(3);
-        } else if (e.altKey && e.key === 'c') {
-            setIsOpen(false);
-            setActiveRow(2);
-        } else if (e.altKey && e.key === 'v') {
-            setIsOpen(false);
-            setActiveRow(1);
-        }
     }
 
 
