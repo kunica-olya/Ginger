@@ -1,7 +1,8 @@
 import {TodoView} from "./TodoView";
 import {withLayout} from "../../components/HOC/withLayout";
 import {THEMES, LABEL, API_KEY, API_URL} from "../../constants/constants";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
+
 
 export const ThemeContext = React.createContext();
 
@@ -86,36 +87,36 @@ const Todo = () => {
     }, [])
 
 
-    useEffect(() => {
-        document.addEventListener('keydown', handlerKeyDown);
-        return () => {
-            document.removeEventListener('keydown', handlerKeyDown);
-        }
-    })
-
-
-    const handlerKeyDown = (e) => {
-        if (e.keyCode === 13) {
-            handlerAddTask();
-        }
-    }
-
-
-    const handlerOnChange = (e) => {
-        const {value} = e.target;
-        setUserValue(value);
-    }
-
-    const handlerAddTask = async () => {
+    const handlerAddTask = useCallback(async () => {
 
         if (userValue.trim() === '') {
             return;
         }
 
-        const newTodo = await createTodo(userValue)
-
-        setTodos([...todos, newTodo]);
+        const newTodo = await createTodo(userValue);
+        setTodos((prevTodos) => [...prevTodos, newTodo]);
         setUserValue('');
+    }, [userValue])
+
+
+    const handlerKeyDown = useCallback((e) => {
+        if (e.keyCode === 13) {
+            handlerAddTask();
+        }
+    }, [handlerAddTask])
+
+
+    useEffect(() => {
+        document.addEventListener('keydown', handlerKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handlerKeyDown);
+        }
+    }, [handlerKeyDown]);
+
+
+    const handlerOnChange = (e) => {
+        const {value} = e.target;
+        setUserValue(value);
     }
 
 
