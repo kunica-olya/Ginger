@@ -1,12 +1,11 @@
-import {GalleryView} from "./GalleryView"
+import GalleryView from './GalleryView';
 
-export const GalleryLoader = () => {
+export function GalleryLoader() {
+  const handlerImageLoader = () => {
+    console.log('Image is loaded');
+  };
 
-    const handlerImageLoader = () => {
-        console.log('Image is loaded');
-    }
-
-    return (
-        <GalleryView handlerImageLoader={handlerImageLoader}/>
-    )
+  return (
+    <GalleryView handlerImageLoader={handlerImageLoader} />
+  );
 }
