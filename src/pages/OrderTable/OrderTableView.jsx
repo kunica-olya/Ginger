@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes, { number } from 'prop-types';
+import React from 'react';
 import styles from './OrderTable.module.scss';
 import Modal from './Modal/Modal';
 import ButtonRemoveView from './ButtonRemove/ButtonRemoveView';
@@ -45,6 +46,7 @@ export default function OrderTableView({
             })
         ).isRequired
     };
+
     OrderTableView.defaultProps = {
         activeRow: number,
     };
@@ -64,71 +66,73 @@ export default function OrderTableView({
           ref={tableRef}
           onKeyDown={handlerKeyDown}
         >
-          <div className={styles.thead}>
-            <div>ID</div>
-            <h3
-              className={styles.sort}
-              onClick={handlerToggleSortDirection}
-            >
-              {t('orderTablePage.customer')}
-            </h3>
-          </div>
-          <div className={styles.tbody}>
-            <div>
-              {
-                            data.map((user) => (
-                              <div className={styles.div} key={user.id}>
-                                <div
-                                  onClick={() => toggleTable(user.id)}
-                                  onDoubleClick={doubleClick}
-                                  className={`${styles.row} 
-                                             ${user.id === activeRow ? styles.active : ''}`}
-                                >
-                                  <div className={styles['cell-id']}>{user.id}</div>
-                                  <div className={styles['cell-customer']}>{user.customer}</div>
-                                  <div className={styles['button-remove']}>
-                                    <ButtonRemoveView
-                                      click={() => handlerRemoveElement(user.id)}
-                                    />
-                                  </div>
-                                </div>
-                                <div className={`${styles['inner-table']}
-                                        ${user.id === activeRow && isOpen ? styles['customer-info'] : styles.hidden}`}
-                                >
-                                  <div className={styles.thead}>
-                                    <div>{t('orderTablePage.innerTableData')}</div>
-                                    <div>{t('orderTablePage.innerTableProduct')}</div>
-                                    <div>{t('orderTablePage.innerTableAmount')}</div>
-                                    <div>{t('orderTablePage.innerTablePrice')}</div>
-                                  </div>
-                                  <div className={styles.tbody}>
-                                    {user.products.map((product) => (
-                                      <div key={product.id} className={styles['inner-row']}>
-                                        <div className={styles.cell}>2023-02-14</div>
-                                        <div className={styles.cell}>{product.name}</div>
-                                        <div className={styles.cell}>{product.amount}</div>
-                                        <div className={styles.cell}>
-                                          {product.currency}
-                                          {product.price}
-                                        </div>
-                                      </div>
-                                            ))}
-                                    <div className={styles.total}>
-                                      <div className={styles['total-price']}>
-                                        {t('orderTablePage.innerTableTotalPrice')}
-                                      </div>
-                                      <div className={styles.price}>
-                                        {user.totalPriceCurrency}
-                                        {user.totalPrice}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            ))
-                        }
-            </div>
-          </div>
+          <thead className={styles.thead}>
+            <tr>
+              <th className={styles['title-id']}>ID</th>
+              <th className={styles['title-customer']} onClick={handlerToggleSortDirection}>
+                {t('orderTablePage.customer')}
+              </th>
+            </tr>
+          </thead>
+          <tbody className={styles.tbody}>
+            {data.map((user) => (
+              <React.Fragment key={user.id}>
+                <tr
+                  onClick={() => toggleTable(user.id)}
+                  onDoubleClick={doubleClick}
+                  className={`${styles.row} ${
+                                user.id === activeRow ? styles.active : ''
+                            }`}
+                >
+                  <td className={styles['cell-id']}>{user.id}</td>
+                  <td className={styles['cell-customer']}>{user.customer}</td>
+                  <td className={styles['button-remove']}>
+                    <ButtonRemoveView click={() => handlerRemoveElement(user.id)} />
+                  </td>
+                </tr>
+                <tr
+                  className={`${styles['inner-table']} ${
+                                user.id === activeRow && isOpen ? styles['customer-info'] : styles.hidden
+                            }`}
+                >
+                  <td>
+                    <table className={styles['inner-table']}>
+                      <thead>
+                        <tr>
+                          <th className={styles.data}>{t('orderTablePage.innerTableData')}</th>
+                          <th className={styles.cell}>{t('orderTablePage.innerTableProduct')}</th>
+                          <th className={styles.cell}>{t('orderTablePage.innerTableAmount')}</th>
+                          <th className={styles.cell}>{t('orderTablePage.innerTablePrice')}</th>
+                        </tr>
+                      </thead>
+                      <tbody className={styles.tbody}>
+                        {user.products.map((product) => (
+                          <tr key={product.id} className={styles['inner-row']}>
+                            <td className={styles.cell}>2023-02-14</td>
+                            <td className={styles.cell}>{product.name}</td>
+                            <td className={styles.cell}>{product.amount}</td>
+                            <td className={styles.cell}>
+                              {product.currency}
+                              {product.price}
+                            </td>
+                          </tr>
+                                    ))}
+                        <tr className={styles.total}>
+                          <td className={styles['total-price']}>
+                            {t('orderTablePage.innerTableTotalPrice')}
+                          </td>
+                          <td className={styles.price}>
+                            {user.totalPriceCurrency}
+                            {user.totalPrice}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </React.Fragment>
+                ))}
+          </tbody>
         </table>
         <img
           onError={handlerImageUnloader}
