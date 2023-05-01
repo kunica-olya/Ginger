@@ -15,16 +15,18 @@ export default function MainView({ data }) {
     const { t } = useTranslation();
 
     MainView.propTypes = {
-        data: PropTypes.arrayOf({
-            id: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            additionalInfo: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
-            weight: PropTypes.string.isRequired,
-            currency: PropTypes.string.isRequired,
-            img: PropTypes.string.isRequired
-        }).isRequired
+        data: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                title: PropTypes.string.isRequired,
+                description: PropTypes.string.isRequired,
+                additionalInfo: PropTypes.string.isRequired,
+                price: PropTypes.number.isRequired,
+                weight: PropTypes.string.isRequired,
+                currency: PropTypes.string.isRequired,
+                img: PropTypes.string.isRequired
+            })
+        ).isRequired
     };
 
     return (

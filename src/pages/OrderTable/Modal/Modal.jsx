@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import ModalView from './ModalView';
 import ButtonView from '../../../components/Button/ButtonView';
 import { BUTTON } from '../../../constants/constants';
-import { useModal } from '../../../custom_hooks/useModal';
+import useModal from '../../../custom_hooks/useModal';
 
 export default function Modal({ handlerAddData }) {
     const { t } = useTranslation();

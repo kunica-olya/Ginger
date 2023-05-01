@@ -2,7 +2,7 @@ import React, {
  useState, useEffect, useRef, useCallback 
 } from 'react';
 import OrderTableView from './OrderTableView';
-import { withLayout } from '../../components/HOC/withLayout';
+import withLayout from '../../components/HOC/withLayout';
 import { SORT } from '../../constants/constants';
 
 function OrderTable() {

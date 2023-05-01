@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Oval } from 'react-loader-spinner';
 import MainView from './MainView';
-import { withLayout } from '../HOC/withLayout';
+import withLayout from '../HOC/withLayout';
 import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
 
 function Main() {

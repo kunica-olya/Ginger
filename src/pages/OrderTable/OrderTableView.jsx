@@ -27,9 +27,24 @@ export default function OrderTableView({
         handlerRemoveElement: PropTypes.func.isRequired,
         handlerKeyDown: PropTypes.func.isRequired,
         handlerToggleSortDirection: PropTypes.func.isRequired,
-        data: PropTypes.arrayOf.isRequired
+        data: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                customer: PropTypes.string.isRequired,
+                totalPrice: PropTypes.number.isRequired,
+                totalPriceCurrency: PropTypes.string.isRequired,
+                products: PropTypes.arrayOf(
+                    PropTypes.shape({
+                        id: PropTypes.number.isRequired,
+                        name: PropTypes.string.isRequired,
+                        amount: PropTypes.number.isRequired,
+                        currency: PropTypes.string.isRequired,
+                        price: PropTypes.number.isRequired,
+                    })
+                ).isRequired
+            })
+        ).isRequired
     };
-
     OrderTableView.defaultProps = {
         activeRow: number,
     };
@@ -51,12 +66,12 @@ export default function OrderTableView({
         >
           <div className={styles.thead}>
             <div>ID</div>
-            <h2
+            <h3
               className={styles.sort}
               onClick={handlerToggleSortDirection}
             >
               {t('orderTablePage.customer')}
-            </h2>
+            </h3>
           </div>
           <div className={styles.tbody}>
             <div>

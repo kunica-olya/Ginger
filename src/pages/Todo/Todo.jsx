@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import TodoView from './TodoView';
-import { withLayout } from '../../components/HOC/withLayout';
+import withLayout from '../../components/HOC/withLayout';
 import {
     THEMES, API_KEY, API_URL
 } from '../../constants/constants';

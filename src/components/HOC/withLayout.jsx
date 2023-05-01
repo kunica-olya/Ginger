@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import HeaderView from '../Header/HeaderView';
 import FooterView from '../Footer/FooterView';
 
-export function withLayout(WrappedComponent) {
+export default function withLayout(WrappedComponent) {
     return function LayoutComponent({ config, ...props }) {
         LayoutComponent.propTypes = {
             config: PropTypes.shape({
