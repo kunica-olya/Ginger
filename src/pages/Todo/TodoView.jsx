@@ -3,49 +3,76 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Switch from 'react-switch';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 import { ThemeContext } from './Todo';
-import { BUTTON } from '../../constants/constants';
+import { BUTTON, LABEL, THEMES } from '../../constants/constants';
 import ButtonView from '../../components/Button/ButtonView';
 import styles from './TodoView.module.scss';
 
 export default function TodoView({
-  changeInput,
-  userValue,
-  handlerAddTask,
-  todos,
-  handlerDragStart,
-  handlerDragEnd,
-  handlerDragOver,
-  handlerDrop,
-  isDragEnd,
-  isOver
-}) {
-  const theme = useContext(ThemeContext);
+                                     changeInput,
+                                     userValue,
+                                     handlerAddTask,
+                                     todos,
+                                     handlerDragStart,
+                                     handlerDragEnd,
+                                     handlerDragOver,
+                                     handlerDrop,
+                                     isDragEnd,
+                                     isOver
+                                 }) {
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const { t } = useTranslation();
+    const { t } = useTranslation();
 
-  return (
-    <section id={styles.todo}>
-      <div className={styles['todo-container']} style={{ backgroundColor: theme.theme }}>
-        <div className={styles['todo-row']}>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder={t('todoPage.inputPlaceholder')}
-            onChange={changeInput}
-            value={userValue}
-          />
-          <ButtonView
-            click={handlerAddTask}
-            text={t('todoPage.buttonCreate')}
-            variant={BUTTON.ADD}
-          >
-            <FontAwesomeIcon icon={faPlus} />
-          </ButtonView>
-        </div>
+    TodoView.propTypes = {
+        changeInput: PropTypes.func,
+        userValue: PropTypes.string.isRequired,
+        handlerAddTask: PropTypes.func.isRequired,
+        todos: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                task: PropTypes.string.isRequired,
+            })
+        ).isRequired,
+        handlerDragStart: PropTypes.func.isRequired,
+        handlerDragEnd: PropTypes.func.isRequired,
+        handlerDragOver: PropTypes.func.isRequired,
+        handlerDrop: PropTypes.func.isRequired,
+        isDragEnd: PropTypes.bool.isRequired,
+        isOver: PropTypes.func.isRequired,
+    };
 
-        <div className={styles['todo-items']}>
-          {
+    TodoView.defaultProps = {
+        changeInput: () => {
+        }
+    };
+
+    const checked = theme === THEMES.LIGHT;
+    const colorLabel = theme === THEMES.LIGHT ? LABEL.SECONDARY : LABEL.PRIMARY;
+
+    return (
+      <section id={styles.todo}>
+        <div className={styles['todo-container']} style={{ backgroundColor: theme }}>
+          <div className={styles['todo-row']}>
+            <input
+              className={styles.input}
+              type="text"
+              placeholder={t('todoPage.inputPlaceholder')}
+              onChange={changeInput}
+              value={userValue}
+            />
+            <ButtonView
+              click={handlerAddTask}
+              text={t('todoPage.buttonCreate')}
+              variant={BUTTON.ADD}
+            >
+              <FontAwesomeIcon icon={faPlus} />
+            </ButtonView>
+          </div>
+
+          <div className={styles['todo-items']}>
+            {
                         todos.map((todo, index) => (
                           <div
                             draggable="true"
@@ -63,15 +90,15 @@ export default function TodoView({
                           </div>
                         ))
                     }
-        </div>
+          </div>
 
-        <div className={styles['toggle-switch']}>
-          <label style={{ color: theme.colorLabel }} htmlFor="switch">
-            {t('todoPage.labelMode')}
-          </label>
-          <Switch id="switch" checked={theme.checked} onChange={theme.toggleTheme} />
+          <div className={styles['toggle-switch']}>
+            <label style={{ color: colorLabel }} htmlFor="switch">
+              {t('todoPage.labelMode')}
+            </label>
+            <Switch id="switch" checked={Boolean(checked)} onChange={toggleTheme} />
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
 }

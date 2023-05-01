@@ -1,147 +1,147 @@
 import React, {
-  useState, useEffect, useRef, useCallback 
+ useState, useEffect, useRef, useCallback 
 } from 'react';
 import OrderTableView from './OrderTableView';
-import { withLayout } from '../../components/HOC/withLayout';
+import withLayout from '../../components/HOC/withLayout';
 import { SORT } from '../../constants/constants';
 
 function OrderTable() {
-  const [orders, setOrders] = useState([]);
-  const [dataIsLoaded, setDataIsLoaded] = useState(false);
-  const [originalOrders, setOriginalOrders] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeRow, setActiveRow] = useState(null);
-  const [directionSort, setDirectionSort] = useState(null);
+    const [orders, setOrders] = useState([]);
+    const [dataIsLoaded, setDataIsLoaded] = useState(false);
+    const [originalOrders, setOriginalOrders] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeRow, setActiveRow] = useState(null);
+    const [directionSort, setDirectionSort] = useState(null);
 
-  const tableRef = useRef(null);
+    const tableRef = useRef(null);
 
-  useEffect(() => {
-    fetch('/orders.json')
-      .then((response) => response.json())
-      .then((data) => {
-        setOrders(data);
-        setDataIsLoaded(true);
-        setOriginalOrders(data);
-      })
-      .catch((error) => console.error('Error fetching orders_json', error));
-  }, []);
+    useEffect(() => {
+        fetch('/orders.json')
+            .then((response) => response.json())
+            .then((data) => {
+                setOrders(data);
+                setDataIsLoaded(true);
+                setOriginalOrders(data);
+            })
+            .catch((error) => console.error('Error fetching orders_json', error));
+    }, []);
 
-  const handlerKeyDown = useCallback((e) => {
-    tableRef.current.focus();
+    const handlerKeyDown = useCallback((e) => {
+        tableRef.current.focus();
 
-    if (e.ctrlKey && e.key === 'c') {
-      setIsOpen(false);
-      setActiveRow(4);
-    } else if (e.ctrlKey && e.shiftKey) {
-      setIsOpen(false);
-      setActiveRow(3);
-    } else if (e.altKey && e.key === 'c') {
-      setIsOpen(false);
-      setActiveRow(2);
-    } else if (e.altKey && e.key === 'v') {
-      setIsOpen(false);
-      setActiveRow(1);
-    }
-  }, []);
+        if (e.ctrlKey && e.key === 'c') {
+            setIsOpen(false);
+            setActiveRow(4);
+        } else if (e.ctrlKey && e.shiftKey) {
+            setIsOpen(false);
+            setActiveRow(3);
+        } else if (e.altKey && e.key === 'c') {
+            setIsOpen(false);
+            setActiveRow(2);
+        } else if (e.altKey && e.key === 'v') {
+            setIsOpen(false);
+            setActiveRow(1);
+        }
+    }, []);
 
-  useEffect(() => {
-    document.addEventListener('keydown', handlerKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handlerKeyDown);
-    };
-  }, [handlerKeyDown]);
-
-  const formatResponse = () => {
-    let data = [];
-
-    if (orders) {
-      data = orders.map((order) => {
-        const sum = order.products.reduce((acc, curr) => acc + curr.price * curr.amount, 0);
-        return {
-          id: order.customer.id,
-          customer: `${order.customer.name.firstName} ${order.customer.name.lastName}`,
-          products: order.products,
-          totalPrice: sum,
-          totalPriceCurrency: order.products ? order.products[0].currency : ''
+    useEffect(() => {
+        document.addEventListener('keydown', handlerKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handlerKeyDown);
         };
-      });
-    }
-    return data;
-  };
+    }, [handlerKeyDown]);
 
-  const toggleTable = (id) => {
-    if (activeRow === id) {
-      setIsOpen(!isOpen);
-    } else {
-      setIsOpen(true);
-    }
+    const formatResponse = () => {
+        let data = [];
 
-    setActiveRow(id);
-  };
+        if (orders) {
+            data = orders.map((order) => {
+                const sum = order.products.reduce((acc, curr) => acc + curr.price * curr.amount, 0);
+                return {
+                    id: order.customer.id,
+                    customer: `${order.customer.name.firstName} ${order.customer.name.lastName}`,
+                    products: order.products,
+                    totalPrice: sum,
+                    totalPriceCurrency: order.products ? order.products[0].currency : ''
+                };
+            });
+        }
+        return data;
+    };
 
-  const handlerAddData = (data) => {
-    setOrders([...orders, data]);
-  };
+    const toggleTable = (id) => {
+        if (activeRow === id) {
+            setIsOpen(!isOpen);
+        } else {
+            setIsOpen(true);
+        }
 
-  const makeElementInactive = () => {
-    toggleTable(null);
-  };
+        setActiveRow(id);
+    };
 
-  const handlerImageUnloader = () => {
-    console.log('Image is unloaded');
-  };
+    const handlerAddData = (data) => {
+        setOrders([...orders, data]);
+    };
 
-  const handlerRemoveElement = (id) => {
-    const removedOrders = orders.filter((order) => {
-      return order.customer.id !== id;
-    });
+    const makeElementInactive = () => {
+        toggleTable(null);
+    };
 
-    setOrders([...removedOrders]);
-  };
+    const handlerImageUnloader = () => {
+        console.log('Image is unloaded');
+    };
 
-  const handlerSort = () => {
-    const originalCopy = [...originalOrders];
+    const handlerRemoveElement = (id) => {
+        const removedOrders = orders.filter((order) => {
+            return order.customer.id !== id;
+        });
 
-    if (directionSort === SORT.ASC) {
-      orders.sort((a, b) => {
-        const fullNameA = `${a.customer.name.firstName}${a.customer.name.lastName}`;
-        const fullNameB = `${b.customer.name.firstName}${b.customer.name.lastName}`;
+        setOrders([...removedOrders]);
+    };
 
-        return fullNameA.toLowerCase().localeCompare(fullNameB.toLowerCase());
-      });
-    }
+    const handlerSort = () => {
+        const originalCopy = [...originalOrders];
 
-    if (directionSort === SORT.DESC) {
-      orders.reverse();
-    }
+        if (directionSort === SORT.ASC) {
+            orders.sort((a, b) => {
+                const fullNameA = `${a.customer.name.firstName}${a.customer.name.lastName}`;
+                const fullNameB = `${b.customer.name.firstName}${b.customer.name.lastName}`;
 
-    setOrders(orders);
+                return fullNameA.toLowerCase().localeCompare(fullNameB.toLowerCase());
+            });
+        }
 
-    if (directionSort === null) {
-      setOrders(originalCopy);
-    }
-  };
+        if (directionSort === SORT.DESC) {
+            orders.reverse();
+        }
 
-  const handlerToggleSortDirection = () => {
-    let newDirectionSort;
+        setOrders(orders);
 
-    if (directionSort === SORT.ASC) {
-      newDirectionSort = SORT.DESC;
-    } else if (directionSort === SORT.DESC) {
-      newDirectionSort = null;
-    } else {
-      newDirectionSort = SORT.ASC;
-    }
+        if (directionSort === null) {
+            setOrders(originalCopy);
+        }
+    };
 
-    setDirectionSort(newDirectionSort);
-    handlerSort();
-  };
+    const handlerToggleSortDirection = () => {
+        let newDirectionSort;
 
-  const data = formatResponse();
+        if (directionSort === SORT.ASC) {
+            newDirectionSort = SORT.DESC;
+        } else if (directionSort === SORT.DESC) {
+            newDirectionSort = null;
+        } else {
+            newDirectionSort = SORT.ASC;
+        }
 
-  return (
-    <div>
-      {dataIsLoaded && (
+        setDirectionSort(newDirectionSort);
+        handlerSort();
+    };
+
+    const data = formatResponse();
+
+    return (
+      <div>
+        {dataIsLoaded && (
         <OrderTableView
           data={data}
           isOpen={isOpen}
@@ -155,9 +155,9 @@ function OrderTable() {
           handlerKeyDown={handlerKeyDown}
           handlerToggleSortDirection={handlerToggleSortDirection}
         />
-      )}
-    </div>
-  );
+            )}
+      </div>
+    );
 }
 
 export default withLayout(OrderTable);

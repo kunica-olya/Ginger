@@ -7,24 +7,24 @@ import Todo from './pages/Todo/Todo';
 import './i18n';
 
 export default function App() {
-  const [config, setConfig] = useState({});
+    const [config, setConfig] = useState({});
 
-  useEffect(() => {
-    fetch('/app_config.json')
-      .then((response) => response.json())
-      .then((data) => {
-        setConfig(data);
-      })
-      .catch((error) => console.log('Error fetching data_json', error));
-  }, []);
+    useEffect(() => {
+        fetch('/app_config.json')
+            .then((response) => response.json())
+            .then((data) => {
+                setConfig(data);
+            })
+            .catch((error) => console.log('Error fetching data_json', error));
+    }, []);
 
-  return (
-    <Routes>
-      <Route>
-        <Route path="/" element={<Main config={config} />} />
-        <Route path="/orders" element={<OrderTable config={config} />} />
-        <Route path="/todo" element={<Todo config={config} />} />
-      </Route>
-    </Routes>
-  );
+    return (
+      <Routes>
+        <Route>
+          <Route path="/" element={<Main config={config} />} />
+          <Route path="/orders" element={<OrderTable config={config} />} />
+          <Route path="/todo" element={<Todo config={config} />} />
+        </Route>
+      </Routes>
+    );
 }

@@ -1,11 +1,12 @@
 import GalleryView from './GalleryView';
 
-export function GalleryLoader() {
-  const handlerImageLoader = () => {
-    console.log('Image is loaded');
-  };
+export default function GalleryLoader() {
+    const handlerImageLoader = () => {
+        // eslint-disable-next-line no-console
+        console.log('Image is loaded');
+    };
 
-  return (
-    <GalleryView handlerImageLoader={handlerImageLoader} />
-  );
+    return (
+      <GalleryView handlerImageLoader={handlerImageLoader} />
+    );
 }
