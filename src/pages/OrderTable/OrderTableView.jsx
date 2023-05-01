@@ -1,48 +1,65 @@
 import { useTranslation } from 'react-i18next';
+import PropTypes, { number } from 'prop-types';
 import styles from './OrderTable.module.scss';
 import Modal from './Modal/Modal';
 import ButtonRemoveView from './ButtonRemove/ButtonRemoveView';
 
 export default function OrderTableView({
-  isOpen,
-  activeRow,
-  data,
-  handlerAddData,
-  toggleTable,
-  doubleClick,
-  handlerImageUnloader,
-  handlerRemoveElement,
-  handlerKeyDown,
-  tableRef,
-  handlerToggleSortDirection
-}) {
-  const image = 'invalid path';
+                                           isOpen,
+                                           activeRow,
+                                           data,
+                                           handlerAddData,
+                                           toggleTable,
+                                           doubleClick,
+                                           handlerImageUnloader,
+                                           handlerRemoveElement,
+                                           handlerKeyDown,
+                                           tableRef,
+                                           handlerToggleSortDirection
+                                       }) {
+    OrderTableView.propTypes = {
+        isOpen: PropTypes.bool.isRequired,
+        activeRow: PropTypes.number,
+        handlerAddData: PropTypes.func.isRequired,
+        toggleTable: PropTypes.func.isRequired,
+        doubleClick: PropTypes.func.isRequired,
+        handlerImageUnloader: PropTypes.func.isRequired,
+        handlerRemoveElement: PropTypes.func.isRequired,
+        handlerKeyDown: PropTypes.func.isRequired,
+        handlerToggleSortDirection: PropTypes.func.isRequired,
+    };
 
-  const { t } = useTranslation();
+    OrderTableView.defaultProps = {
+        activeRow: number,
+    };
 
-  return (
-    <section className={styles['table-section']}>
-      <h2>{t('orderTablePage.title')}</h2>
-      <div className={styles['button-container']}>
-        <Modal handlerAddData={handlerAddData} />
-      </div>
-      <div
-        className={styles.table}
-        ref={tableRef}
-        onKeyDown={handlerKeyDown}
-      >
-        <div className={styles.thead}>
-          <div>ID</div>
-          <div
-            className={styles.sort}
-            onClick={handlerToggleSortDirection}
-          >
-            {t('orderTablePage.customer')}
-          </div>
+    const image = 'invalid path';
+
+    const { t } = useTranslation();
+
+    return (
+      <section className={styles['table-section']}>
+        <h2>{t('orderTablePage.title')}</h2>
+        <div className={styles['button-container']}>
+          <Modal handlerAddData={handlerAddData} />
         </div>
-        <div className={styles.tbody}>
-          <div>
-            {
+        <table
+          className={styles.table}
+          ref={tableRef}
+          onKeyDown={handlerKeyDown}
+        >
+          <div className={styles.thead}>
+            <div>ID</div>
+            <h2
+              className={styles.sort}
+              onClick={handlerToggleSortDirection}
+            >
+              {t('orderTablePage.customer')}
+            </h2>
+          </div>
+          <div className={styles.tbody}>
+            <div>
+              {
                             data.map((user) => (
                               <div className={styles.div} key={user.id}>
                                 <div
@@ -79,7 +96,7 @@ export default function OrderTableView({
                                           {product.price}
                                         </div>
                                       </div>
-                                    ))}
+                                            ))}
                                     <div className={styles.total}>
                                       <div className={styles['total-price']}>
                                         {t('orderTablePage.innerTableTotalPrice')}
@@ -94,14 +111,14 @@ export default function OrderTableView({
                               </div>
                             ))
                         }
+            </div>
           </div>
-        </div>
-      </div>
-      <img
-        onError={handlerImageUnloader}
-        src={image}
-        alt="zephyr"
-      />
-    </section>
-  );
+        </table>
+        <img
+          onError={handlerImageUnloader}
+          src={image}
+          alt="zephyr"
+        />
+      </section>
+    );
 }
