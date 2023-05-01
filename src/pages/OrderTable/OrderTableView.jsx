@@ -27,6 +27,7 @@ export default function OrderTableView({
         handlerRemoveElement: PropTypes.func.isRequired,
         handlerKeyDown: PropTypes.func.isRequired,
         handlerToggleSortDirection: PropTypes.func.isRequired,
+        data: PropTypes.arrayOf.isRequired
     };
 
     OrderTableView.defaultProps = {

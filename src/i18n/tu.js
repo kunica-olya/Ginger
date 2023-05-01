@@ -12,7 +12,8 @@ const tu = {
         buttonSubscribe: 'Abone'
     },
     gallery: {
-        description: 'Havadar, yumuşak esintiler yaratmamız için bize ilham veriyorsunuz. Instagram\'da tatlılarımıza göz atın',
+        description: 'Havadar, yumuşak esintiler yaratmamız için bize ilham veriyorsunuz.'
+            + 'Instagram\'da tatlılarımıza göz atın',
         buttonSubscribe: 'Abone'
     },
     contacts: {

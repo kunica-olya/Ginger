@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import TodoView from './TodoView';
 import { withLayout } from '../../components/HOC/withLayout';
 import {
- THEMES, LABEL, API_KEY, API_URL 
+    THEMES, API_KEY, API_URL
 } from '../../constants/constants';
 
 export const ThemeContext = React.createContext();
@@ -136,18 +136,8 @@ function Todo() {
         return overElement && overElement.id === todoItem.id;
     };
 
-    const checked = theme === THEMES.LIGHT;
-    const colorLabel = theme === THEMES.LIGHT ? LABEL.SECONDARY : LABEL.PRIMARY;
-
     return (
-      <ThemeContext.Provider
-        value={{
-                theme,
-                checked,
-                colorLabel,
-                toggleTheme
-            }}
-      >
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <TodoView
           changeInput={handlerOnChange}
           userValue={userValue}
@@ -163,4 +153,5 @@ function Todo() {
       </ThemeContext.Provider>
     );
 }
+
 export default withLayout(Todo);

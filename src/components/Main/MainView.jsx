@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 import styles from './Main.module.scss';
 import { ReactComponent as Logo } from '../../assets/svg/Logo-dark.svg';
 import ButtonView from '../Button/ButtonView';
@@ -11,55 +12,68 @@ import MapView from '../Contacts/Map/MapView';
 import { BUTTON } from '../../constants/constants';
 
 export default function MainView({ data }) {
-                    const { t } = useTranslation();
+    const { t } = useTranslation();
 
-                    return (
-                      <div className={styles.container}>
-                        <section className={styles.jumbotron}>
-                          <div className={styles.subtitle}>
-                            <a className={styles.logo} href="/">
-                              <Logo />
-                            </a>
-                            <p className={styles.description}>{t('jumbotron.description')}</p>
-                            <ButtonView
-                              text={t('jumbotron.buttonSubscribe')}
-                              variant={BUTTON.PRIMARY}
-                            >
-                              <IconInstagram />
-                            </ButtonView>
-                          </div>
-                          <div className={styles.strawberry} />
-                          <div className={styles['background-zephir']} />
-                        </section>
-                        <div className={styles['second-strawberry']} />
-                        <div className={styles.background} />
+    MainView.propTypes = {
+        data: PropTypes.arrayOf({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+            additionalInfo: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            weight: PropTypes.string.isRequired,
+            currency: PropTypes.string.isRequired,
+            img: PropTypes.string.isRequired
+        }).isRequired
+    };
 
-                        <section id={styles.cards}>
-                          <div id="menu" className={styles.wrapper}>
-                            {data.map((card) => (
-                              <CardView
-                                key={card.id}
-                                card={card}
-                              />
-                                                                                                    ))}
-                          </div>
-                        </section>
+    return (
+      <div className={styles.container}>
+        <section className={styles.jumbotron}>
+          <div className={styles.subtitle}>
+            <a className={styles.logo} href="/">
+              <Logo />
+            </a>
+            <p className={styles.description}>{t('jumbotron.description')}</p>
+            <ButtonView
+              text={t('jumbotron.buttonSubscribe')}
+              variant={BUTTON.PRIMARY}
+            >
+              <IconInstagram />
+            </ButtonView>
+          </div>
+          <div className={styles.strawberry} />
+          <div className={styles['background-zephir']} />
+        </section>
+        <div className={styles['second-strawberry']} />
+        <div className={styles.background} />
 
-                        <section id={styles.gallery}>
-                          <div id="gallery">
-                            <GalleryLoader />
-                          </div>
-                        </section>
+        <section id={styles.cards}>
+          <div id="menu" className={styles.wrapper}>
+            {data.map((card) => (
+              <CardView
+                key={card.id}
+                card={card}
+              />
+                    ))}
+          </div>
+        </section>
 
-                        <section id={styles.contacts}>
-                          <div className={styles.info}>
-                            <div className={styles.block}>
-                              <ContactsView />
-                              <WorkScheduleView />
-                            </div>
-                            <MapView />
-                          </div>
-                        </section>
-                      </div>
-                    );
+        <section id={styles.gallery}>
+          <div id="gallery">
+            <GalleryLoader />
+          </div>
+        </section>
+
+        <section id={styles.contacts}>
+          <div className={styles.info}>
+            <div className={styles.block}>
+              <ContactsView />
+              <WorkScheduleView />
+            </div>
+            <MapView />
+          </div>
+        </section>
+      </div>
+    );
 }
