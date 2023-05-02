@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Oval } from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
 import MainView from './MainView';
 import withLayout from '../HOC/withLayout';
 import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
+import getCards from '../../store/cards/actions';
 
 function Main() {
-    const [cards, setCards] = useState([]);
     const [dataIsLoaded, setDataIsLoaded] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const cardsData = useSelector(({ cards }) => cards.data);
 
     const getData = async () => {
         try {
@@ -32,7 +37,7 @@ function Main() {
                     img: BASE_URL + item.attributes.img.data.attributes.url
                 };
             });
-            setCards(formattedData);
+            dispatch(getCards(formattedData));
             setDataIsLoaded(true);
         } catch (error) {
             console.error('Error fetch data', error);
@@ -46,7 +51,7 @@ function Main() {
     return (
       <div>
         {dataIsLoaded ? (
-          <MainView data={cards} />
+          <MainView data={cardsData} />
             ) : (
               <Oval
                 height={50}
@@ -66,4 +71,5 @@ function Main() {
       </div>
     );
 }
+
 export default withLayout(Main);
