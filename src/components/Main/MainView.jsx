@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { Oval } from 'react-loader-spinner';
+import { useSelector } from 'react-redux';
 import styles from './Main.module.scss';
 import { ReactComponent as Logo } from '../../assets/svg/Logo-dark.svg';
 import ButtonView from '../Button/ButtonView';
@@ -12,24 +13,14 @@ import WorkScheduleView from '../Contacts/WorkSchedule/WorkScheduleView';
 import MapView from '../Contacts/Map/MapView';
 import { BUTTON } from '../../constants/constants';
 
-export default function MainView({ data, handlerUpdate, isLoading }) {
+export default function MainView({ handlerUpdate }) {
     const { t } = useTranslation();
 
+    const cardsData = useSelector(({ cards }) => cards.data);
+    const isLoading = useSelector(({ cards }) => cards.loading);
+
     MainView.propTypes = {
-        data: PropTypes.arrayOf(
-            PropTypes.shape({
-                id: PropTypes.number.isRequired,
-                title: PropTypes.string.isRequired,
-                description: PropTypes.string.isRequired,
-                additionalInfo: PropTypes.string.isRequired,
-                price: PropTypes.number.isRequired,
-                weight: PropTypes.string.isRequired,
-                currency: PropTypes.string.isRequired,
-                img: PropTypes.string.isRequired,
-            })
-        ).isRequired,
         handlerUpdate: PropTypes.func.isRequired,
-        isLoading: PropTypes.bool.isRequired
     };
 
     return (
@@ -75,7 +66,7 @@ export default function MainView({ data, handlerUpdate, isLoading }) {
 
         <section id={styles.cards}>
           <div id="menu" className={styles.wrapper}>
-            {data.map((card) => (
+            {cardsData.map((card) => (
               <CardView
                 key={card.id}
                 card={card}

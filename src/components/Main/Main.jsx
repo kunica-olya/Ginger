@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import MainView from './MainView';
 import withLayout from '../HOC/withLayout';
 import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
@@ -7,10 +7,6 @@ import { getCards, cardsLoading } from '../../store/cards/actions';
 
 function Main() {
     const dispatch = useDispatch();
-
-    const cardsData = useSelector(({ cards }) => cards.data);
-    const isLoading = useSelector(({ cards }) => cards.loading);
-    console.log('isLoading useSelector', isLoading);
 
     const getData = async () => {
         try {
@@ -43,7 +39,7 @@ function Main() {
     };
 
     const fetchCards = async () => {
-        dispatch(cardsLoading());
+        dispatch(cardsLoading(true));
         const data = await getData();
         dispatch(getCards(data));
     };
@@ -58,11 +54,7 @@ function Main() {
 
     return (
       <div>
-        <MainView
-          data={cardsData}
-          handlerUpdate={handlerUpdateData}
-          isLoading={isLoading}
-        />
+        <MainView handlerUpdate={handlerUpdateData} />
       </div>
     );
 }

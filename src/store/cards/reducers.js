@@ -16,7 +16,7 @@ export default function cards(state = initialState, action) {
         case CARDS_LOADING:
             return {
                 ...state,
-                loading: true
+                loading: action.payload
             };
         default:
             return state;
