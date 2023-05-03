@@ -1,15 +1,16 @@
-import {useEffect, useCallback} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import MainView from './MainView';
 import withLayout from '../HOC/withLayout';
-import {API_KEY, BASE_URL, API_URL} from '../../constants/constants';
-import {getCards, cardsLoading} from '../../store/cards/actions';
+import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
+import { getCards, cardsLoading } from '../../store/cards/actions';
 
 function Main() {
     const dispatch = useDispatch();
 
-    const cardsData = useSelector(({cards}) => cards.data);
-    const isLoading = useSelector(({cards}) => cards.loading);
+    const cardsData = useSelector(({ cards }) => cards.data);
+    const isLoading = useSelector(({ cards }) => cards.loading);
+    console.log('isLoading useSelector', isLoading);
 
     const getData = async () => {
         try {
@@ -42,27 +43,27 @@ function Main() {
     };
 
     const fetchCards = async () => {
-        dispatch(cardsLoading())
+        dispatch(cardsLoading());
         const data = await getData();
-        dispatch(getCards(data))
-    }
+        dispatch(getCards(data));
+    };
 
     const handlerUpdateData = useCallback(() => {
         fetchCards();
     }, []);
 
     useEffect(() => {
-        fetchCards()
+        fetchCards();
     }, []);
 
     return (
-        <div>
-            <MainView
-                data={cardsData}
-                handlerUpdate={handlerUpdateData}
-                isLoading={isLoading}
-            />
-        </div>
+      <div>
+        <MainView
+          data={cardsData}
+          handlerUpdate={handlerUpdateData}
+          isLoading={isLoading}
+        />
+      </div>
     );
 }
 
