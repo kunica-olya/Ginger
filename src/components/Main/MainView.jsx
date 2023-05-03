@@ -55,7 +55,7 @@ export default function MainView({ data, handlerUpdate, isLoading }) {
 
         <div>
           <ButtonView
-            text="Update"
+            text={t('main.buttonUpdate')}
             click={handlerUpdate}
             variant={BUTTON.PRIMARY}
             className="preloader-button"

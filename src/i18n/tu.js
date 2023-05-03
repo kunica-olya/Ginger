@@ -11,6 +11,9 @@ const tu = {
         description: 'Instagram\'da narin esinti lezzetinizi deneyin ve seçin',
         buttonSubscribe: 'Abone'
     },
+    main: {
+        buttonUpdate: 'Güncelleme'
+    },
     gallery: {
         description: 'Havadar, yumuşak esintiler yaratmamız için bize ilham veriyorsunuz.'
             + 'Instagram\'da tatlılarımıza göz atın',

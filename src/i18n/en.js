@@ -11,6 +11,9 @@ const en = {
         description: 'Try and choose your flavor of delicate zephyr on Instagram',
         buttonSubscribe: 'Subscribe'
     },
+    main: {
+        buttonUpdate: 'Update'
+    },
     gallery: {
         description: 'You inspire us to create airy, tender zephyrs. Check out our desserts on Instagram',
         buttonSubscribe: 'Subscribe'
