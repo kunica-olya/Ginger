@@ -83,8 +83,19 @@
     margin-top: 52px;
   }
 
+  .left-button {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .loader {
+    position: absolute;
+    left: 10px;
+  }
+
   section#gallery {
     margin-bottom: 120px;
+    margin-top: 115px;
   }
 
 

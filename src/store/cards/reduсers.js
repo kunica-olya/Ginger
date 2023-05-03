@@ -1,9 +1,8 @@
-import { GET_CARDS } from './types';
+import { GET_CARDS, UPDATE_CARDS, UPDATE_STATUS } from './types';
 
 const initialState = {
-    errorMessage: '',
+    data: [],
     loading: false,
-    data: []
 };
 
 export default function cards(state = initialState, action) {
@@ -11,7 +10,17 @@ export default function cards(state = initialState, action) {
         case GET_CARDS:
             return {
                 ...state,
-                data: action.data
+                data: action.data,
+            };
+        case UPDATE_CARDS:
+            return {
+                ...state,
+                data: action.data,
+            };
+        case UPDATE_STATUS:
+            return {
+                ...state,
+                loading: action.loading,
             };
         default:
             return state;

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { Oval } from 'react-loader-spinner';
 import styles from './Main.module.scss';
 import { ReactComponent as Logo } from '../../assets/svg/Logo-dark.svg';
 import ButtonView from '../Button/ButtonView';
@@ -11,7 +12,7 @@ import WorkScheduleView from '../Contacts/WorkSchedule/WorkScheduleView';
 import MapView from '../Contacts/Map/MapView';
 import { BUTTON } from '../../constants/constants';
 
-export default function MainView({ data }) {
+export default function MainView({ data, handlerUpdate, isLoading }) {
     const { t } = useTranslation();
 
     MainView.propTypes = {
@@ -24,9 +25,11 @@ export default function MainView({ data }) {
                 price: PropTypes.number.isRequired,
                 weight: PropTypes.string.isRequired,
                 currency: PropTypes.string.isRequired,
-                img: PropTypes.string.isRequired
+                img: PropTypes.string.isRequired,
+                isLoading: PropTypes.bool.isRequired
             })
-        ).isRequired
+        ).isRequired,
+        handlerUpdate: PropTypes.func.isRequired
     };
 
     return (
@@ -49,6 +52,31 @@ export default function MainView({ data }) {
         </section>
         <div className={styles['second-strawberry']} />
         <div className={styles.background} />
+
+        {isLoading ? (
+          <ButtonView
+            click={handlerUpdate}
+            text="Update"
+            variant={BUTTON.PRIMARY}
+            className="preloader-button"
+          >
+            <Oval
+              width={30}
+              height={30}
+              wrapperClass="loader"
+              color="#4fa94d"
+              visible
+              ariaLabel="oval-loading"
+            />
+          </ButtonView>
+            ) : (
+              <ButtonView
+                click={handlerUpdate}
+                text="Update"
+                variant={BUTTON.PRIMARY}
+                className="preloader-button"
+              />
+            )}
 
         <section id={styles.cards}>
           <div id="menu" className={styles.wrapper}>

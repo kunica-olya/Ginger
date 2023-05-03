@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Oval } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import MainView from './MainView';
 import withLayout from '../HOC/withLayout';
 import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
-import getCards from '../../store/cards/actions';
+import { getCards, updateCards, updateStatus } from '../../store/cards/actions';
 
 function Main() {
     const [dataIsLoaded, setDataIsLoaded] = useState(false);
@@ -13,9 +13,12 @@ function Main() {
 
     const cardsData = useSelector(({ cards }) => cards.data);
 
+    const updatedData = useSelector(({ cards }) => cards.data);
+
+    const isLoading = useSelector(({ cards }) => cards.loading);
+
     const getData = async () => {
         try {
-            setDataIsLoaded(false);
             const response = await fetch(`${API_URL}/cards?populate=*&sort=id:asc`, {
                 method: 'GET',
                 headers: {
@@ -37,36 +40,41 @@ function Main() {
                     img: BASE_URL + item.attributes.img.data.attributes.url
                 };
             });
-            dispatch(getCards(formattedData));
             setDataIsLoaded(true);
+            return formattedData;
         } catch (error) {
             console.error('Error fetch data', error);
+            return [];
         }
     };
 
+    const handlerUpdateData = useCallback(() => {
+        const load = async () => {
+            const data = await getData();
+            dispatch(updateCards(data));
+            dispatch(updateStatus(true));
+        };
+        load();
+    }, []);
+
     useEffect(() => {
-        getData();
+        console.log(' handlerLoad');
+        const load = async () => {
+            const data = await getData();
+            dispatch(getCards(data));
+        };
+        load();
     }, []);
 
     return (
+
       <div>
-        {dataIsLoaded ? (
-          <MainView data={cardsData} />
-            ) : (
-              <Oval
-                height={50}
-                width={50}
-                color="#4fa94d"
-                wrapperStyle={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginTop: '30%',
-                        marginBottom: '30%'
-                    }}
-                visible
-                ariaLabel="oval-loading"
-              />
+        {dataIsLoaded && (
+        <MainView
+          data={cardsData}
+          handlerUpdate={handlerUpdateData}
+          isLoading={isLoading}
+        />
             )}
       </div>
     );
