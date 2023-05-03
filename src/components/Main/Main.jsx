@@ -1,21 +1,15 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Oval } from 'react-loader-spinner';
-import { useDispatch, useSelector } from 'react-redux';
+import {useEffect, useCallback} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import MainView from './MainView';
 import withLayout from '../HOC/withLayout';
-import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
-import { getCards, updateCards, updateStatus } from '../../store/cards/actions';
+import {API_KEY, BASE_URL, API_URL} from '../../constants/constants';
+import {getCards, cardsLoading} from '../../store/cards/actions';
 
 function Main() {
-    const [dataIsLoaded, setDataIsLoaded] = useState(false);
-
     const dispatch = useDispatch();
 
-    const cardsData = useSelector(({ cards }) => cards.data);
-
-    const updatedData = useSelector(({ cards }) => cards.data);
-
-    const isLoading = useSelector(({ cards }) => cards.loading);
+    const cardsData = useSelector(({cards}) => cards.data);
+    const isLoading = useSelector(({cards}) => cards.loading);
 
     const getData = async () => {
         try {
@@ -40,7 +34,6 @@ function Main() {
                     img: BASE_URL + item.attributes.img.data.attributes.url
                 };
             });
-            setDataIsLoaded(true);
             return formattedData;
         } catch (error) {
             console.error('Error fetch data', error);
@@ -48,35 +41,28 @@ function Main() {
         }
     };
 
+    const fetchCards = async () => {
+        dispatch(cardsLoading())
+        const data = await getData();
+        dispatch(getCards(data))
+    }
+
     const handlerUpdateData = useCallback(() => {
-        const load = async () => {
-            const data = await getData();
-            dispatch(updateCards(data));
-            dispatch(updateStatus(true));
-        };
-        load();
+        fetchCards();
     }, []);
 
     useEffect(() => {
-        console.log(' handlerLoad');
-        const load = async () => {
-            const data = await getData();
-            dispatch(getCards(data));
-        };
-        load();
+        fetchCards()
     }, []);
 
     return (
-
-      <div>
-        {dataIsLoaded && (
-        <MainView
-          data={cardsData}
-          handlerUpdate={handlerUpdateData}
-          isLoading={isLoading}
-        />
-            )}
-      </div>
+        <div>
+            <MainView
+                data={cardsData}
+                handlerUpdate={handlerUpdateData}
+                isLoading={isLoading}
+            />
+        </div>
     );
 }
 
