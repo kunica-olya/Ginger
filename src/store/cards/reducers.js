@@ -1,4 +1,4 @@
-import { GET_CARDS, CARDS_LOADING } from './types';
+import { GET_CARDS, UPDATE_CARDS } from './types';
 
 const initialState = {
     data: [],
@@ -13,10 +13,10 @@ export default function cards(state = initialState, action) {
                 data: action.payload,
                 loading: false
             };
-        case CARDS_LOADING:
+        case UPDATE_CARDS:
             return {
                 ...state,
-                loading: action.payload
+                loading: action.loading
             };
         default:
             return state;
