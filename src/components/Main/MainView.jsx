@@ -44,25 +44,25 @@ export default function MainView({ handlerUpdate }) {
         <div className={styles['second-strawberry']} />
         <div className={styles.background} />
 
-        <div>
-          <ButtonView
-            text="Update"
-            click={handlerUpdate}
-            variant={BUTTON.PRIMARY}
-            className="preloader-button"
-          >
+        <ButtonView
+          text="Update"
+          click={handlerUpdate}
+          variant={BUTTON.PRIMARY}
+          className="preloader-button"
+        >
+          <div>
             {isLoading && (
-            <Oval
-              width={30}
-              height={30}
-              wrapperClass="loader"
-              color="#4fa94d"
-              visible
-              ariaLabel="oval-loading"
-            />
-                    )}
-          </ButtonView>
-        </div>
+              <Oval
+                width={30}
+                height={30}
+                wrapperClass="loader"
+                color="#4fa94d"
+                visible
+                ariaLabel="oval-loading"
+              />
+)}
+          </div>
+        </ButtonView>
 
         <section id={styles.cards}>
           <div id="menu" className={styles.wrapper}>
