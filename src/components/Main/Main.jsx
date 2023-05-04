@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import MainView from './MainView';
 import withLayout from '../HOC/withLayout';
 import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
-import { getCards, cardsLoading } from '../../store/cards/actions';
+import { getCards, updateCards } from '../../store/cards/actions';
 
 function Main() {
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ function Main() {
     };
 
     const fetchCards = async () => {
-        dispatch(cardsLoading(true));
+        dispatch(updateCards(true));
         const data = await getData();
         dispatch(getCards(data));
     };
