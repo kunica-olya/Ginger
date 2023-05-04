@@ -43,7 +43,7 @@ export default function MainView({ handlerUpdate }) {
         </section>
         <div className={styles['second-strawberry']} />
         <div className={styles.background} />
-
+      
         <ButtonView
           text="Update"
           click={handlerUpdate}
@@ -51,8 +51,7 @@ export default function MainView({ handlerUpdate }) {
           className="preloader-button"
         >
           <div>
-            {isLoading && (
-              <Oval
+            {isLoading && <Oval
                 width={30}
                 height={30}
                 wrapperClass="loader"
@@ -60,7 +59,7 @@ export default function MainView({ handlerUpdate }) {
                 visible
                 ariaLabel="oval-loading"
               />
-)}
+}
           </div>
         </ButtonView>
 

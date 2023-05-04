@@ -11,6 +11,9 @@ const ua = {
         description: 'Спробуйте та оберіть свій смак ніжного зефіру в Instagram',
         buttonSubscribe: 'Підписатися'
     },
+    main: {
+        buttonUpdate: 'Оновити'
+    },
     gallery: {
         description: 'Ви надихаєте нас на створення повітряних ніжних зефірів. Перегляньте наші десерти в Instagram',
         buttonSubscribe: 'Підписатися'
