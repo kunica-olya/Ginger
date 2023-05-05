@@ -5,62 +5,62 @@ import styles from './Header.module.scss';
 import Select from './Select';
 
 export default function HeaderView({ config }) {
-    const { address, phone } = config;
+  const { address, phone } = config;
 
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    HeaderView.propTypes = {
-        config: PropTypes.shape({
-            address: PropTypes.string.isRequired,
-            phone: PropTypes.string,
-        })
-    };
+  HeaderView.propTypes = {
+    config: PropTypes.shape({
+      address: PropTypes.string.isRequired,
+      phone: PropTypes.string,
+    })
+  };
 
-    HeaderView.defaultProps = {
-        config: {}
-    };
+  HeaderView.defaultProps = {
+    config: {}
+  };
 
-    return (
-      <div className={styles.container}>
-        <div className={styles['background-logo']} />
-        <header className={styles.header}>
-          <div className={styles['bright-background']} />
-          <div className={styles['repeat-background']} />
-          <div className={styles['additional-background']} />
-          <nav className={styles['nav-wrapper']}>
-            <div className={styles.block} />
-            <ul>
-              <li>
-                <Link to="/#menu">{t('nav.menu')}</Link>
-              </li>
-              <li>
-                <Link to="/#gallery">{t('nav.gallery')}</Link>
-              </li>
-              <li>
-                <Link to="/#contacts">{t('nav.contacts')}</Link>
-              </li>
+  return (
+    <div className={styles.container}>
+      <div className={styles['background-logo']} />
+      <header className={styles.header}>
+        <div className={styles['bright-background']} />
+        <div className={styles['repeat-background']} />
+        <div className={styles['additional-background']} />
+        <nav className={styles['nav-wrapper']}>
+          <div className={styles.block} />
+          <ul>
+            <li>
+              <Link to="/#menu">{t('nav.menu')}</Link>
+            </li>
+            <li>
+              <Link to="/#gallery">{t('nav.gallery')}</Link>
+            </li>
+            <li>
+              <Link to="/#contacts">{t('nav.contacts')}</Link>
+            </li>
 
-              <li>
-                <Link to="/orders">{t('nav.orders')}</Link>
-              </li>
+            <li>
+              <Link to="/orders">{t('nav.orders')}</Link>
+            </li>
 
-              <li>
-                <Link to="/todo">{t('nav.todo')}</Link>
-              </li>
-            </ul>
-            {address && phone !== null ? (
-              <div className={styles.contacts}>
-                <a className={styles.location} href="#contacts">{t('nav.address')}</a>
-                <a className={styles.phone} href={`tel:${phone}`}>
-                  {phone}
-                </a>
-              </div>
-                    ) : (
-                      <p>No data</p>
-                    )}
-            <Select />
-          </nav>
-        </header>
-      </div>
-    );
+            <li>
+              <Link to="/todo">{t('nav.todo')}</Link>
+            </li>
+          </ul>
+          {address && phone !== null ? (
+            <div className={styles.contacts}>
+              <a className={styles.location} href="#contacts">{t('nav.address')}</a>
+              <a className={styles.phone} href={`tel:${phone}`}>
+                {phone}
+              </a>
+            </div>
+          ) : (
+            <p>No data</p>
+          )}
+          <Select />
+        </nav>
+      </header>
+    </div>
+  );
 }

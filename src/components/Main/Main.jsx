@@ -6,57 +6,58 @@ import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
 import { getCards, updateCards } from '../../store/cards/actions';
 
 function Main() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const getData = async () => {
-        try {
-            const response = await fetch(`${API_URL}/cards?populate=*&sort=id:asc`, {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${API_KEY}`
-                }
-            });
-
-            const data = await response.json();
-
-            const formattedData = data.data.map((item) => {
-                return {
-                    id: item.id,
-                    title: item.attributes.title,
-                    description: item.attributes.description,
-                    additionalInfo: item.attributes.additionalInfo,
-                    price: item.attributes.price,
-                    weight: item.attributes.weight,
-                    currency: item.attributes.currency,
-                    img: BASE_URL + item.attributes.img.data.attributes.url
-                };
-            });
-            return formattedData;
-        } catch (error) {
-            console.error('Error fetch data', error);
-            return [];
+  const getData = async () => {
+    try {
+      const response = await fetch(`${API_URL}/cards?populate=*&sort=id:asc`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${API_KEY}`
         }
-    };
+      });
 
-    const fetchCards = async () => {
-        dispatch(updateCards(true));
-        const data = await getData();
-        dispatch(getCards(data));
-    };
+      const data = await response.json();
 
-    const handlerUpdateData = useCallback(() => {
-        fetchCards();
-    }, []);
+      const formattedData = data.data.map((item) => {
+        return {
+          id: item.id,
+          title: item.attributes.title,
+          description: item.attributes.description,
+          additionalInfo: item.attributes.additionalInfo,
+          price: item.attributes.price,
+          weight: item.attributes.weight,
+          currency: item.attributes.currency,
+          img: BASE_URL + item.attributes.img.data.attributes.url
+        };
+      });
+      return formattedData;
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error fetch data', error);
+      return [];
+    }
+  };
 
-    useEffect(() => {
-        fetchCards();
-    }, []);
+  const fetchCards = async () => {
+    dispatch(updateCards(true));
+    const data = await getData();
+    dispatch(getCards(data));
+  };
 
-    return (
-      <div>
-        <MainView handlerUpdate={handlerUpdateData} />
-      </div>
-    );
+  const handlerUpdateData = useCallback(() => {
+    fetchCards();
+  }, []);
+
+  useEffect(() => {
+    fetchCards();
+  }, []);
+
+  return (
+    <div>
+      <MainView handlerUpdate={handlerUpdateData} />
+    </div>
+  );
 }
 
 export default withLayout(Main);
