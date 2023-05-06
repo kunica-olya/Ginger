@@ -15,6 +15,7 @@ export default function OrderTableView({
   handlerImageUnloader,
   handlerRemoveElement,
   handlerKeyDown,
+  // eslint-disable-next-line  react/prop-types
   tableRef,
   handlerToggleSortDirection
 }) {
