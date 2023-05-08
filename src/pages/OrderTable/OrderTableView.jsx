@@ -31,10 +31,10 @@ export default function OrderTableView({
     handlerToggleSortDirection: PropTypes.func,
     data: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        customer: PropTypes.string.isRequired,
-        totalPrice: PropTypes.number.isRequired,
-        totalPriceCurrency: PropTypes.string.isRequired,
+        id: PropTypes.number,
+        customer: PropTypes.string,
+        totalPrice: PropTypes.number,
+        totalPriceCurrency: PropTypes.string,
         products: PropTypes.arrayOf(
           PropTypes.shape({
             id: PropTypes.number,
@@ -44,7 +44,7 @@ export default function OrderTableView({
             price: PropTypes.number,
           })
         ).isRequired
-      })
+      }).isRequired
     ).isRequired
   }.isRequired;
 
