@@ -19,7 +19,7 @@ export default function ButtonView({
   ButtonView.defaultProps = {
     click: () => {},
     className: '',
-    children: ''
+    children: null
   };
 
   return (

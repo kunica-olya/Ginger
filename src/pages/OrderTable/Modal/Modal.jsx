@@ -77,11 +77,11 @@ export default function Modal({ handlerAddData }) {
           amount: 15
         },
         {
-          id: 3,
+          id: +id,
           name: productName,
-          price: productPrice,
+          price: +productPrice,
           currency: '₴',
-          amount: productAmount
+          amount: +productAmount
         }
       ]
     };

@@ -20,15 +20,15 @@ export default function OrderTableView({
   handlerToggleSortDirection
 }) {
   OrderTableView.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
+    isOpen: PropTypes.bool,
     activeRow: PropTypes.number,
-    handlerAddData: PropTypes.func.isRequired,
-    toggleTable: PropTypes.func.isRequired,
-    doubleClick: PropTypes.func.isRequired,
-    handlerImageUnloader: PropTypes.func.isRequired,
-    handlerRemoveElement: PropTypes.func.isRequired,
-    handlerKeyDown: PropTypes.func.isRequired,
-    handlerToggleSortDirection: PropTypes.func.isRequired,
+    handlerAddData: PropTypes.func,
+    toggleTable: PropTypes.func,
+    doubleClick: PropTypes.func,
+    handlerImageUnloader: PropTypes.func,
+    handlerRemoveElement: PropTypes.func,
+    handlerKeyDown: PropTypes.func,
+    handlerToggleSortDirection: PropTypes.func,
     data: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -37,16 +37,16 @@ export default function OrderTableView({
         totalPriceCurrency: PropTypes.string.isRequired,
         products: PropTypes.arrayOf(
           PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-            amount: PropTypes.number.isRequired,
-            currency: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
+            id: PropTypes.number,
+            name: PropTypes.string,
+            amount: PropTypes.number,
+            currency: PropTypes.string,
+            price: PropTypes.number,
           })
         ).isRequired
       })
     ).isRequired
-  };
+  }.isRequired;
 
   OrderTableView.defaultProps = {
     activeRow: number,
