@@ -17,7 +17,7 @@ import { selectCards, selectIsLoading } from '../../store/cards/selectors';
 export default function MainView({ handlerUpdate }) {
   const { t } = useTranslation();
 
-  const cardsData = useSelector(selectCards);
+  const cards = useSelector(selectCards);
   const isLoading = useSelector(selectIsLoading);
 
   MainView.propTypes = {
@@ -67,7 +67,7 @@ export default function MainView({ handlerUpdate }) {
 
       <section id={styles.cards}>
         <div id="menu" className={styles.wrapper}>
-          {cardsData.map((card) => (
+          {cards.map((card) => (
             <CardView
               key={card.id}
               card={card}
