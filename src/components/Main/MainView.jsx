@@ -46,7 +46,7 @@ export default function MainView({ handlerUpdate }) {
       <div className={styles.background} />
 
       <ButtonView
-        text="Update"
+        text={t('main.buttonUpdate')}
         click={handlerUpdate}
         variant={BUTTON.PRIMARY}
         className="preloader-button"
