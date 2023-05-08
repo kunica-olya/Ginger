@@ -12,12 +12,13 @@ import ContactsView from '../Contacts/ContactsView';
 import WorkScheduleView from '../Contacts/WorkSchedule/WorkScheduleView';
 import MapView from '../Contacts/Map/MapView';
 import { BUTTON } from '../../constants/constants';
+import { selectCards, selectIsLoading } from '../../store/cards/selectors';
 
 export default function MainView({ handlerUpdate }) {
   const { t } = useTranslation();
 
-  const cardsData = useSelector(({ cards }) => cards.data);
-  const isLoading = useSelector(({ cards }) => cards.loading);
+  const cardsData = useSelector(selectCards);
+  const isLoading = useSelector(selectIsLoading);
 
   MainView.propTypes = {
     handlerUpdate: PropTypes.func.isRequired,
@@ -43,7 +44,7 @@ export default function MainView({ handlerUpdate }) {
       </section>
       <div className={styles['second-strawberry']} />
       <div className={styles.background} />
-      
+
       <ButtonView
         text="Update"
         click={handlerUpdate}
