@@ -12,7 +12,7 @@ import ContactsView from '../Contacts/ContactsView';
 import WorkScheduleView from '../Contacts/WorkSchedule/WorkScheduleView';
 import MapView from '../Contacts/Map/MapView';
 import { BUTTON } from '../../constants/constants';
-import { selectCards, selectIsLoading } from '../../store/cards/selectors';
+import { selectCards, selectIsLoading } from '../../store/slices/cards/selectors';
 
 export default function MainView({ handlerUpdate }) {
   const { t } = useTranslation();

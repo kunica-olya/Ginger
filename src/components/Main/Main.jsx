@@ -2,55 +2,17 @@ import { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import MainView from './MainView';
 import withLayout from '../HOC/withLayout';
-import { API_KEY, BASE_URL, API_URL } from '../../constants/constants';
-import { getCards, updateCards } from '../../store/cards/actions';
+import { fetchCards } from '../../store/slices/cards/slice';
 
 function Main() {
   const dispatch = useDispatch();
 
-  const getData = async () => {
-    try {
-      const response = await fetch(`${API_URL}/cards?populate=*&sort=id:asc`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${API_KEY}`
-        }
-      });
-
-      const data = await response.json();
-
-      const formattedData = data.data.map((item) => {
-        return {
-          id: item.id,
-          title: item.attributes.title,
-          description: item.attributes.description,
-          additionalInfo: item.attributes.additionalInfo,
-          price: item.attributes.price,
-          weight: item.attributes.weight,
-          currency: item.attributes.currency,
-          img: BASE_URL + item.attributes.img.data.attributes.url
-        };
-      });
-      return formattedData;
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Error fetch data', error);
-      return [];
-    }
-  };
-
-  const fetchCards = async () => {
-    dispatch(updateCards(true));
-    const data = await getData();
-    dispatch(getCards(data));
-  };
-
   const handlerUpdateData = useCallback(() => {
-    fetchCards();
+    dispatch(fetchCards());
   }, []);
 
   useEffect(() => {
-    fetchCards();
+    dispatch(fetchCards());
   }, []);
 
   return (
