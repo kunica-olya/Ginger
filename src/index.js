@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 
-import store from './store/cards/store';
+import store from './store/store';
 
 import './assets/fonts/calibri.ttf';
 import './assets/fonts/calibri_bold.ttf';
