@@ -9,21 +9,27 @@ axios.defaults.headers.common = {
 export const fetchCards = createAsyncThunk(
   'cards/fetchCards',
   async () => {
-    const response = await axios.get(`${API_URL}/cards?populate=*&sort=id:asc`);
-
-    const formattedData = response.data.data.map((item) => {
-      return {
-        id: item.id,
-        title: item.attributes.title,
-        description: item.attributes.description,
-        additionalInfo: item.attributes.additionalInfo,
-        price: item.attributes.price,
-        weight: item.attributes.weight,
-        currency: item.attributes.currency,
-        img: BASE_URL + item.attributes.img.data.attributes.url
-      };
-    });
-    return formattedData;
+    return axios.get(`${API_URL}/cards?populate=*&sort=id:asc`)
+      .then((response) => {
+        const formattedData = response.data.data.map((item) => {
+          return {
+            id: item.id,
+            title: item.attributes.title,
+            description: item.attributes.description,
+            additionalInfo: item.attributes.additionalInfo,
+            price: item.attributes.price,
+            weight: item.attributes.weight,
+            currency: item.attributes.currency,
+            img: BASE_URL + item.attributes.img.data.attributes.url
+          };
+        });
+        return formattedData;
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+        throw error;
+      });
   }
 );
 
@@ -32,7 +38,6 @@ const cardsSlice = createSlice({
   initialState: {
     isLoading: false,
     cards: [],
-    error: null
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -44,9 +49,8 @@ const cardsSlice = createSlice({
         state.isLoading = false;
         state.cards = action.payload;
       })
-      .addCase(fetchCards.rejected, (state, action) => {
+      .addCase(fetchCards.rejected, (state) => {
         state.isLoading = false;
-        state.error = action.payload;
       });
   }
 });
