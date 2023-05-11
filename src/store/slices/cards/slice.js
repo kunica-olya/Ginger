@@ -9,27 +9,26 @@ axios.defaults.headers.common = {
 export const fetchCards = createAsyncThunk(
   'cards/fetchCards',
   async () => {
-    return axios.get(`${API_URL}/cards?populate=*&sort=id:asc`)
-      .then((response) => {
-        const formattedData = response.data.data.map((item) => {
-          return {
-            id: item.id,
-            title: item.attributes.title,
-            description: item.attributes.description,
-            additionalInfo: item.attributes.additionalInfo,
-            price: item.attributes.price,
-            weight: item.attributes.weight,
-            currency: item.attributes.currency,
-            img: BASE_URL + item.attributes.img.data.attributes.url
-          };
-        });
-        return formattedData;
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error);
-        throw error;
+    try {
+      const response = await axios.get(`${API_URL}/cards?populate=*&sort=id:asc`);
+      const formattedData = response.data.data.map((item) => {
+        return {
+          id: item.id,
+          title: item.attributes.title,
+          description: item.attributes.description,
+          additionalInfo: item.attributes.additionalInfo,
+          price: item.attributes.price,
+          weight: item.attributes.weight,
+          currency: item.attributes.currency,
+          img: BASE_URL + item.attributes.img.data.attributes.url
+        };
       });
+      return formattedData;
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('error', error);
+    }
+    return [];
   }
 );
 
