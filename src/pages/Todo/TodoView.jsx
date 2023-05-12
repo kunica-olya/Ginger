@@ -21,32 +21,12 @@ export default function TodoView({
   isDragEnd,
   isOver
 }) {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const {
+    theme,
+    toggleTheme
+  } = useContext(ThemeContext);
 
   const { t } = useTranslation();
-
-  TodoView.propTypes = {
-    changeInput: PropTypes.func,
-    userValue: PropTypes.string.isRequired,
-    handlerAddTask: PropTypes.func.isRequired,
-    todos: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        task: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    handlerDragStart: PropTypes.func.isRequired,
-    handlerDragEnd: PropTypes.func.isRequired,
-    handlerDragOver: PropTypes.func.isRequired,
-    handlerDrop: PropTypes.func.isRequired,
-    isDragEnd: PropTypes.bool.isRequired,
-    isOver: PropTypes.func.isRequired,
-  };
-
-  TodoView.defaultProps = {
-    changeInput: () => {
-    }
-  };
 
   const checked = theme === THEMES.LIGHT;
   const colorLabel = theme === THEMES.LIGHT ? LABEL.SECONDARY : LABEL.PRIMARY;
@@ -73,23 +53,23 @@ export default function TodoView({
 
         <div className={styles['todo-items']}>
           {
-                        todos.map((todo, index) => (
-                          <div
-                            draggable="true"
-                            onDragStart={() => handlerDragStart(index)}
-                            onDragEnd={handlerDragEnd}
-                            onDragOver={(e) => handlerDragOver(e, todo)}
-                            onDrop={() => handlerDrop(index)}
-                            className={`${styles['todo-item']}
-                                 ${isOver(todo) ? styles.over : ''}
-                                 ${isDragEnd ? styles.dragend : ''}
-                                 `}
-                            key={todo.id}
-                          >
-                            {todo.task}
-                          </div>
-                        ))
-                    }
+            todos.map((todo, index) => (
+              <div
+                draggable="true"
+                onDragStart={() => handlerDragStart(index)}
+                onDragEnd={handlerDragEnd}
+                onDragOver={(e) => handlerDragOver(e, todo)}
+                onDrop={() => handlerDrop(index)}
+                className={`${styles['todo-item']}
+                ${isOver(todo) ? styles.over : ''}
+                ${isDragEnd ? styles.dragend : ''}
+                `}
+                key={todo.id}
+              >
+                {todo.task}
+              </div>
+            ))
+          }
         </div>
 
         <div className={styles['toggle-switch']}>
@@ -102,3 +82,26 @@ export default function TodoView({
     </section>
   );
 }
+
+TodoView.propTypes = {
+  changeInput: PropTypes.func,
+  userValue: PropTypes.string.isRequired,
+  handlerAddTask: PropTypes.func.isRequired,
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      task: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  handlerDragStart: PropTypes.func.isRequired,
+  handlerDragEnd: PropTypes.func.isRequired,
+  handlerDragOver: PropTypes.func.isRequired,
+  handlerDrop: PropTypes.func.isRequired,
+  isDragEnd: PropTypes.bool.isRequired,
+  isOver: PropTypes.func.isRequired,
+};
+
+TodoView.defaultProps = {
+  changeInput: () => {
+  }
+};

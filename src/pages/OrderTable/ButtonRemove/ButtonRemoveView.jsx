@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import styles from './ButtonRemoveView.module.scss';
 
 export default function ButtonRemoveView({ click }) {
-  ButtonRemoveView.propTypes = {
-    click: PropTypes.func.isRequired
-  };
-
   return (
     <button
       type="button"
@@ -18,3 +14,7 @@ export default function ButtonRemoveView({ click }) {
     </button>
   );
 }
+
+ButtonRemoveView.propTypes = {
+  click: PropTypes.func.isRequired
+};

@@ -15,18 +15,6 @@ export default function CardView({ card }) {
     weight
   } = card;
 
-  CardView.propTypes = {
-    card: PropTypes.shape({
-      img: PropTypes.string,
-      title: PropTypes.string,
-      additionalInfo: PropTypes.string,
-      description: PropTypes.string,
-      price: PropTypes.number,
-      currency: PropTypes.string,
-      weight: PropTypes.number && PropTypes.string
-    }).isRequired,
-  };
-
   return (
     <div className={styles.card}>
       <div className={styles['custom-card']} />
@@ -58,3 +46,15 @@ export default function CardView({ card }) {
     </div>
   );
 }
+
+CardView.propTypes = {
+  card: PropTypes.shape({
+    img: PropTypes.string,
+    title: PropTypes.string,
+    additionalInfo: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    currency: PropTypes.string,
+    weight: PropTypes.number && PropTypes.string
+  }).isRequired,
+};

@@ -6,20 +6,6 @@ import styles from './Footer.module.scss';
 export default function FooterView({ config }) {
   const { t } = useTranslation();
 
-  FooterView.propTypes = {
-    config: PropTypes.shape({
-      author: PropTypes.string.isRequired,
-      github_label: PropTypes.string.isRequired,
-      github_link: PropTypes.string.isRequired,
-      design_label: PropTypes.string.isRequired,
-      design_link: PropTypes.string.isRequired,
-    })
-  };
-
-  FooterView.defaultProps = {
-    config: {}
-  };
-
   const { author } = config;
   const github = {
     label: config.github_label,
@@ -78,3 +64,17 @@ export default function FooterView({ config }) {
     </footer>
   );
 }
+
+FooterView.propTypes = {
+  config: PropTypes.shape({
+    author: PropTypes.string,
+    github_label: PropTypes.string,
+    github_link: PropTypes.string,
+    design_label: PropTypes.string,
+    design_link: PropTypes.string,
+  })
+};
+
+FooterView.defaultProps = {
+  config: {}
+};
