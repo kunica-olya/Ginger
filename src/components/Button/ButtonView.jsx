@@ -8,20 +8,6 @@ export default function ButtonView({
   variant,
   className
 }) {
-  ButtonView.propTypes = {
-    text: PropTypes.string.isRequired,
-    click: PropTypes.func,
-    children: PropTypes.element,
-    className: PropTypes.string,
-    variant: PropTypes.string.isRequired
-  };
-
-  ButtonView.defaultProps = {
-    click: () => {},
-    className: '',
-    children: null
-  };
-
   return (
     <button
       type="button"
@@ -34,3 +20,17 @@ export default function ButtonView({
     </button>
   );
 }
+
+ButtonView.propTypes = {
+  text: PropTypes.string.isRequired,
+  click: PropTypes.func,
+  children: PropTypes.element,
+  className: PropTypes.string,
+  variant: PropTypes.string.isRequired
+};
+
+ButtonView.defaultProps = {
+  click: () => {},
+  className: '',
+  children: null
+};

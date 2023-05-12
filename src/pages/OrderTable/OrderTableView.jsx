@@ -15,43 +15,9 @@ export default function OrderTableView({
   handlerImageUnloader,
   handlerRemoveElement,
   handlerKeyDown,
-  // eslint-disable-next-line  react/prop-types
   tableRef,
   handlerToggleSortDirection
 }) {
-  OrderTableView.propTypes = {
-    isOpen: PropTypes.bool,
-    activeRow: PropTypes.number,
-    handlerAddData: PropTypes.func,
-    toggleTable: PropTypes.func,
-    doubleClick: PropTypes.func,
-    handlerImageUnloader: PropTypes.func,
-    handlerRemoveElement: PropTypes.func,
-    handlerKeyDown: PropTypes.func,
-    handlerToggleSortDirection: PropTypes.func,
-    data: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        customer: PropTypes.string,
-        totalPrice: PropTypes.number,
-        totalPriceCurrency: PropTypes.string,
-        products: PropTypes.arrayOf(
-          PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-            amount: PropTypes.number,
-            currency: PropTypes.string,
-            price: PropTypes.number,
-          })
-        ).isRequired
-      }).isRequired
-    ).isRequired
-  }.isRequired;
-
-  OrderTableView.defaultProps = {
-    activeRow: number,
-  };
-
   const image = 'invalid path';
 
   const { t } = useTranslation();
@@ -143,3 +109,40 @@ export default function OrderTableView({
     </section>
   );
 }
+
+OrderTableView.propTypes = {
+  isOpen: PropTypes.bool,
+  activeRow: PropTypes.number,
+  handlerAddData: PropTypes.func,
+  toggleTable: PropTypes.func,
+  doubleClick: PropTypes.func,
+  handlerImageUnloader: PropTypes.func,
+  handlerRemoveElement: PropTypes.func,
+  handlerKeyDown: PropTypes.func,
+  refProp: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+  ]),
+  handlerToggleSortDirection: PropTypes.func,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      customer: PropTypes.string,
+      totalPrice: PropTypes.number,
+      totalPriceCurrency: PropTypes.string,
+      products: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string,
+          amount: PropTypes.number,
+          currency: PropTypes.string,
+          price: PropTypes.number,
+        })
+      ).isRequired
+    }).isRequired
+  ).isRequired
+}.isRequired;
+
+OrderTableView.defaultProps = {
+  activeRow: number,
+};

@@ -12,17 +12,6 @@ export default function ModalView({
 }) {
   const { t } = useTranslation();
 
-  ModalView.propTypes = {
-    close: PropTypes.func.isRequired,
-    changeInput: PropTypes.func.isRequired,
-    formReady: PropTypes.func.isRequired,
-    children: PropTypes.element
-  };
-
-  ModalView.defaultProps = {
-    children: null,
-  };
-
   return (
     <div className={styles['modal-window']}>
       <div className={styles['modal-content']} />
@@ -82,3 +71,14 @@ export default function ModalView({
     </div>
   );
 }
+
+ModalView.propTypes = {
+  close: PropTypes.func.isRequired,
+  changeInput: PropTypes.func.isRequired,
+  formReady: PropTypes.func.isRequired,
+  children: PropTypes.element
+};
+
+ModalView.defaultProps = {
+  children: null,
+};

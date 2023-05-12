@@ -31,15 +31,15 @@ export default function Select() {
   return (
     <select className={styles.toggle} onChange={handlerOnChange}>
       {
-                                                                                options.map((option) => (
-                                                                                  <option
-                                                                                    key={option.id}
-                                                                                    value={option.value}
-                                                                                  >
-                                                                                    {option.label}
-                                                                                  </option>
-                                                                                ))
-                                                            }
+        options.map((option) => (
+          <option
+            key={option.id}
+            value={option.value}
+          >
+            {option.label}
+          </option>
+        ))
+      }
     </select>
   );
 }

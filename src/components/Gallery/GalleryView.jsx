@@ -12,10 +12,6 @@ import { BUTTON } from '../../constants/constants';
 export default function GalleryView({ handlerImageLoader }) {
   const { t } = useTranslation();
 
-  GalleryView.propTypes = {
-    handlerImageLoader: PropTypes.func.isRequired
-  };
-
   return (
     <div className={styles['gallery-container']}>
       <div className={styles['gallery-items']}>
@@ -68,3 +64,7 @@ export default function GalleryView({ handlerImageLoader }) {
     </div>
   );
 }
+
+GalleryView.propTypes = {
+  handlerImageLoader: PropTypes.func.isRequired
+};

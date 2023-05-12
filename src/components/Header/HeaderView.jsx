@@ -5,20 +5,12 @@ import styles from './Header.module.scss';
 import Select from './Select';
 
 export default function HeaderView({ config }) {
-  const { address, phone } = config;
+  const {
+    address,
+    phone
+  } = config;
 
   const { t } = useTranslation();
-
-  HeaderView.propTypes = {
-    config: PropTypes.shape({
-      address: PropTypes.string.isRequired,
-      phone: PropTypes.string,
-    })
-  };
-
-  HeaderView.defaultProps = {
-    config: {}
-  };
 
   return (
     <div className={styles.container}>
@@ -64,3 +56,14 @@ export default function HeaderView({ config }) {
     </div>
   );
 }
+
+HeaderView.propTypes = {
+  config: PropTypes.shape({
+    address: PropTypes.string,
+    phone: PropTypes.string,
+  })
+};
+
+HeaderView.defaultProps = {
+  config: {}
+};

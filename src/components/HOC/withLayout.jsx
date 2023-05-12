@@ -3,23 +3,10 @@ import HeaderView from '../Header/HeaderView';
 import FooterView from '../Footer/FooterView';
 
 export default function withLayout(WrappedComponent) {
-  return function LayoutComponent({ config, ...props }) {
-    LayoutComponent.propTypes = {
-      config: PropTypes.shape({
-        address: PropTypes.string.isRequired,
-        phone: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-        github_label: PropTypes.string.isRequired,
-        github_link: PropTypes.string.isRequired,
-        design_label: PropTypes.string.isRequired,
-        design_link: PropTypes.string.isRequired,
-      })
-    };
-
-    LayoutComponent.defaultProps = {
-      config: {}
-    };
-
+  function LayoutComponent({
+    config,
+    ...props
+  }) {
     return (
       <>
         <HeaderView config={config} />
@@ -27,5 +14,21 @@ export default function withLayout(WrappedComponent) {
         <FooterView config={config} />
       </>
     );
+  }
+  LayoutComponent.propTypes = {
+    config: PropTypes.shape({
+      address: PropTypes.string,
+      phone: PropTypes.string,
+      author: PropTypes.string,
+      github_label: PropTypes.string,
+      github_link: PropTypes.string,
+      design_label: PropTypes.string,
+      design_link: PropTypes.string,
+    })
   };
+
+  LayoutComponent.defaultProps = {
+    config: {}
+  };
+  return LayoutComponent;
 }

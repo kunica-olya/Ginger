@@ -20,10 +20,6 @@ export default function MainView({ handlerUpdate }) {
   const cards = useSelector(selectCards);
   const isLoading = useSelector(selectIsLoading);
 
-  MainView.propTypes = {
-    handlerUpdate: PropTypes.func.isRequired,
-  };
-
   return (
     <div className={styles.container}>
       <section className={styles.jumbotron}>
@@ -94,3 +90,7 @@ export default function MainView({ handlerUpdate }) {
     </div>
   );
 }
+
+MainView.propTypes = {
+  handlerUpdate: PropTypes.func.isRequired,
+};
