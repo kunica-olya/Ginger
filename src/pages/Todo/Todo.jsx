@@ -78,7 +78,7 @@ function Todo() {
   }, []);
 
   const handlerAddTask = useCallback(async () => {
-    if (userValue.trim() === '') {
+    if (!userValue.trim()) {
       return;
     }
 
@@ -140,7 +140,11 @@ function Todo() {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{
+      theme,
+      toggleTheme
+    }}
+    >
       <TodoView
         changeInput={handlerOnChange}
         userValue={userValue}

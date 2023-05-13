@@ -10,7 +10,12 @@ export const fetchCards = createAsyncThunk(
   'cards/fetchCards',
   async () => {
     try {
-      const response = await axios.get(`${API_URL}/cards?populate=*&sort=id:asc`);
+      const response = await axios.get(`${API_URL}/cards?`, {
+        params: {
+          populate: '*',
+          sort: 'id:asc'
+        }
+      });
       const formattedData = response.data.data.map((item) => {
         return {
           id: item.id,
