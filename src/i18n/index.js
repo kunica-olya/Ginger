@@ -18,7 +18,6 @@ i18n
   .use(LanguageDetector)
   .init({
     resources,
-    lng: localStorage.getItem('lng') || 'en',
     fallbackLng: appLocales,
     react: {
       useSuspense: true,
@@ -26,3 +25,21 @@ i18n
   });
 
 export default i18n;
+
+export const availableLang = [
+  {
+    id: 1,
+    label: 'En',
+    value: 'en',
+  },
+  {
+    id: 2,
+    label: 'Ua',
+    value: 'ua',
+  },
+  {
+    id: 3,
+    label: 'Tu',
+    value: 'tu',
+  },
+];
