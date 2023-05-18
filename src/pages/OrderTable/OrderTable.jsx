@@ -1,6 +1,7 @@
 import React, {
   useState, useEffect, useRef, useCallback, useMemo
 } from 'react';
+import axios from 'axios';
 import OrderTableView from './OrderTableView';
 import withLayout from '../../components/HOC/withLayout';
 import { SORT } from '../../constants/constants';
@@ -14,15 +15,21 @@ function OrderTable() {
 
   const tableRef = useRef(null);
 
-  useEffect(() => {
-    fetch('/orders.json')
-      .then((response) => response.json())
-      .then((data) => {
-        setOriginalOrders(data);
-        setDataIsLoaded(true);
-      })
+  const getOrders = async () => {
+    const {
+      data,
+      error
+    } = await axios.get('/orders.json');
+    setOriginalOrders(data);
+    setDataIsLoaded(true);
+    if (error) {
       // eslint-disable-next-line no-console
-      .catch((error) => console.error('Error fetching orders_json', error));
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getOrders();
   }, []);
 
   const formattedOrders = useMemo(() => {
