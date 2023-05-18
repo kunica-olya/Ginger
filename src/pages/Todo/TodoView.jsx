@@ -89,8 +89,8 @@ TodoView.propTypes = {
   handlerAddTask: PropTypes.func.isRequired,
   todos: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      task: PropTypes.string.isRequired,
+      id: PropTypes.number,
+      task: PropTypes.string,
     })
   ).isRequired,
   handlerDragStart: PropTypes.func.isRequired,
