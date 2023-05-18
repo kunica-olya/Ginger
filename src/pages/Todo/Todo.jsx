@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import TodoView from './TodoView';
 import withLayout from '../../components/HOC/withLayout';
 import {
-  THEMES, API_KEY, API_URL
+  THEMES,
 } from '../../constants/constants';
-
 import ThemeContext from './ThemeContext';
+import { useCreateTodoMutation, useFetchTodosQuery } from '../../store/apis/extendedApi';
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -16,66 +16,24 @@ function Todo() {
   const [overElement, setOverElement] = useState(null);
   const [isDragEnd, setIsDragEnd] = useState(false);
 
-  const createTodo = async (value) => {
-    try {
-      const response = await fetch(`${API_URL}/todos`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ data: { Text: value } })
-      });
+  const [createTodo] = useCreateTodoMutation();
+  const { data } = useFetchTodosQuery();
 
-      const data = await response.json();
-
-      const formattedData = {
-        id: data.data.id,
-        task: data.data.attributes.Text
+  const getTodos = () => {
+    const formatted = data?.data?.map((item) => {
+      return {
+        id: item.id,
+        task: item.attributes.Text
       };
-
-      return formattedData;
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log('Error fetching POST data', error);
-    }
-    return [];
-  };
-
-  const getTodoList = async () => {
-    try {
-      const response = await fetch(`${API_URL}/todos`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-        },
-      });
-
-      const data = await response.json();
-
-      const formattedData = data.data.map((item) => {
-        return {
-          id: item.id,
-          task: item.attributes.Text
-        };
-      });
-
-      setTodos(formattedData);
-      return formattedData;
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log('Error fetching POST data', error);
-    }
-    return [];
+    });
+    setTodos(formatted);
   };
 
   useEffect(() => {
-    async function load() {
-      setTodos(await getTodoList());
+    if (data) {
+      getTodos();
     }
-
-    load();
-  }, []);
+  }, [data]);
 
   const handlerAddTask = useCallback(async () => {
     if (!userValue.trim()) {
