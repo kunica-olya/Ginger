@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cardsSlice from './slices/cards/slice';
+import extendedApi from './apis/extendedApi';
 
 const store = configureStore({
   reducer: {
-    cards: cardsSlice
-  }
+    [extendedApi.reducerPath]: extendedApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+    .concat([
+      extendedApi.middleware
+    ])
 });
-
 export default store;

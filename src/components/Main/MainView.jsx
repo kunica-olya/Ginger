@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
 import { Oval } from 'react-loader-spinner';
-import { useSelector } from 'react-redux';
 import styles from './Main.module.scss';
 import { ReactComponent as Logo } from '../../assets/svg/Logo-dark.svg';
 import ButtonView from '../Button/ButtonView';
@@ -11,14 +9,31 @@ import GalleryLoader from '../Gallery/GalleryLoader';
 import ContactsView from '../Contacts/ContactsView';
 import WorkScheduleView from '../Contacts/WorkSchedule/WorkScheduleView';
 import MapView from '../Contacts/Map/MapView';
-import { BUTTON } from '../../constants/constants';
-import { selectCards, selectIsLoading } from '../../store/slices/cards/selectors';
+import { BASE_URL, BUTTON } from '../../constants/constants';
+import { useFetchCardsQuery } from '../../store/apis/extendedApi';
 
-export default function MainView({ handlerUpdate }) {
+export default function MainView() {
   const { t } = useTranslation();
 
-  const cards = useSelector(selectCards);
-  const isLoading = useSelector(selectIsLoading);
+  const {
+    data,
+    isFetching,
+    refetch,
+  } = useFetchCardsQuery({
+    populate: '*',
+    sort: 'id:asc'
+  });
+
+  const formattedData = data?.data?.map((item) => ({
+    id: item.id,
+    title: item.attributes.title,
+    description: item.attributes.description,
+    additionalInfo: item.attributes.additionalInfo,
+    price: item.attributes.price,
+    weight: item.attributes.weight,
+    currency: item.attributes.currency,
+    img: BASE_URL + item.attributes.img.data.attributes.url
+  }));
 
   return (
     <div className={styles.container}>
@@ -43,12 +58,12 @@ export default function MainView({ handlerUpdate }) {
 
       <ButtonView
         text={t('main.buttonUpdate')}
-        click={handlerUpdate}
+        click={refetch}
         variant={BUTTON.PRIMARY}
         className="preloader-button"
       >
         <div>
-          {isLoading && (
+          {isFetching && (
             <Oval
               width={30}
               height={30}
@@ -63,7 +78,7 @@ export default function MainView({ handlerUpdate }) {
 
       <section id={styles.cards}>
         <div id="menu" className={styles.wrapper}>
-          {cards.map((card) => (
+          {formattedData && formattedData.map((card) => (
             <CardView
               key={card.id}
               card={card}
@@ -90,7 +105,3 @@ export default function MainView({ handlerUpdate }) {
     </div>
   );
 }
-
-MainView.propTypes = {
-  handlerUpdate: PropTypes.func.isRequired,
-};
