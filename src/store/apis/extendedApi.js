@@ -20,9 +20,10 @@ const extendedApi = baseApi.injectEndpoints({
       invalidatesTags: ['Todo']
     }),
     fetchTodos: builder.query({
-      query: () => ({
+      query: (args) => ({
         url: '/todos',
         method: 'GET',
+        params: args
       }),
       providesTags: ['Todo']
     }),

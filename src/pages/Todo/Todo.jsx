@@ -17,21 +17,19 @@ function Todo() {
   const [isDragEnd, setIsDragEnd] = useState(false);
 
   const [createTodo] = useCreateTodoMutation();
-  const { data } = useFetchTodosQuery();
-
-  const getTodos = () => {
-    const formatted = data?.data?.map((item) => {
-      return {
-        id: item.id,
-        task: item.attributes.Text
-      };
-    });
-    setTodos(formatted);
-  };
+  const {
+    data,
+  } = useFetchTodosQuery({ sort: 'id:desc' });
 
   useEffect(() => {
     if (data) {
-      getTodos();
+      const formattedData = data.data.map((item) => {
+        return {
+          id: item.id,
+          task: item.attributes.Text
+        };
+      });
+      setTodos(formattedData);
     }
   }, [data]);
 
@@ -41,7 +39,7 @@ function Todo() {
     }
 
     const newTodo = await createTodo(userValue);
-    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    setTodos((prevTodos) => [...prevTodos, newTodo.data.data]);
     setUserValue('');
   }, [userValue]);
 
