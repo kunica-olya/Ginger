@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import styles from './ButtonRemoveView.module.scss';
+import styles from '../sass/ButtonRemoveView.module.scss';
 
 export default function ButtonRemoveView({ click }) {
   return (

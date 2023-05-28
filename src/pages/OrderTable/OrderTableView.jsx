@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes, { number } from 'prop-types';
 import React from 'react';
-import styles from './OrderTable.module.scss';
-import Modal from './Modal/Modal';
-import ButtonRemoveView from './ButtonRemove/ButtonRemoveView';
+import styles from './sass/OrderTable.module.scss';
+import Modal from './components/Modal';
+import ButtonRemoveView from './components/ButtonRemoveView';
 
 export default function OrderTableView({
   isOpen,

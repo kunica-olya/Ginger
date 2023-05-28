@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import styles from './ModalView.module.scss';
+import styles from '../sass/ModalView.module.scss';
 import ButtonView from '../../../components/Button/ButtonView';
 import { BUTTON } from '../../../constants/constants';
 
