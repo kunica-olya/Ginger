@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import styles from './WorkSchedule.module.scss';
+import styles from './sass/WorkSchedule.module.scss';
 
 export default function WorkScheduleView() {
   const { t } = useTranslation();

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from './Button.module.scss';
+import styles from './sass/Button.module.scss';
 
 export default function ButtonView({
   text,

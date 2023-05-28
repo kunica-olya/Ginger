@@ -1,5 +1,5 @@
-@import "./src/styles/vars/vars.module.scss";
-@import "./src/styles/base/font-face.scss";
+@import "../../../styles/vars/vars.module";
+@import "../../../styles/base/font-face";
 
 .gallery-container {
   display: flex;

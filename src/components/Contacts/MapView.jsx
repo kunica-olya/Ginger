@@ -1,4 +1,4 @@
-import styles from './Map.module.scss';
+import styles from './sass/Map.module.scss';
 
 export default function MapView() {
   return (

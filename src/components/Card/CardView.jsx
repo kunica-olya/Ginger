@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from './Card.module.scss';
+import styles from './sass/Card.module.scss';
 import ButtonView from '../Button/ButtonView';
 import { ReactComponent as IconBag } from '../../assets/svg/bag.svg';
 import { BUTTON } from '../../constants/constants';

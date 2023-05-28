@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import styles from './Gallery.module.scss';
+import styles from './sass/Gallery.module.scss';
 import image1 from '../../assets/img/gallery/gallery-1.jpg';
 import image2 from '../../assets/img/gallery/gallery-2.jpg';
 import image3 from '../../assets/img/gallery/gallery-3.jpg';

@@ -7,8 +7,8 @@ import { ReactComponent as IconInstagram } from '../../assets/svg/instagram.svg'
 import CardView from '../../components/Card/CardView';
 import GalleryLoader from '../../components/Gallery/GalleryLoader';
 import ContactsView from '../../components/Contacts/ContactsView';
-import WorkScheduleView from '../../components/Contacts/WorkSchedule/WorkScheduleView';
-import MapView from '../../components/Contacts/Map/MapView';
+import WorkScheduleView from '../../components/Contacts/WorkScheduleView';
+import MapView from '../../components/Contacts/MapView';
 import { BASE_URL, BUTTON } from '../../constants/constants';
 import { useFetchCardsQuery } from '../../store/apis/extendedApi';
 

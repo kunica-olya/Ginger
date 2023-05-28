@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import styles from './Contacts.module.scss';
+import styles from './sass/Contacts.module.scss';
 import { ReactComponent as Viber } from '../../assets/svg/viber.svg';
 import { ReactComponent as Telegram } from '../../assets/svg/telegram.svg';
 import { ReactComponent as Phone } from '../../assets/svg/phone.svg';
