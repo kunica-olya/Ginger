@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import HeaderView from '../components/Header/HeaderView';
-import FooterView from '../components/Footer/FooterView';
+import HeaderView from '../layout/Header/HeaderView';
+import FooterView from '../layout/Footer/FooterView';
 
 export default function withLayout(WrappedComponent) {
   function LayoutComponent({

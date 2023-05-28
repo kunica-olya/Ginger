@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Main from './components/Main/Main';
+import Main from './layout/Main/Main';
 import OrderTable from './pages/OrderTable/OrderTable';
 import Todo from './pages/Todo/Todo';
 
