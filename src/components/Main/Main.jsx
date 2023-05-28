@@ -1,5 +1,5 @@
 import MainView from './MainView';
-import withLayout from '../HOC/withLayout';
+import withLayout from '../../hocs/withLayout';
 
 function Main() {
   return (

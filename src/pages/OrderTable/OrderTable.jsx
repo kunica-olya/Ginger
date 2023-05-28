@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import OrderTableView from './OrderTableView';
-import withLayout from '../../components/HOC/withLayout';
+import withLayout from '../../hocs/withLayout';
 import { SORT } from '../../constants/constants';
 
 function OrderTable() {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import TodoView from './TodoView';
-import withLayout from '../../components/HOC/withLayout';
+import withLayout from '../../hocs/withLayout';
 import {
   THEMES,
 } from '../../constants/constants';
