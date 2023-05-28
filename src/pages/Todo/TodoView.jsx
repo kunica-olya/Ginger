@@ -4,7 +4,7 @@ import Switch from 'react-switch';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import ThemeContext from './ThemeContext';
+import ThemeContext from '../../context/ThemeContext';
 import { BUTTON, LABEL, THEMES } from '../../constants/constants';
 import ButtonView from '../../components/Button/ButtonView';
 import styles from './TodoView.module.scss';

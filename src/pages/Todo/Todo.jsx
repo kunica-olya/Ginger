@@ -4,7 +4,7 @@ import withLayout from '../../components/HOC/withLayout';
 import {
   THEMES,
 } from '../../constants/constants';
-import ThemeContext from './ThemeContext';
+import ThemeContext from '../../context/ThemeContext';
 import { useCreateTodoMutation, useFetchTodosQuery } from '../../store/apis/extendedApi';
 
 function Todo() {
