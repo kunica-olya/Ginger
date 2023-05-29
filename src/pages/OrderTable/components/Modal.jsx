@@ -23,10 +23,6 @@ export default function Modal({ handlerAddData }) {
     }
   );
 
-  Modal.propTypes = {
-    handlerAddData: PropTypes.func.isRequired
-  };
-
   const handlerOnChange = (e) => {
     const { id, value } = e.target;
 
@@ -111,3 +107,7 @@ export default function Modal({ handlerAddData }) {
     </>
   );
 }
+
+Modal.propTypes = {
+  handlerAddData: PropTypes.func.isRequired
+};
