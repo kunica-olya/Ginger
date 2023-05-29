@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from '../sass/Modal.module.scss';
 import ButtonView from '../../../components/Button/ButtonView';
 import { BUTTON } from '../../../constants/constants';
+import CustomInputView from './CustomInputView';
 
 export default function ModalView({
   children,
@@ -26,32 +27,42 @@ export default function ModalView({
       <form>
         <div className={styles.row}>
           <div className={styles.column}>
-            <div>
-              <label htmlFor="id">ID</label>
-              <input onChange={changeInput} id="id" type="text" />
-            </div>
-            <div>
-              <label htmlFor="firstName">{t('orderTablePage.modalFirstName')}</label>
-              <input onChange={changeInput} id="firstName" type="text" />
-            </div>
-            <div>
-              <label htmlFor="lastName">{t('orderTablePage.modalLastName')}</label>
-              <input onChange={changeInput} id="lastName" type="text" />
-            </div>
+            <CustomInputView
+              label="ID"
+              id="id"
+              changeInput={changeInput}
+            />
+
+            <CustomInputView
+              label={t('orderTablePage.modalFirstName')}
+              id="firstName"
+              changeInput={changeInput}
+            />
+
+            <CustomInputView
+              label={t('orderTablePage.modalLastName')}
+              id="lastName"
+              changeInput={changeInput}
+            />
           </div>
           <div className={styles.column}>
-            <div>
-              <label htmlFor="productName">{t('orderTablePage.modalProduct')}</label>
-              <input onChange={changeInput} id="productName" type="text" />
-            </div>
-            <div>
-              <label htmlFor="productPrice">{t('orderTablePage.modalPrice')}</label>
-              <input onChange={changeInput} id="productPrice" type="text" />
-            </div>
-            <div>
-              <label htmlFor="productAmount">{t('orderTablePage.modalAmount')}</label>
-              <input onChange={changeInput} id="productAmount" type="text" />
-            </div>
+            <CustomInputView
+              label={t('orderTablePage.modalProduct')}
+              id="productName"
+              changeInput={changeInput}
+            />
+
+            <CustomInputView
+              label={t('orderTablePage.modalPrice')}
+              id="productPrice"
+              changeInput={changeInput}
+            />
+
+            <CustomInputView
+              label={t('orderTablePage.modalAmount')}
+              id="productAmount"
+              changeInput={changeInput}
+            />
           </div>
         </div>
         <div className={styles.buttons}>
