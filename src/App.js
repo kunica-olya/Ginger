@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Main from './layout/Main/Main';
+import MainView from './layout/Main/MainView';
 import OrderTable from './pages/OrderTable/OrderTable';
 import Todo from './pages/Todo/Todo';
 import './i18n';
@@ -28,7 +28,7 @@ export default function App() {
   return (
     <Routes>
       <Route>
-        <Route path="/" element={<Main config={config} />} />
+        <Route path="/" element={<MainView config={config} />} />
         <Route path="/orders" element={<OrderTable config={config} />} />
         <Route path="/todo" element={<Todo config={config} />} />
       </Route>

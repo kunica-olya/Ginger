@@ -11,8 +11,9 @@ import WorkScheduleView from '../../components/Contacts/WorkScheduleView';
 import MapView from '../../components/Contacts/MapView';
 import { BASE_URL, BUTTON } from '../../constants/constants';
 import { useFetchCardsQuery } from '../../store/apis/extendedApi';
+import withLayout from '../../hocs/withLayout';
 
-export default function MainView() {
+function MainView() {
   const { t } = useTranslation();
 
   const {
@@ -105,3 +106,4 @@ export default function MainView() {
     </div>
   );
 }
+export default withLayout(MainView);
