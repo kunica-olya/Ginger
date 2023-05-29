@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Oval } from 'react-loader-spinner';
-import styles from './Main.module.scss';
+import styles from './sass/Main.module.scss';
 import { ReactComponent as Logo } from '../../assets/svg/Logo-dark.svg';
 import ButtonView from '../../components/Button/ButtonView';
 import { ReactComponent as IconInstagram } from '../../assets/svg/instagram.svg';

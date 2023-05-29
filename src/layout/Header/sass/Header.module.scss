@@ -1,13 +1,13 @@
-@import "../../styles/reset/reset.module";
-@import "../../styles/vars/vars.module";
-@import '../../styles/media-querry/media-querry';
+@import "../../../styles/reset/reset.module";
+@import "../../../styles/vars/vars.module";
+@import '../../../styles/media-querry/media-querry';
 
 .container {
   max-width: 1160px;
   margin: 0 auto;
 
   .background-logo {
-    background-image: url('../../assets/img/banner/cloud-1.png');
+    background-image: url('../../../assets/img/banner/cloud-1.png');
     position: absolute;
     height: 380px;
     width: 872px;
@@ -21,7 +21,7 @@
     padding-top: 38px;
 
     .bright-background {
-      background-image: url('../../assets/img/banner/cloud.png');
+      background-image: url('../../../assets/img/banner/cloud.png');
       background-position: top;
       background-repeat: no-repeat;
       background-size: cover;
@@ -34,7 +34,7 @@
     }
 
     .repeat-background {
-      background-image: url('../../assets/img/banner/cloud.png');
+      background-image: url('../../../assets/img/banner/cloud.png');
       background-position: top;
       background-repeat: no-repeat;
       height: 300px;
@@ -45,7 +45,7 @@
     }
 
     .additional-background {
-      background-image: url('../../assets/img/banner/stars.png');
+      background-image: url('../../../assets/img/banner/stars.png');
       position: absolute;
       background-repeat: no-repeat;
       width: 818px;

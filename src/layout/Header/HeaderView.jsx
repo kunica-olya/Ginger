@@ -1,7 +1,7 @@
 import { HashLink as Link } from 'react-router-hash-link';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import styles from './Header.module.scss';
+import styles from './sass/Header.module.scss';
 import Select from './Select';
 
 export default function HeaderView({ config }) {

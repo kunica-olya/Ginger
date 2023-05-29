@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import styles from './Header.module.scss';
+import styles from './sass/Header.module.scss';
 import { availableLang } from '../../i18n';
 
 export default function Select() {

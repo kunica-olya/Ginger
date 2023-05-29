@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { ReactComponent as Logo } from '../../assets/svg/Logo-white.svg';
-import styles from './Footer.module.scss';
+import styles from './sass/Footer.module.scss';
 
 export default function FooterView({ config }) {
   const { t } = useTranslation();
