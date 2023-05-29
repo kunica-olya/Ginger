@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ThemeContext from '../../context/ThemeContext';
 import { BUTTON, LABEL, THEMES } from '../../constants/constants';
 import ButtonView from '../../components/Button/ButtonView';
-import styles from './sass/TodoView.module.scss';
+import styles from './sass/Todo.module.scss';
 
 export default function TodoView({
   changeInput,
