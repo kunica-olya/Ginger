@@ -3,10 +3,13 @@ import baseApi from './basic';
 const extendedApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     fetchCards: builder.query({
-      query: (args) => ({
+      query: () => ({
         url: '/cards?',
         method: 'GET',
-        params: args
+        params: {
+          populate: '*',
+          sort: 'id:asc',
+        }
       }),
     }),
     createTodo: builder.mutation({
