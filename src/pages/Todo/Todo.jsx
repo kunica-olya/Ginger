@@ -17,9 +17,8 @@ function Todo() {
   const [isDragEnd, setIsDragEnd] = useState(false);
 
   const [createTodo] = useCreateTodoMutation();
-  const {
-    data,
-  } = useFetchTodosQuery({ sort: 'id:desc' });
+
+  const { data } = useFetchTodosQuery();
 
   useEffect(() => {
     if (data) {
@@ -38,8 +37,7 @@ function Todo() {
       return;
     }
 
-    const newTodo = await createTodo(userValue);
-    setTodos((prevTodos) => [...prevTodos, newTodo.data.data]);
+    await createTodo(userValue);
     setUserValue('');
   }, [userValue]);
 

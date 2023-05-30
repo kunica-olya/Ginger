@@ -102,6 +102,5 @@ TodoView.propTypes = {
 };
 
 TodoView.defaultProps = {
-  changeInput: () => {
-  }
+  changeInput: () => {},
 };

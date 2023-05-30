@@ -17,24 +17,23 @@ function MainView() {
   const { t } = useTranslation();
 
   const {
-    data,
+    cards,
     isFetching,
     refetch,
-  } = useFetchCardsQuery({
-    populate: '*',
-    sort: 'id:asc'
+  } = useFetchCardsQuery(undefined, {
+    selectFromResult: ({ data }) => ({
+      cards: data?.data.map((item) => ({
+        id: item.id,
+        title: item.attributes.title,
+        description: item.attributes.description,
+        additionalInfo: item.attributes.additionalInfo,
+        price: item.attributes.price,
+        weight: item.attributes.weight,
+        currency: item.attributes.currency,
+        img: BASE_URL + item.attributes.img.data.attributes.url,
+      })),
+    }),
   });
-
-  const formattedData = data?.data?.map((item) => ({
-    id: item.id,
-    title: item.attributes.title,
-    description: item.attributes.description,
-    additionalInfo: item.attributes.additionalInfo,
-    price: item.attributes.price,
-    weight: item.attributes.weight,
-    currency: item.attributes.currency,
-    img: BASE_URL + item.attributes.img.data.attributes.url
-  }));
 
   return (
     <div className={styles.container}>
@@ -79,7 +78,7 @@ function MainView() {
 
       <section id={styles.cards}>
         <div id="menu" className={styles.wrapper}>
-          {formattedData && formattedData.map((card) => (
+          {cards && cards.map((card) => (
             <CardView
               key={card.id}
               card={card}
@@ -106,4 +105,5 @@ function MainView() {
     </div>
   );
 }
+
 export default withLayout(MainView);

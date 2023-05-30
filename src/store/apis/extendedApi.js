@@ -3,10 +3,13 @@ import baseApi from './basic';
 const extendedApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     fetchCards: builder.query({
-      query: (args) => ({
-        url: '/cards?',
+      query: () => ({
+        url: '/cards',
         method: 'GET',
-        params: args
+        params: {
+          populate: '*',
+          sort: 'id:asc',
+        }
       }),
     }),
     createTodo: builder.mutation({
@@ -20,10 +23,12 @@ const extendedApi = baseApi.injectEndpoints({
       invalidatesTags: ['Todo']
     }),
     fetchTodos: builder.query({
-      query: (args) => ({
+      query: () => ({
         url: '/todos',
         method: 'GET',
-        params: args
+        params: {
+          sort: 'id:desc',
+        }
       }),
       providesTags: ['Todo']
     }),
