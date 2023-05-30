@@ -4,7 +4,7 @@ const extendedApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     fetchCards: builder.query({
       query: () => ({
-        url: '/cards?',
+        url: '/cards',
         method: 'GET',
         params: {
           populate: '*',
@@ -23,10 +23,12 @@ const extendedApi = baseApi.injectEndpoints({
       invalidatesTags: ['Todo']
     }),
     fetchTodos: builder.query({
-      query: (args) => ({
+      query: () => ({
         url: '/todos',
         method: 'GET',
-        params: args
+        params: {
+          sort: 'id:desc',
+        }
       }),
       providesTags: ['Todo']
     }),
