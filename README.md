@@ -1,5 +1,5 @@
-# Github Pages
-https://kunica-olya.github.io/
+# Netlify
+https://gingerkonditori.netlify.app
 
 # Getting Started with Create React App
 
