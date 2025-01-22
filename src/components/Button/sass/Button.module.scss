@@ -1,0 +1,60 @@
+@import "../../../styles/vars/vars.module";
+
+.button {
+  background: #8A5082;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px;
+  border-radius: 32px;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark-hover-color;
+  }
+
+  .button-text {
+    color: $primary-text-color;
+    font-size: $font-size-md-3;
+    font-family: 'Calibri';
+    font-weight: $bold-weight;
+    padding-top: 3px;
+    margin-left: 10px;
+  }
+}
+
+
+.primary {
+  width: 280px;
+}
+
+.secondary {
+  width: 282px;
+}
+
+.add {
+  width: 130px;
+  margin-bottom: 55px;
+}
+
+.cancel {
+  width: 220px;
+}
+
+.save {
+  width: 225px;
+}
+
+.different {
+  margin-right: 30px;
+  background-color: $secondary-text-color;
+}
+
+.preloader-button {
+  position: relative;
+  max-height: 48px;
+}
+
+
+

@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "img": "/assets/img/ellipses/ellipse-1.png",
+    "title": "Zephyr",
+    "additionalInfo": "with currant",
+    "description": "Sugar, currants, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  },
+  {
+    "id": 2,
+    "img": "/assets/img/ellipses/ellipse-2.png",
+    "title": "Zephyr",
+    "additionalInfo": "with apple",
+    "description": "Sugar, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  },
+  {
+    "id": 3,
+    "img": "/assets/img/ellipses/ellipse-3.png",
+    "title": "Zephyr",
+    "additionalInfo": "with blueberry",
+    "description": "Sugar, blueberry, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  },
+  {
+    "id": 4,
+    "img": "/assets/img/ellipses/ellipse-4.png",
+    "title": "Zephyr",
+    "additionalInfo": "with mango",
+    "description": "Sugar, mango, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  },
+  {
+    "id": 5,
+    "img": "/assets/img/ellipses/ellipse-5.png",
+    "title": "Zephyr",
+    "additionalInfo": "with strawberry",
+    "description": "Sugar, strawberry, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  },
+  {
+    "id": 6,
+    "img": "/assets/img/ellipses/ellipse-6.png",
+    "title": "Zephyr",
+    "additionalInfo": "with vanilla",
+    "description": "Sugar, vanilla, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  },
+  {
+    "id": 7,
+    "img": "/assets/img/ellipses/ellipse-7.png",
+    "title": "Zephyr",
+    "additionalInfo": "with cranberry",
+    "description": "Sugar, cranberry, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  },
+  {
+    "id": 8,
+    "img": "/assets/img/ellipses/ellipse-8.png",
+    "title": "Zephyr",
+    "additionalInfo": "with grape",
+    "description": "Sugar, grape, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  },
+  {
+    "id": 9,
+    "img": "/assets/img/ellipses/ellipse-9.png",
+    "title": "Zephyr",
+    "additionalInfo": "with lemon",
+    "description": "Sugar, lemon, agar-agar, apple",
+    "price": "₴25",
+    "weight": "30 g / 1 pc"
+  }
+]

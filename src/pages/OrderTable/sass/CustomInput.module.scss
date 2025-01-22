@@ -1,0 +1,21 @@
+@import "../../../styles/vars/vars.module";
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    color: $primary-text-color;
+    font-family: 'Calibri';
+    font-size: $font-size-md;
+    font-weight: $bold-weight;
+  }
+
+  .input {
+    padding: 10px 10px;
+    width: 275px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}

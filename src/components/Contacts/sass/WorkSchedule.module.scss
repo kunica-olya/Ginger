@@ -1,0 +1,24 @@
+@import '../../../styles/vars/vars.module';
+
+.schedule {
+  width: 355px;
+  color: $secondary-text-color;
+  margin-bottom: 130px;
+  margin-top: 65px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    font-size: $font-size-lg;
+    font-family: 'Calibri';
+    margin-bottom: 16px;
+  }
+
+  ul {
+    li {
+      font-size: $font-size-md-3;
+      font-family: 'Calibri';
+      margin-bottom: 8px;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+body {
+  background: url("../../assets/img/Bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body,h1,h1,h2,h3,h4,h6,p,ul{
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+}
+
+input{
+  outline: none;
+  border: none;
+}

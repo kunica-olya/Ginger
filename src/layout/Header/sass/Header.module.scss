@@ -1,0 +1,123 @@
+@import "../../../styles/reset/reset.module";
+@import "../../../styles/vars/vars.module";
+@import '../../../styles/media-querry/media-querry';
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+
+  .background-logo {
+    background-image: url('../../../assets/img/banner/cloud-1.png');
+    position: absolute;
+    height: 380px;
+    width: 872px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: -55px;
+    left: 0;
+  }
+
+  .header {
+    padding-top: 38px;
+
+    .bright-background {
+      background-image: url('../../../assets/img/banner/cloud.png');
+      background-position: top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 300px;
+      position: absolute;
+      top: 0;
+      width: 872px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .repeat-background {
+      background-image: url('../../../assets/img/banner/cloud.png');
+      background-position: top;
+      background-repeat: no-repeat;
+      height: 300px;
+      left: 765px;
+      position: absolute;
+      top: 0;
+      width: 927px;
+    }
+
+    .additional-background {
+      background-image: url('../../../assets/img/banner/stars.png');
+      position: absolute;
+      background-repeat: no-repeat;
+      width: 818px;
+      left: 892px;
+      top: 2px;
+      height: 483px;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+      position: relative;
+
+      .block {
+        width: 190px;
+      }
+
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        font-family: 'Calibri';
+        z-index: 1;
+
+
+        a {
+          color: $link-color;
+          font-size: $font-size-md-2;
+          font-weight: $bold-weight;
+          padding: 0 25px;
+
+          &:hover {
+            color: $dark-hover-color;
+          }
+        }
+      }
+
+      .contacts {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Calibri';
+        align-items: flex-end;
+
+        a {
+          color: $link-color;
+          z-index: 1;
+        }
+
+        .location {
+          font-weight: $regular-weight;
+          margin-top: 4px;
+          letter-spacing: 0.5px;
+          margin-bottom: 3px;
+          font-size: 17px;
+        }
+
+        .phone {
+          font-size: $font-size-md;
+          font-weight: $bold-weight;
+          text-align: end;
+          letter-spacing: 0.5px;
+        }
+      }
+      .toggle {
+        margin-top: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+        padding: 5px 5px;
+        z-index: 1;
+      }
+    }
+  }
+}
